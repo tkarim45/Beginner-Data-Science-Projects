@@ -1,4 +1,4 @@
-# Beginner Level Data Science Projects
+<h1 align="center">Beginner Level Data Science Projects</h1>
 
 Welcome to the Beginner Level Data Science Projects repository! This collection contains a variety of data science projects suitable for beginners.
 
