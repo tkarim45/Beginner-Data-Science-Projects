@@ -1,7 +1,0 @@
-Flask
-sklearn
-pandas
-numpy
-matplotlib
-pickle
-gunicorn
