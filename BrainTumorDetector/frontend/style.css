@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .instruction {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .file-input {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+  }
+  
+  .upload-btn {
+    padding: 12px 24px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .upload-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .result-text {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .result-text.tumor {
+    color: #e74c3c;
+  }
+  
+  .result-text.no-tumor {
+    color: #2ecc71;
+  }
+  
+  .spinner {
+    margin: 20px auto;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .disclaimer-text {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  
+  .instructions {
+    list-style: inside square;
+    text-align: left;
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+  
+  .instructions li {
+    margin: 10px 0;
+    font-size: 0.95em;
+  }
+  

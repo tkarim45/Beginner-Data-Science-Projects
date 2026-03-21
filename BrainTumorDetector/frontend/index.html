@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brain Tumor Detection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Brain Tumor Detection</h1>
+    <p class="instruction">Upload an MRI image to check for tumor presence.</p>
+    
+    <input type="file" id="imageInput" class="file-input">
+    <button onclick="uploadImage()" class="upload-btn">Check MRI</button>
+
+    <div id="spinner" class="spinner hidden"></div>
+    <p id="result" class="result-text"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
