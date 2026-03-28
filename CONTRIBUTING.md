@@ -62,4 +62,4 @@ Found a bug or have a suggestion? Open an issue with:
 
 ## Code of Conduct
 
-Be respectful and constructive. This is a learning-focused community.
+Be respectful and constructive. This is a learning-focused community. Everyone is welcome regardless of experience level.
