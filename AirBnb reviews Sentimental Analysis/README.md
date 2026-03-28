@@ -1,4 +1,4 @@
-# AirBnb Reviews Sentiment Analysis
+# AirBnb Reviews Sentimental Analysis
 
 Analyzes AirBnb user reviews to classify sentiment using a multi-stage pipeline: data preprocessing, classical machine learning, deep learning, and LLM-based approaches. Includes an interactive dashboard for exploring results and visualizations.
 
