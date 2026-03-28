@@ -4,7 +4,7 @@ Builds a network intrusion detection system (NIDS) that classifies network conne
 
 ## Dataset
 
-KDD Cup 1999 dataset (`KDDCup Data 10 Percent.csv`) -- a widely used benchmark for network intrusion detection research. Supporting files include `kddcup.txt` (column names) and `training_attack_types.txt` (attack type mappings).
+[KDD Cup 1999](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html) dataset (`KDDCup Data 10 Percent.csv`) -- a widely used benchmark for network intrusion detection research. Supporting files include `kddcup.txt` (column names) and `training_attack_types.txt` (attack type mappings).
 
 ## Tech Stack
 
