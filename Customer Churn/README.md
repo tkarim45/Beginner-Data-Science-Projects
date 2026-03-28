@@ -4,7 +4,7 @@ Predicts whether customers of a marketing agency will churn (stop using the serv
 
 ## Dataset
 
-- `customer_churn.csv` -- historical customer data with fields: Name, Age, Total_Purchase, Account_Manager, Years, Num_Sites, Onboard_date, Location, Company, Churn
+- - `customer_churn.csv` -- historical customer data with fields: Name, Age, Total_Purchase, Account_Manager, Years, Num_Sites, Onboard_date, Location, Company, Churn
 - `new_customers_1.csv` -- new customers to predict churn for (no labels)
 
 ## Tech Stack
