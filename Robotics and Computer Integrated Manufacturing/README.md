@@ -1,4 +1,4 @@
-# Weld Seam Classification
+# Weld Seam Classification for Robotics Manufacturing
 
 Classifies weld seam images into four categories (seam1, seam2, seam3, seam4) using transfer learning with MobileNetV2. Includes data augmentation, model training, confusion matrix evaluation, and seam width analysis via OpenCV edge detection.
 
