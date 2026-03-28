@@ -1,0 +1,9 @@
+jupyter
+pandas
+numpy
+matplotlib
+opencv-python
+tensorflow
+tqdm
+requests
+mtcnn

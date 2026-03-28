@@ -1,0 +1,4 @@
+jupyter
+pandas
+nltk
+scikit-learn

@@ -1,0 +1,12 @@
+jupyter
+pandas
+numpy
+matplotlib
+seaborn
+opencv-python
+ultralytics
+mediapipe
+scikit-learn
+xgboost
+joblib
+roboflow

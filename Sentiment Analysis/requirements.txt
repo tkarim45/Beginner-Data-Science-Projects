@@ -1,0 +1,4 @@
+jupyter
+pandas
+numpy
+nltk
