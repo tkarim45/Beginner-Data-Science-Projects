@@ -1,6 +1,6 @@
 ## Description
 
-Brief description of your project or changes.
+Provide a brief description of your project or changes.
 
 ## Checklist
 
