@@ -21,7 +21,7 @@ Detects cyberbullying in Formspring Q&A posts using NLP and machine learning. Te
 | Multinomial Naive Bayes | 94.02% | 53.62% | 15.35% |
 | Decision Tree | 93.11% | 41.88% | 33.20% |
 
-Note: The dataset is imbalanced (mostly non-bullying), so accuracy is high but recall for the bullying class is low across all models.
+**Note:** The dataset is imbalanced (mostly non-bullying), so accuracy is high but recall for the bullying class is low across all models.
 
 ## How to Run
 
