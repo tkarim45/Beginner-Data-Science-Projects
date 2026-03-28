@@ -17,7 +17,7 @@ Eye disease images organized into five class folders. The original dataset is au
 
 ## Results
 
-A fine-tuned ResNet34 model is trained for 50 epochs on the augmented dataset to classify five eye disease categories (Glaucoma, Cataracts, Uveitis, Crossed Eyes, Bulging Eyes). See notebook for detailed results.
+A fine-tuned ResNet34 model is trained for 50 epochs on the augmented dataset to classify five eye disease categories: Glaucoma, Cataracts, Uveitis, Crossed Eyes, and Bulging Eyes. See notebook for detailed results.
 
 ## How to Run
 
