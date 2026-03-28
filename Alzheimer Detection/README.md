@@ -1,4 +1,4 @@
-# Alzheimer's Disease Detection
+# Alzheimer Disease Detection
 
 Classifies patients into diagnostic categories (Cognitive Normal, Alzheimer's Disease, Late Mild Cognitive Impairment) using clinical, cognitive, and neuroimaging data. Merges multiple data sheets (diagnosis, cognitive scores, demographics/brain measures), performs feature engineering, and trains a Random Forest classifier.
 
