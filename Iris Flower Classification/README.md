@@ -24,4 +24,4 @@ The CNN achieves approximately 50% accuracy on the test set (5 flower classes). 
 
 1. Ensure the `flowers/` directory is present with subdirectories for each flower type.
 2. Install dependencies: `pip install numpy pandas opencv-python matplotlib seaborn scikit-learn tensorflow`
-3. Open and run `Iris_Flower.ipynb` in Jupyter Notebook.
+3. Open and run `Iris_Flower.ipynb` in Jupyter Notebook or JupyterLab.
