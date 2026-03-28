@@ -26,7 +26,7 @@ YOLOv8 achieves mAP50 of 0.426 and mAP50-95 of 0.299 after 5 epochs of training.
 
 ## How to Run
 
-1. This project is designed to run in Google Colab with GPU support.
+1. This project is designed to run in **Google Colab** with GPU support.
 2. Open `Yolov8.ipynb` for the YOLOv8 training and inference pipeline.
 3. Open `RetinaNet_and_Faster_R_CNN.ipynb` for the Detectron2-based Faster R-CNN and RetinaNet pipelines.
 4. Follow the in-notebook instructions to install dependencies (ultralytics, detectron2, roboflow) and download the dataset.
