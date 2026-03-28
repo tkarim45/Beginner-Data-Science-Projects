@@ -10,8 +10,10 @@ Predicts the likelihood of death due to heart failure using clinical data and su
 
 ## Tech Stack
 
-- Python, Pandas, NumPy, Matplotlib, Seaborn
-- Scikit-learn (Logistic Regression)
+- Python
+- Pandas, NumPy
+- Matplotlib, Seaborn
+- scikit-learn (Logistic Regression)
 
 ## Results
 
