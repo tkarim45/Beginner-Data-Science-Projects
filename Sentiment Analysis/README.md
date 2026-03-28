@@ -1,6 +1,6 @@
 # Twitter Sentiment Analysis
 
-Implements logistic regression from scratch to classify tweets as positive or negative. Covers sigmoid function, gradient descent, feature extraction (positive/negative word frequency counts), and model evaluation on the NLTK Twitter dataset. Achieves approximately 99.5% accuracy.
+Implements logistic regression from scratch to classify tweets as positive or negative. Covers the sigmoid function, gradient descent, feature extraction (positive/negative word frequency counts), and model evaluation on the NLTK Twitter dataset. Achieves approximately 99.5% accuracy.
 
 ## Dataset
 
