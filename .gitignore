@@ -22,7 +22,7 @@ env/
 .vscode/
 .idea/
 
-# Model artifacts
+# Model artifacts and serialized objects
 *.h5
 *.pkl
 *.pickle
