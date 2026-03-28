@@ -17,7 +17,7 @@ A collection of 1,800 face images stored in the `Dataset/` folder. The Haar Casc
 
 ## Results
 
-Demonstrates face detection using Haar Cascades and MTCNN on a dataset of 1,800 images. Both methods draw bounding boxes around detected faces; MTCNN generally provides more accurate detections with fewer false positives.
+Demonstrates face detection using Haar Cascades and MTCNN on a dataset of 1,800 images. Both methods draw bounding boxes around detected faces. MTCNN generally provides more accurate detections with fewer false positives.
 
 ## How to Run
 
