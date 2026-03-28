@@ -1,6 +1,6 @@
 # Pose Estimation and Activity Classification
 
-Uses pose estimation models to extract body keypoints from video frames and classifies human activities (Cooking, Dancing, Gym) using machine learning. Compares three pose estimation approaches -- YOLOv8, MediaPipe Pose, and MediaPipe Holistic -- paired with SVM and Random Forest classifiers.
+Uses pose estimation models to extract body keypoints from video frames and classifies human activities (Cooking, Dancing, Gym) using machine learning. Compares three pose estimation approaches -- YOLOv8, MediaPipe Pose, and MediaPipe Holistic -- paired with SVM, Random Forest, and XGBoost classifiers.
 
 ## Dataset
 
