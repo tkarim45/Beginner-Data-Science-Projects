@@ -4,7 +4,7 @@ Classifies images of people as male or female using a fine-tuned EfficientNetV2-
 
 ## Dataset
 
-Gender Detection and Classification Image Dataset from Kaggle (`trainingdatapro/gender-detection-and-classification-image-dataset`). Contains labeled JPG images split into `train/` and `test/` folders, each with `men/` and `women/` subfolders. The notebook includes a download command.
+[Gender Detection and Classification Image Dataset](https://www.kaggle.com/datasets/trainingdatapro/gender-detection-and-classification-image-dataset) from Kaggle. Contains labeled JPG images split into `train/` and `test/` folders, each with `men/` and `women/` subfolders. The notebook includes a download command.
 
 ## Tech Stack
 
