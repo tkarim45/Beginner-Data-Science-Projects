@@ -13,4 +13,4 @@ labels: enhancement
 
 **Suggested Dataset:** (link if available)
 
-**Difficulty:** (Beginner / Intermediate)
+**Difficulty:** (Beginner / Intermediate / Advanced)
