@@ -20,3 +20,4 @@ labels: bug
 - OS:
 - Python version:
 - Relevant package versions:
+- Jupyter version (if applicable):
