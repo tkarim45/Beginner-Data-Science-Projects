@@ -31,22 +31,32 @@ Titanic Survival Prediction/
 | 2 | `02_data_cleaning.ipynb` | Handling missing values (group median, mode), feature engineering (Title, FamilySize, IsAlone, AgeGroup, FareBin, HasCabin), encoding categoricals |
 | 3 | `03_model_building.ipynb` | Train/test split, feature scaling, 7 classification models, cross-validation, hyperparameter tuning with GridSearchCV, ROC curves, model comparison |
 
-## Models Tested
+## Results
 
-| Model | Description |
-|-------|-------------|
-| Logistic Regression | Linear baseline model |
-| Decision Tree | Interpretable tree-based model |
-| Random Forest | Ensemble of decision trees |
-| K-Nearest Neighbors | Distance-based classification |
-| Support Vector Machine | Maximum-margin classifier |
-| Gradient Boosting | Sequential ensemble method |
-| Naive Bayes | Probabilistic classifier |
+7 classification models were trained and compared. Best model was further tuned with GridSearchCV.
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-----------|--------|----------|
+| Logistic Regression | 0.8380 | 0.7941 | 0.7826 | 0.7883 |
+| SVM | 0.8268 | 0.7969 | 0.7391 | 0.7669 |
+| Random Forest | 0.8156 | 0.7812 | 0.7246 | 0.7519 |
+| Gradient Boosting | 0.8156 | 0.8103 | 0.6812 | 0.7402 |
+| Decision Tree | 0.7989 | 0.7797 | 0.6667 | 0.7188 |
+| Naive Bayes | 0.7765 | 0.6883 | 0.7681 | 0.7260 |
+| KNN | 0.7709 | 0.7500 | 0.6087 | 0.6720 |
+| **Random Forest (Tuned)** | **0.8045** | **0.7656** | **0.7101** | **0.7368** |
+
+Best GridSearchCV parameters: `max_depth=10, min_samples_leaf=1, min_samples_split=10, n_estimators=200`
+
+5-Fold Cross-Validation (mean accuracy): Logistic Regression (0.8175), Gradient Boosting (0.8133), SVM (0.8104), Random Forest (0.8077)
 
 ## Key Findings
 
+- **Logistic Regression was the best performer** — highest accuracy (83.8%) and F1 score (0.7883)
 - **Sex** is the strongest predictor — females survived at ~74%, males at ~19%
 - **Passenger class** matters — 1st class: 63% survival vs 3rd class: 24%
+- **Fare correlates with survival** — survivors paid an average of $48.40 vs $22.12 for non-survivors
+- **Overall survival rate**: 38.4% (342 survived out of 891)
 - **Children** (age < 12) had higher survival rates
 - **Small families** (2-4 members) survived at higher rates than solo travelers or large families
 - Engineered features like **Title** and **HasCabin** improved model performance
