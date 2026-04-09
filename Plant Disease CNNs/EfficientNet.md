@@ -1,8 +1,8 @@
 # EfficientNet-B0 (timm) with PyTorch for Plant Disease Classification
 
-*EfficientNetB3 is a convolutional neural network (CNN) model from the Google AI EfficientNet family, designed for image classification tasks. It is the B3 variant in the EfficientNet series (B0–B7), balancing accuracy and computational efficiency.*
+*EfficientNet-B0 is a convolutional neural network (CNN) model from the Google AI EfficientNet family, designed for image classification tasks. It is the B0 variant in the EfficientNet series (B0–B7), offering the best balance of accuracy and computational efficiency for lightweight deployment.*
 
-This repository provides a robust pipeline for classifying plant diseases using the EfficientNet architecture via the PyTorch Image Models (timm) library. While the lightweight EfficientNet-B0 serves as an excellent baseline, this project heavily leverages the EfficientNet-B3 variant to achieve an optimal balance between high classification accuracy and computational efficiency.
+This repository provides a robust pipeline for classifying plant diseases using the EfficientNet architecture via the PyTorch Image Models (timm) library. The project uses **EfficientNet-B0** (`efficientnet_b0` in timm) as instantiated in `app.py`, which serves as an excellent balance between high classification accuracy and computational efficiency.
 
 ## Using EfficientNet-B0 via timm in PyTorch is excellent for plant disease classification.
 
@@ -17,7 +17,7 @@ This repository provides a robust pipeline for classifying plant diseases using 
 
 **Install timm**
 
-```python
+```bash
 pip install timm
 ```
 
@@ -87,7 +87,7 @@ for param in model.parameters():
 #### Train with lower LR:
 ```python
 optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)
-````
+```
 
 ## EfficientNet Family Overview
 

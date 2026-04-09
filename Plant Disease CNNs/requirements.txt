@@ -3,6 +3,5 @@ torchvision
 timm
 pillow
 numpy
-transformers
+gradio
 matplotlib
-numpy

@@ -1,3 +1,14 @@
+---
+title: LeafDiseaseML
+emoji: 🌿
+sdk: gradio
+sdk_version: 6.8.0
+app_file: app.py
+colorFrom: green
+colorTo: blue
+pinned: false
+---
+
 # 🌿 Plant Disease Classification Using CNNs
 
 *Fine-tuned **EfficientNet-B0** model that detects **38 plant leaf diseases** from a single image — deployed live on Hugging Face Spaces.*
@@ -12,7 +23,9 @@
 ([view on Kaggle](https://www.kaggle.com/code/arunsworkspace/plant-disease-cnn))
 ---
 
-## Transformers
+## Transformers (Separately Published HF Model)
+
+> **Note:** The snippets below use the `transformers` library to access a separately published Hugging Face model (`ARUNAGIRINATHAN/plant_disease`). The local `app.py` in this repo uses **timm** and **Gradio** directly and does not require `transformers`.
 
 ```python
 # Use a pipeline as a high-level helper
@@ -60,8 +73,8 @@ path = kagglehub.dataset_download("abdallahalidev/plantvillage-dataset")
 ![](img/flow1.png)
 
 ## Model
-- **Architecture:** [EfficientNetB3](EfficientNet.md) (Transfer Learning + Fine-tuning)
-- **Framework:** TensorFlow / Keras
+- **Architecture:** [EfficientNet-B0](EfficientNet.md) (Transfer Learning + Fine-tuning via `timm`)
+- **Framework:** PyTorch (timm)
 - **Input:** 224 × 224 RGB leaf images
 - **Output:** 38-class softmax prediction
 
@@ -76,10 +89,5 @@ path = kagglehub.dataset_download("abdallahalidev/plantvillage-dataset")
 
 ## Hugging Face
 
----
-title: LeafDiseaseML
-sdk_version: 6.8.0
-app_file: app.py
-pinned: false
----
+Live demo: [ARUNAGIRINATHAN/LeafDiseaseML](https://huggingface.co/spaces/ARUNAGIRINATHAN/LeafDiseaseML)
 
