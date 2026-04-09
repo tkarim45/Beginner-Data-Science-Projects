@@ -93,7 +93,6 @@ interface = gr.Interface(
     description="Upload a leaf image to detect disease using EfficientNet-B0"
 )
 
-interface.launch()
 with gr.Blocks() as demo:
     gr.Markdown("## 🌿 Plant Disease Classification")
 
@@ -102,10 +101,11 @@ with gr.Blocks() as demo:
             input_image = gr.Image(type="pil", height=300, width=300)
 
         with gr.Column(scale=1):
-            output_label = gr.Label()
+            output_image = gr.Image(type="pil")
+            output_label = gr.Markdown()
 
     btn = gr.Button("Predict")
 
-    btn.click(predict, inputs=input_image, outputs=output_label)
+    btn.click(predict, inputs=input_image, outputs=[output_image, output_label])
 
 demo.launch()
