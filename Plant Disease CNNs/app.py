@@ -4,7 +4,6 @@ import gradio as gr
 import matplotlib.pyplot as plt
 import io
 from PIL import Image
-import torch.nn as nn
 import torch.nn.functional as F
 import timm
 import json
