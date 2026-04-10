@@ -49,6 +49,7 @@ transform = transforms.Compose([
 def predict(image):
     if image is None:
         raise ValueError("No image provided. Please upload an image before predicting.")
+    image = image.convert("RGB")
     img_tensor = transform(image).unsqueeze(0).to(device)
 
     with torch.inference_mode():
