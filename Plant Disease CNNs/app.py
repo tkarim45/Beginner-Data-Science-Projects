@@ -47,6 +47,8 @@ transform = transforms.Compose([
 
 
 def predict(image):
+    if image is None:
+        raise ValueError("No image provided. Please upload an image before predicting.")
     img_tensor = transform(image).unsqueeze(0).to(device)
 
     with torch.inference_mode():
@@ -84,17 +86,6 @@ def predict(image):
     annotated_img = Image.open(buf).convert("RGB")
 
     return annotated_img, result_text
-
-interface = gr.Interface(
-    fn=predict,
-    inputs=gr.Image(type="pil"),
-    outputs=[
-        gr.Image(type="pil"),
-        gr.Markdown()
-    ],
-    title="🌿 Plant Disease Classification",
-    description="Upload a leaf image to detect disease using EfficientNet-B0"
-)
 
 with gr.Blocks() as demo:
     gr.Markdown("## 🌿 Plant Disease Classification")
