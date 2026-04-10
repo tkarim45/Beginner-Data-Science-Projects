@@ -3,6 +3,7 @@ torch.set_num_threads(2)
 import gradio as gr
 import matplotlib.pyplot as plt
 import io
+from pathlib import Path
 from PIL import Image
 import torch.nn.functional as F
 import timm
@@ -12,8 +13,11 @@ from torchvision import transforms
 # Device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# Resolve asset paths relative to this file
+_BASE_DIR = Path(__file__).resolve().parent
+
 # Load class names
-with open("class_names.json", "r") as f:
+with open(_BASE_DIR / "class_names.json", "r") as f:
     class_names = json.load(f)
 
 num_classes = len(class_names)
@@ -28,7 +32,7 @@ model = timm.create_model(
 
 # Load trained weights
 model.load_state_dict(
-    torch.load("efficientnet_plant_best.pth", map_location=device),
+    torch.load(_BASE_DIR / "efficientnet_plant_best.pth", map_location=device),
     strict=True
 )
 
