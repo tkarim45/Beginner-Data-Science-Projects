@@ -9,18 +9,18 @@ Given 30 input features (28 anonymised PCA components, transaction amount, and e
 ## Dataset
 
 - **Source**: [Credit Card Fraud Detection (Kaggle, ULB)](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud).
-- **Important — stratified subsample**: The original ULB dataset has **284,807 transactions** (492 fraud) and is ~150 MB, too large to commit to this repo. The file `data/creditcard.csv` here is a **stratified subsample**: it keeps **all 492 fraud transactions** plus **50,000 randomly sampled legitimate transactions**, for **50,492 rows total**. The fraud rate (~0.97%) is therefore slightly higher than the original (~0.17%), but all fraud cases are preserved.
+- **Important, stratified subsample**: The original ULB dataset has **284,807 transactions** (492 fraud) and is ~150 MB, too large to commit to this repo. The file `data/creditcard.csv` here is a **stratified subsample**: it keeps **all 492 fraud transactions** plus **50,000 randomly sampled legitimate transactions**, for **50,492 rows total**. The fraud rate (~0.97%) is therefore slightly higher than the original (~0.17%), but all fraud cases are preserved.
 - **Samples**: 50,492 transactions (492 fraud, 50,000 legitimate)
 - **Features**: 30 inputs + 1 binary target
 
 | Feature | Type | Description |
 |---------|------|-------------|
 | Time | numeric | Seconds elapsed since the first transaction in the dataset (~48 hours of data) |
-| V1–V28 | numeric | Anonymised principal components from a PCA transformation (original features hidden for confidentiality) |
-| Amount | numeric | Transaction amount in Euros — highly right-skewed |
+| V1 to V28 | numeric | Anonymised principal components from a PCA transformation (original features hidden for confidentiality) |
+| Amount | numeric | Transaction amount in Euros, highly right-skewed |
 | **Class** | **binary** | **0 = legitimate, 1 = fraud** |
 
-Class imbalance is severe — only **0.97%** of transactions are fraudulent.
+Class imbalance is severe, only **0.97%** of transactions are fraudulent.
 
 ## Project Structure
 
@@ -58,11 +58,11 @@ Best GridSearchCV parameters: `max_depth=20, min_samples_leaf=2, n_estimators=20
 
 ## Key Findings
 
-- **Severe class imbalance (0.97% fraud) makes accuracy useless** — a trivial "always legitimate" classifier scores ~99% accuracy while catching zero fraud. Random Forest and KNN both reach ~99.8% accuracy, but so would the trivial baseline; F1, recall, precision, and PR-AUC on the fraud class are the metrics that matter.
-- **Random Forest is the best overall model**: F1 = 0.90 with 97.6% precision and 84.2% recall — it catches most fraud while almost never falsely flagging a legitimate transaction.
-- **The recall/precision trade-off splits the models cleanly**: balanced linear/probabilistic models (Logistic Regression, SVM, Naive Bayes) catch more fraud (recall 88–93%) but flag many false positives (precision 25–46%), while tree ensembles favour precision.
-- **The PCA features carry the signal**: feature importance is dominated by `V14`, `V4`, `V10`, `V12`, and `V17` — the same components that showed the clearest class separation in the EDA. `Amount` and `Time` contribute very little.
-- **Tuning did not beat the default Random Forest** here (tuned F1 = 0.8989 vs default 0.9040) — the default settings were already near-optimal for this subsample.
+- **Severe class imbalance (0.97% fraud) makes accuracy useless**, a trivial "always legitimate" classifier scores ~99% accuracy while catching zero fraud. Random Forest and KNN both reach ~99.8% accuracy, but so would the trivial baseline; F1, recall, precision, and PR-AUC on the fraud class are the metrics that matter.
+- **Random Forest is the best overall model**: F1 = 0.90 with 97.6% precision and 84.2% recall, it catches most fraud while almost never falsely flagging a legitimate transaction.
+- **The recall/precision trade-off splits the models cleanly**: balanced linear/probabilistic models (Logistic Regression, SVM, Naive Bayes) catch more fraud (recall 88 to 93%) but flag many false positives (precision 25 to 46%), while tree ensembles favour precision.
+- **The PCA features carry the signal**: feature importance is dominated by `V14`, `V4`, `V10`, `V12`, and `V17`, the same components that showed the clearest class separation in the EDA. `Amount` and `Time` contribute very little.
+- **Tuning did not beat the default Random Forest** here (tuned F1 = 0.8989 vs default 0.9040), the default settings were already near-optimal for this subsample.
 - **SVM was trained on a 15,000-row stratified subsample** (all 378 training-set frauds plus 14,622 legitimate rows) to keep runtime manageable; this is noted in notebook 03.
 
 ## Tech Stack

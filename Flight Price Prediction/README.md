@@ -8,14 +8,14 @@ Given the airline, source / destination city, departure and arrival time bucket,
 
 ## Dataset
 
-- **Source**: [Airlines Flights Data — datasciencelovers (GitHub)](https://github.com/datasciencelovers/Airlines-Flights-Data-Analysis)
+- **Source**: [Airlines Flights Data, datasciencelovers (GitHub)](https://github.com/datasciencelovers/Airlines-Flights-Data-Analysis)
 - **Total Samples**: ~300,153 ticket listings (subsampled to **50,000** on load to keep training tractable)
 - **Features**: 11 mixed numeric / categorical predictors
 
 | Feature | Description |
 |---|---|
 | airline | Carrier (SpiceJet, AirAsia, Vistara, GO_FIRST, Indigo, Air_India) |
-| flight | Flight number (high cardinality — dropped) |
+| flight | Flight number (high cardinality, dropped) |
 | source_city | Origin city |
 | departure_time | Bucket: Early Morning / Morning / Afternoon / Evening / Night / Late Night |
 | stops | zero / one / two_or_more (mapped to 0/1/2 ordinal) |
@@ -24,7 +24,7 @@ Given the airline, source / destination city, departure and arrival time bucket,
 | class | Economy / Business |
 | duration | Flight duration in hours |
 | days_left | Days from booking until departure |
-| **price** | **Target — ticket price in INR** |
+| **price** | **Target, ticket price in INR** |
 
 ## Project Structure
 
@@ -60,11 +60,11 @@ Best GridSearchCV parameters: `{max_depth: None, min_samples_leaf: 1, n_estimato
 
 ## Key Findings
 
-- **Travel class is the dominant feature** — Business class tickets cost roughly 5–7× Economy on the same route. Adding `class` as a feature lifts every model's R² substantially.
+- **Travel class is the dominant feature**. Business class tickets cost roughly 5 to 7× Economy on the same route. Adding `class` as a feature lifts every model's R² substantially.
 - **Days-left exhibits the classic dynamic-pricing curve**: prices climb sharply as the departure date approaches; tickets booked 30+ days out are the cheapest.
 - **Stops also matter**: direct flights cost more than 1-stop flights on the same route (counterintuitive, but reflects the airline pricing premium for non-stops).
-- **Random Forest reaches R² ≈ 0.98** — very strong fit. The tuned variant returns identical metrics because the default already lands at the GridSearchCV winner.
-- **Linear models cap at R² ≈ 0.91** — the price function is non-linear (especially the days_left × class interaction), so tree ensembles add ~7 percentage points of explained variance.
+- **Random Forest reaches R² ≈ 0.98**, very strong fit. The tuned variant returns identical metrics because the default already lands at the GridSearchCV winner.
+- **Linear models cap at R² ≈ 0.91**, the price function is non-linear (especially the days_left × class interaction), so tree ensembles add ~7 percentage points of explained variance.
 
 ## Tech Stack
 

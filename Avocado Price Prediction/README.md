@@ -8,7 +8,7 @@ Given the type (`conventional` / `organic`), region, year/week, total volume, an
 
 ## Dataset
 
-- **Source**: [Avocado Prices (Kaggle)](https://www.kaggle.com/datasets/neuromusic/avocado-prices) — Hass Avocado Board weekly retail data, 2015–2018
+- **Source**: [Avocado Prices (Kaggle)](https://www.kaggle.com/datasets/neuromusic/avocado-prices). Hass Avocado Board weekly retail data, 2015 to 2018
 - **Samples**: 18,249 weekly observations
 - **Features**: 12 inputs + 1 numeric target
 
@@ -19,9 +19,9 @@ Given the type (`conventional` / `organic`), region, year/week, total volume, an
 | 4046 / 4225 / 4770 | float | PLU-coded volumes (small / medium-large / extra-large Hass) |
 | Total Bags / Small Bags / Large Bags / XLarge Bags | float | Bagged-sale volumes |
 | type | categorical | conventional / organic |
-| year | int | 2015–2018 |
+| year | int | 2015 to 2018 |
 | region | categorical | 54 US sub-markets (states + metros + national totals) |
-| **AveragePrice** | **float** | **Average retail price per avocado in USD ($0.44 – $3.25)** |
+| **AveragePrice** | **float** | **Average retail price per avocado in USD ($0.44, $3.25)** |
 
 ## Project Structure
 
@@ -59,12 +59,12 @@ Best GridSearchCV parameters: `n_estimators=200, max_depth=None, min_samples_lea
 
 ## Key Findings
 
-- **`type` is the dominant predictor**: organic avocados average **$1.65** vs **$1.16** for conventional — a ~50–60% premium that swamps every other signal.
-- **Random Forest hits R² = 0.91** with MAE of just $0.086 — under 9 cents of average error on a target ranging $0.44 to $3.25.
+- **`type` is the dominant predictor**: organic avocados average **$1.65** vs **$1.16** for conventional, a ~50 to 60% premium that swamps every other signal.
+- **Random Forest hits R² = 0.91** with MAE of just $0.086, under 9 cents of average error on a target ranging $0.44 to $3.25.
 - **Linear models cap around R² ≈ 0.71** because the price function is non-linear in volume (supply effect saturates) and depends on dozens of region dummies.
 - **Region effects span ~$0.50** between cheapest (Houston, Phoenix-Tucson) and most expensive (San Francisco, New York).
 - **Time-series caveat**: this used a random split rather than time-aware split. The `Next Steps` in the model notebook calls out using `TimeSeriesSplit` for fair evaluation, since prices have a temporal trend.
-- **No missing values, no duplicates** — already clean.
+- **No missing values, no duplicates**, already clean.
 
 ## Tech Stack
 

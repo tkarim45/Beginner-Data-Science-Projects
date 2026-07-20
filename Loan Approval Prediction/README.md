@@ -8,7 +8,7 @@ Given an applicant's gender, marital status, dependents, education, employment, 
 
 ## Dataset
 
-- **Source**: [Loan Prediction Problem Dataset (Analytics Vidhya / Kaggle)](https://www.kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset) — mirrored on GitHub
+- **Source**: [Loan Prediction Problem Dataset (Analytics Vidhya / Kaggle)](https://www.kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset), mirrored on GitHub
 - **Samples**: 614 applications (422 approved, 192 denied)
 - **Features**: 11 inputs + 1 binary target
 
@@ -67,10 +67,10 @@ Best GridSearchCV parameters: `n_estimators=300, max_depth=5, min_samples_split=
 ## Key Findings
 
 - **Credit_History dominates**: ~79% approval rate when `Credit_History == 1`, ~8% when `0`. Almost all model importance flows through this column.
-- **Property_Area = Semiurban** has the highest approval rate (~77%) — even higher than Urban or Rural.
+- **Property_Area = Semiurban** has the highest approval rate (~77%), even higher than Urban or Rural.
 - **Married graduates** are the strongest demographic combination for approval.
-- **Income is mildly informative**: approved applicants average slightly *lower* incomes than denied — counterintuitive at first glance, but explained by `Credit_History` correlating with approval more than income does.
-- **Most models cluster around F1 ≈ 0.90** because the task is largely solvable by a simple rule on `Credit_History`. The challenge is teasing out the remaining 10–15% of edge cases.
+- **Income is mildly informative**: approved applicants average slightly *lower* incomes than denied, counterintuitive at first glance, but explained by `Credit_History` correlating with approval more than income does.
+- **Most models cluster around F1 ≈ 0.90** because the task is largely solvable by a simple rule on `Credit_History`. The challenge is teasing out the remaining 10 to 15% of edge cases.
 - **6 of 12 columns have missing values**; mode (categorical) and median (numeric) imputation works well here. `Credit_History` is missing for ~50 rows and we impute with the mode (1.0) since most applicants have a clean history.
 
 ## Tech Stack

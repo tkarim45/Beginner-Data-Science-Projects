@@ -5,14 +5,14 @@ rock, r&b) from its **lyrics**, using a TF-IDF + classic-ML pipeline.
 
 ## Problem Statement
 
-Given the lyrics of a song, predict its genre — **multi-class** classification over 4 genres. A
+Given the lyrics of a song, predict its genre, **multi-class** classification over 4 genres. A
 genuinely harder text task than spam or topic classification, since genres share a lot of
 everyday vocabulary.
 
 ## Dataset
 
 - **Source**: [`sebastiandizon/genius-song-lyrics` (Hugging Face)](https://huggingface.co/datasets/sebastiandizon/genius-song-lyrics)
-- **Subsample**: a **balanced 6,000 songs** — 1,500 each of **rap, pop, rock, r&b** (English,
+- **Subsample**: a **balanced 6,000 songs**, 1,500 each of **rap, pop, rock, r&b** (English,
   lyrics ≥ 200 chars), streamed from the full corpus.
 
 > Dataset note: the checklist's "scraped lyrics from 6 genres" set is large and Portuguese-heavy;
@@ -42,7 +42,7 @@ Linear SVM, Ridge, Passive-Aggressive.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Balanced 4-class data,
+All figures produced by executing `03_model_building.ipynb`, not assumed. Balanced 4-class data,
 80/20 stratified split; weighted metrics.
 
 | Model | Accuracy | F1 (weighted) |
@@ -58,13 +58,13 @@ Tuned Logistic Regression (C=10): **accuracy 0.6925, F1 0.6895**.
 
 ## Key Findings
 
-- **Genre from lyrics is hard — ~70% accuracy** (vs a 25% random baseline for 4 balanced classes).
+- **Genre from lyrics is hard, ~70% accuracy** (vs a 25% random baseline for 4 balanced classes).
   Logistic Regression leads, but the ceiling is far below the spam/resume tasks.
 - **Why it's harder**: genres share a large common vocabulary (love, night, time…); the
   distinguishing signal is subtle (slang density, themes, repetition) rather than a few keyword
   cues, so TF-IDF separates them only partially.
 - **rap is the most separable genre** (distinctive slang and vocabulary); pop/rock/r&b blur into
-  each other — see the confusion matrix in notebook 03.
+  each other, see the confusion matrix in notebook 03.
 - **An honest, instructive result**: not every text-classification task is "easy". This is a good
   case for richer features (lyric structure, embeddings) or accepting that genre boundaries are
   inherently fuzzy.

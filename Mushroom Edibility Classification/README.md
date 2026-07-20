@@ -17,7 +17,7 @@ Given a mushroom's physical characteristics (cap shape/color, odor, gills, stalk
 | cap_shape, cap_surface, cap_color | bell/conical/convex/flat/knobbed/sunken etc. |
 | bruises | bruises / no |
 | **odor** | almond / anise / creosote / fishy / foul / musty / none / pungent / spicy |
-| gill_attachment, gill_spacing, gill_size, gill_color | attached/free; close/crowded; broad/narrow; ... |
+| gill_attachment, gill_spacing, gill_size, gill_color | attached/free; close/crowded; broad/narrow;... |
 | stalk_shape, stalk_root, stalk_surface_*, stalk_color_* | enlarging/tapering; bulbous/club/etc. (with `?` for missing) |
 | veil_type, veil_color, ring_number, ring_type | partial/universal; one/two; none/flaring/large/... |
 | spore_print_color | black / brown / buff / chocolate / green / orange / purple / white / yellow |
@@ -62,11 +62,11 @@ Best GridSearchCV parameters: `n_estimators=50, max_depth=None, min_samples_leaf
 
 ## Key Findings
 
-- **Almost every model hits 100%** — the dataset is famously near-deterministic. A small Random Forest (50 trees) achieves a perfect F1 in cross-validation.
+- **Almost every model hits 100%**, the dataset is famously near-deterministic. A small Random Forest (50 trees) achieves a perfect F1 in cross-validation.
 - **Odor is the dominant predictor**: `odor=foul / fishy / spicy / creosote / musty / pungent` are 100% poisonous; `odor=almond / anise / none` are overwhelmingly edible.
 - **Spore-print color, gill-color, and ring-type** are the next most informative features after odor.
 - **Naive Bayes is the only model that under-performs** (~92% F1) because the strong feature-feature correlations violate its independence assumption.
-- **Missing data signal**: 30.5% of `stalk_root` is `?` — preserving missingness as its own category outperforms naive imputation.
+- **Missing data signal**: 30.5% of `stalk_root` is `?`, preserving missingness as its own category outperforms naive imputation.
 
 ## Tech Stack
 

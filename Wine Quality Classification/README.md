@@ -8,7 +8,7 @@ Given 11 chemistry features (acidity, sugar, sulfur, density, pH, alcohol, etc.)
 
 ## Dataset
 
-- **Source**: [UCI Wine Quality (Red)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/) — Cortez et al., 2009
+- **Source**: [UCI Wine Quality (Red)](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/). Cortez et al., 2009
 - **Samples**: 1,599 red-wine samples
 - **Features**: 11 numeric physicochemical features + 1 integer quality score (binarized as `good_quality` ≥ 7)
 
@@ -22,12 +22,12 @@ Given 11 chemistry features (acidity, sugar, sulfur, density, pH, alcohol, etc.)
 | free_sulfur_dioxide | Free SO₂ (mg/dm³) |
 | total_sulfur_dioxide | Total SO₂ (mg/dm³) |
 | density | Density (g/cm³) |
-| pH | pH on a 0–14 scale |
+| pH | pH on a 0 to 14 scale |
 | sulphates | Potassium sulphate (g/dm³) |
 | alcohol | Alcohol by volume (%) |
-| **quality** | Sensory score 0–10 (binarized: **`good_quality` = 1 if quality ≥ 7**) |
+| **quality** | Sensory score 0 to 10 (binarized: **`good_quality` = 1 if quality ≥ 7**) |
 
-Only 217 / 1599 wines (~13.6%) score ≥ 7 — the binary target is imbalanced.
+Only 217 / 1599 wines (~13.6%) score ≥ 7, the binary target is imbalanced.
 
 ## Project Structure
 
@@ -65,11 +65,11 @@ Best GridSearchCV parameters: `n_estimators=200, max_depth=10, min_samples_split
 
 ## Key Findings
 
-- **Alcohol is the single strongest predictor** of good wine — average ABV is ~11.5% for good wines vs ~10.2% for not-good (correlation ≈ 0.48).
-- **Volatile acidity (vinegar character) is the strongest negative predictor** — more volatile acidity = worse rating (correlation ≈ −0.39).
+- **Alcohol is the single strongest predictor** of good wine, average ABV is ~11.5% for good wines vs ~10.2% for not-good (correlation ≈ 0.48).
+- **Volatile acidity (vinegar character) is the strongest negative predictor**, more volatile acidity = worse rating (correlation ≈ −0.39).
 - **Sulphates and citric acid** also push scores up; high `density` and high `volatile_acidity` push them down.
 - **Class imbalance is severe** (~13.6% positive). Logistic regression and SVM trade away precision for higher recall, which is sometimes desirable when "good" wines are the rare class of interest.
-- **Random Forest dominates** the leaderboard on F1 — tree ensembles handle the non-linear interactions between the chemistry features well.
+- **Random Forest dominates** the leaderboard on F1, tree ensembles handle the non-linear interactions between the chemistry features well.
 
 ## Tech Stack
 

@@ -14,7 +14,7 @@ Given a used car's year, present (ex-showroom) price, kilometers driven, fuel ty
 
 | Feature | Description |
 |---|---|
-| Car_Name | Model name (high cardinality — dropped during preprocessing) |
+| Car_Name | Model name (high cardinality, dropped during preprocessing) |
 | Year | Year of manufacture |
 | Present_Price | Current ex-showroom price (lakhs INR) |
 | Kms_Driven | Total kilometers driven |
@@ -22,7 +22,7 @@ Given a used car's year, present (ex-showroom) price, kilometers driven, fuel ty
 | Seller_Type | Dealer / Individual |
 | Transmission | Manual / Automatic |
 | Owner | Number of previous owners |
-| **Selling_Price** | **Target — used selling price (lakhs INR)** |
+| **Selling_Price** | **Target, used selling price (lakhs INR)** |
 
 Engineered features: `Car_Age = 2020 − Year`, `Kms_per_Year = Kms_Driven / Car_Age`.
 
@@ -43,7 +43,7 @@ Car Price Prediction/
 
 ## Results
 
-7 regressors + 1 tuned Random Forest variant. The dataset is small (301 rows), so test-set R² is noisy — cross-validated R² is the more reliable metric.
+7 regressors + 1 tuned Random Forest variant. The dataset is small (301 rows), so test-set R² is noisy, cross-validated R² is the more reliable metric.
 
 | Model | MAE | RMSE | R² | MAPE |
 |---|---|---|---|---|
@@ -60,11 +60,11 @@ Best GridSearchCV parameters (Random Forest): `{max_depth: None, min_samples_lea
 
 ## Key Findings
 
-- **`Present_Price` is the dominant predictor** (correlation ≈ 0.88 with `Selling_Price`) — the original ex-showroom price is the single best signal of what the car will resell for. Once this is accounted for, year and kilometers-driven add the next layer of signal.
-- **`Car_Age` (engineered)** beats raw `Year` for tree splits — newer cars depreciate slower in absolute terms.
-- **Test-set vs CV gap is large**: tuned Random Forest scored CV R² ≈ 0.87 but test R² = 0.54 — with only ~60 test cars, a single unusual record can swing the test metric heavily. Decision Tree happened to fit the test split well, but the CV result favors the tuned RF in expectation.
-- **Diesel cars sell at higher prices** than petrol/CNG even after controlling for year and price — likely because diesel is over-represented in larger SUV/MPV segments.
-- **Individual sellers receive lower prices** than dealers for similar cars, on average — a clean economic signal.
+- **`Present_Price` is the dominant predictor** (correlation ≈ 0.88 with `Selling_Price`), the original ex-showroom price is the single best signal of what the car will resell for. Once this is accounted for, year and kilometers-driven add the next layer of signal.
+- **`Car_Age` (engineered)** beats raw `Year` for tree splits, newer cars depreciate slower in absolute terms.
+- **Test-set vs CV gap is large**: tuned Random Forest scored CV R² ≈ 0.87 but test R² = 0.54, with only ~60 test cars, a single unusual record can swing the test metric heavily. Decision Tree happened to fit the test split well, but the CV result favors the tuned RF in expectation.
+- **Diesel cars sell at higher prices** than petrol/CNG even after controlling for year and price, likely because diesel is over-represented in larger SUV/MPV segments.
+- **Individual sellers receive lower prices** than dealers for similar cars, on average, a clean economic signal.
 
 ## Tech Stack
 

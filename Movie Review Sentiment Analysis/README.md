@@ -8,11 +8,11 @@ Given the free text of a movie review, predict its sentiment (binary classificat
 
 ## Dataset
 
-- **Source**: [IMDB Dataset of 50K Movie Reviews — Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
-- **Samples**: 50,000 reviews (perfectly balanced — 25k positive, 25k negative)
+- **Source**: [IMDB Dataset of 50K Movie Reviews. Kaggle](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
+- **Samples**: 50,000 reviews (perfectly balanced, 25k positive, 25k negative)
 - **Features**: `review` (text), `sentiment` (positive / negative)
 
-The full 50k reviews are cleaned and saved to `imdb_cleaned.csv`. The modeling notebook trains on a **balanced 25,000-review subsample** so the classic-ML pipeline (including cross-validation and a grid search) runs quickly on a single machine — the data-load cell is the only place this subsample is applied.
+The full 50k reviews are cleaned and saved to `imdb_cleaned.csv`. The modeling notebook trains on a **balanced 25,000-review subsample** so the classic-ML pipeline (including cross-validation and a grid search) runs quickly on a single machine, the data-load cell is the only place this subsample is applied.
 
 ## Project Structure
 
@@ -48,12 +48,12 @@ Best GridSearchCV parameters: `{clf__C: 1.0, tfidf__ngram_range: (1, 1)}` (CV F1
 
 ## Key Findings
 
-- **Logistic Regression is the clear winner** (~87% accuracy) — sentiment is largely a matter of which polarity-bearing words appear ("excellent", "boring", "waste"), which a linear model over TF-IDF captures well.
-- **The top predictive words are intuitive** — the model's positive-class coefficients are dominated by words like *great, excellent, perfect, wonderful*; the negative side by *worst, waste, boring, awful* (see notebook section 5).
+- **Logistic Regression is the clear winner** (~87% accuracy), sentiment is largely a matter of which polarity-bearing words appear ("excellent", "boring", "waste"), which a linear model over TF-IDF captures well.
+- **The top predictive words are intuitive**, the model's positive-class coefficients are dominated by words like *great, excellent, perfect, wonderful*; the negative side by *worst, waste, boring, awful* (see notebook section 5).
 - **HTML cleaning matters**: raw IMDB reviews contain `<br />` tags; stripping them before TF-IDF removes noise tokens.
 - **Naive Bayes is a solid, near-instant baseline** at ~84%.
-- **Random Forest underperforms the linear models** — high-dimensional sparse TF-IDF favours linear separators; axis-aligned tree splits waste capacity here.
-- **~87% is a typical ceiling for bag-of-words sentiment** — the misclassified reviews tend to involve negation ("not good"), sarcasm, or mixed sentiment, none of which unigram TF-IDF represents. Transformer models (BERT) push IMDB sentiment past 93%.
+- **Random Forest underperforms the linear models**, high-dimensional sparse TF-IDF favours linear separators; axis-aligned tree splits waste capacity here.
+- **~87% is a typical ceiling for bag-of-words sentiment**, the misclassified reviews tend to involve negation ("not good"), sarcasm, or mixed sentiment, none of which unigram TF-IDF represents. Transformer models (BERT) push IMDB sentiment past 93%.
 
 ## Tech Stack
 

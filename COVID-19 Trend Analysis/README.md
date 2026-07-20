@@ -33,7 +33,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Chronological 80/20 split (226 test days).
+All figures produced by executing `03_model_building.ipynb`, not assumed. Chronological 80/20 split (226 test days).
 
 | Model | MAE | RMSE | MAPE % | R² |
 |---|---|---|---|---|
@@ -45,14 +45,14 @@ All figures produced by executing `03_model_building.ipynb` — not assumed. Chr
 
 ## Key Findings
 
-- **Linear Regression forecasts new cases well** — R² **0.869**, MAPE ~16% — thanks to a strong
+- **Linear Regression forecasts new cases well**. R² **0.869**, MAPE ~16%, thanks to a strong
   weekly reporting cycle and high day-to-day autocorrelation.
 - **It beats the seasonal-naive baseline** (RMSE 99k vs 111k), and the plain naive baseline collapses
-  (R² −7.3) because cases swing across waves — last value is a terrible flat forecast.
-- **The weekly cycle is the dominant seasonal signal** — fewer cases are reported on weekends; the
+  (R² −7.3) because cases swing across waves, last value is a terrible flat forecast.
+- **The weekly cycle is the dominant seasonal signal**, fewer cases are reported on weekends; the
   `lag_7` and day-of-week features capture this clearly (see the STL decomposition in notebook 01).
 - **Caveat**: this forecasts *reported* cases (testing/reporting artifacts and policy changes), not
-  true infections — and short-horizon autocorrelation, not epidemiological causality.
+  true infections, and short-horizon autocorrelation, not epidemiological causality.
 
 ## Tech Stack
 

@@ -8,7 +8,7 @@ Given country, crop type, year, annual rainfall, pesticide usage, and average te
 
 ## Dataset
 
-- **Source**: [Crop Yield Prediction Dataset — Kaggle (patelris)](https://www.kaggle.com/datasets/patelris/crop-yield-prediction-dataset)
+- **Source**: [Crop Yield Prediction Dataset. Kaggle (patelris)](https://www.kaggle.com/datasets/patelris/crop-yield-prediction-dataset)
 - **Samples**: 28,242 records
 - **Features**: 6 predictors + 1 target
 
@@ -16,11 +16,11 @@ Given country, crop type, year, annual rainfall, pesticide usage, and average te
 |---|---|---|
 | Area | Categorical | Country name (101 unique values) |
 | Item | Categorical | Crop type (10 values: Maize, Potatoes, Rice, Sorghum, Soybeans, Wheat, Cassava, Sweet potatoes, Plantains, Yams) |
-| Year | Numeric | Year of observation (1990–2013) |
+| Year | Numeric | Year of observation (1990 to 2013) |
 | average_rain_fall_mm_per_year | Numeric | Annual rainfall in mm |
 | pesticides_tonnes | Numeric | Pesticides applied (tonnes) |
 | avg_temp | Numeric | Average annual temperature (°C) |
-| **hg/ha_yield** | **Numeric** | **Crop yield in hg/ha — target** |
+| **hg/ha_yield** | **Numeric** | **Crop yield in hg/ha, target** |
 
 ## Project Structure
 
@@ -58,11 +58,11 @@ Best GridSearchCV parameters: `{learning_rate: 0.1, max_depth: 5, n_estimators: 
 
 ## Key Findings
 
-- **Crop type and country dominate predictions**: One-hot encoded `Item` and `Area` dummies rank highest in feature importances for all tree-based models, reflecting the fact that yield varies enormously by crop species and geography — sweet potatoes and potatoes far outperform cereals like wheat.
-- **KNN and Random Forest top the leaderboard (R² ≈ 0.985)**: The dataset's structure — with near-identical records per (country, crop, year) grouping — means that nearest-neighbour lookup is extremely effective. Cross-validation reveals this does not generalise as strongly (CV R² ≈ 0.68 for RF), highlighting that future holdouts on new countries/crops would be harder.
+- **Crop type and country dominate predictions**: One-hot encoded `Item` and `Area` dummies rank highest in feature importances for all tree-based models, reflecting the fact that yield varies enormously by crop species and geography, sweet potatoes and potatoes far outperform cereals like wheat.
+- **KNN and Random Forest top the leaderboard (R² ≈ 0.985)**: The dataset's structure, with near-identical records per (country, crop, year) grouping, means that nearest-neighbour lookup is extremely effective. Cross-validation reveals this does not generalise as strongly (CV R² ≈ 0.68 for RF), highlighting that future holdouts on new countries/crops would be harder.
 - **Linear models plateau at R² ≈ 0.75**: Ridge, Lasso, and plain OLS all converge to the same performance, limited by the non-linear interactions between crop type and climatic variables.
 - **Tuned Gradient Boosting jumps from R² = 0.83 to 0.95**: A small grid search (`learning_rate`, `max_depth`, `n_estimators`) produced a large gain, confirming that the base GB estimator was under-fitted at default settings.
-- **Yield has risen steadily 1990–2013**: The global mean yield shows a clear upward trend driven by a combination of improved agricultural technology and increased pesticide usage — pesticide tonnes roughly tripled over the same period.
+- **Yield has risen steadily 1990 to 2013**: The global mean yield shows a clear upward trend driven by a combination of improved agricultural technology and increased pesticide usage, pesticide tonnes roughly tripled over the same period.
 
 ## Tech Stack
 

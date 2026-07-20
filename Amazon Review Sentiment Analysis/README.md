@@ -6,7 +6,7 @@ review expresses **positive** or **negative** sentiment, using a TF-IDF + classi
 ## Problem Statement
 
 Given the text of a product review (title + body), classify its sentiment as positive or
-negative — **binary** classification.
+negative, **binary** classification.
 
 ## Dataset
 
@@ -41,7 +41,7 @@ Linear SVM, Ridge, Passive-Aggressive.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. 80/20 stratified
+All figures produced by executing `03_model_building.ipynb`, not assumed. 80/20 stratified
 split (balanced classes, so accuracy ≈ F1).
 
 | Model | Accuracy | F1 (weighted) |
@@ -57,13 +57,13 @@ Tuned Logistic Regression (C=1): **accuracy 0.891, F1 0.891**.
 
 ## Key Findings
 
-- **Logistic Regression on TF-IDF reaches 89% accuracy** on balanced positive/negative reviews —
+- **Logistic Regression on TF-IDF reaches 89% accuracy** on balanced positive/negative reviews, 
   a strong, fast baseline with no deep learning.
-- **The models cluster tightly (0.86–0.89 F1)** — sentiment is largely carried by individual
+- **The models cluster tightly (0.86 to 0.89 F1)**, sentiment is largely carried by individual
   cue words ("great", "terrible", "refund"), which every linear/NB model picks up.
-- **The gap to ~95%+ needs context the bag-of-words misses** — negation, sarcasm, and long-range
+- **The gap to ~95%+ needs context the bag-of-words misses**, negation, sarcasm, and long-range
   dependencies ("not what I expected") cap a TF-IDF model; that's where transformers would help.
-- **Tuning barely moves the needle** — TF-IDF + linear models are near their ceiling here;
+- **Tuning barely moves the needle**. TF-IDF + linear models are near their ceiling here;
   better features (n-grams, embeddings) matter more than hyperparameters.
 
 ## Tech Stack

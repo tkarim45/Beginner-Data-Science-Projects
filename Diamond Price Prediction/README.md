@@ -8,7 +8,7 @@ Given a diamond's mass (carat), quality grades (cut, color, clarity), and physic
 
 ## Dataset
 
-- **Source**: [ggplot2 diamonds dataset](https://github.com/tidyverse/ggplot2/blob/main/data-raw/diamonds.csv) — bundled with R's ggplot2 package, mirrored on GitHub
+- **Source**: [ggplot2 diamonds dataset](https://github.com/tidyverse/ggplot2/blob/main/data-raw/diamonds.csv), bundled with R's ggplot2 package, mirrored on GitHub
 - **Samples**: 53,940 diamonds (20 dropped during cleaning for impossible 0-mm dimensions)
 - **Features**: 9 inputs + 1 numeric target
 
@@ -21,7 +21,7 @@ Given a diamond's mass (carat), quality grades (cut, color, clarity), and physic
 | depth | float | Total depth percentage = z / mean(x, y) × 100 |
 | table | float | Width of the top of the diamond relative to widest point |
 | x, y, z | float | Length / width / depth in mm |
-| **price** | **int** | **Retail price in USD ($326 – $18,823)** |
+| **price** | **int** | **Retail price in USD ($326, $18,823)** |
 
 ## Project Structure
 
@@ -62,8 +62,8 @@ Best GridSearchCV parameters: `n_estimators=200, max_depth=15, min_samples_leaf=
 - **Carat is by far the dominant predictor** (r ≈ 0.92 with price). Together with the physical dimensions x/y/z it explains most of the variance.
 - **Tree ensembles dominate** (R² ≈ 0.98) because the underlying price function is highly non-linear in carat: price grows roughly cubically with linear dimensions.
 - **Linear models cap at R² ≈ 0.69** in their raw form because the carat ↔ x ↔ y ↔ z multicollinearity confuses them; Lasso recovers some of this by zeroing redundant coefficients.
-- **20 rows have x/y/z = 0** — physically impossible; we drop them during cleaning rather than impute.
-- **Cut/color/clarity are weakly correlated with price marginally** but become important *within* a fixed carat range — Simpson's-paradox style: larger diamonds happen to have lower-graded cut/color/clarity, hiding their true effect.
+- **20 rows have x/y/z = 0**, physically impossible; we drop them during cleaning rather than impute.
+- **Cut/color/clarity are weakly correlated with price marginally** but become important *within* a fixed carat range. Simpson's-paradox style: larger diamonds happen to have lower-graded cut/color/clarity, hiding their true effect.
 - **A log-transform of `price`** would close the linear-vs-tree gap dramatically (price grows roughly with carat³); see "Next Steps" in the model notebook.
 
 ## Tech Stack

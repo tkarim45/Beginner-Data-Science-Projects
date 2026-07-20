@@ -9,7 +9,7 @@ Given a car's cylinders, engine displacement, horsepower, weight, acceleration, 
 ## Dataset
 
 - **Source**: [UCI Auto MPG Data Set](https://archive.ics.uci.edu/dataset/9/auto+mpg)
-- **Samples**: 398 cars (model years 1970–1982)
+- **Samples**: 398 cars (model years 1970 to 1982)
 - **Features**: 7 inputs + 1 numeric target
 
 | Feature | Type | Description |
@@ -18,8 +18,8 @@ Given a car's cylinders, engine displacement, horsepower, weight, acceleration, 
 | displacement | float | Engine displacement (cu in) |
 | horsepower | float | Engine horsepower (6 missing values, imputed) |
 | weight | float | Vehicle weight (lbs) |
-| acceleration | float | 0–60 mph time (seconds) |
-| model_year | int | Last two digits of model year (70–82) |
+| acceleration | float | 0 to 60 mph time (seconds) |
+| model_year | int | Last two digits of model year (70 to 82) |
 | origin | categorical | 1 = USA, 2 = Europe, 3 = Japan |
 | car_name | string | Make + model (dropped during cleaning) |
 | **mpg** | **float** | **Fuel efficiency in miles per gallon (target)** |
@@ -60,8 +60,8 @@ Best GridSearchCV parameters: `n_estimators=600, max_depth=10, min_samples_split
 
 ## Key Findings
 
-- **Weight is the dominant predictor** of MPG — correlation ≈ −0.83. Heavy cars consume more fuel, full stop.
-- **Model year carries a real trend signal**: mean MPG climbs from ~17 (1970) to ~31 (1982) — fuel-economy regulation pushed the whole industry.
+- **Weight is the dominant predictor** of MPG, correlation ≈ −0.83. Heavy cars consume more fuel, full stop.
+- **Model year carries a real trend signal**: mean MPG climbs from ~17 (1970) to ~31 (1982), fuel-economy regulation pushed the whole industry.
 - **Japanese cars are the most efficient** (~30 MPG mean), then European (~28), then US (~20). Most of that gap is explained by smaller engines, not regional manufacturing.
 - **Severe multicollinearity** between weight, displacement, horsepower, cylinders (each pair r > 0.9). Tree ensembles handle it natively; Lasso actively zeros redundant coefficients.
 - **`car_name` is dropped during cleaning** because it leaks make/model identity that wouldn't be available for new cars.

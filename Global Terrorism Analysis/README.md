@@ -1,6 +1,6 @@
 # Global Terrorism Analysis
 
-A beginner-level **EDA / visualization** project exploring global terrorism from 1970–2017 — 181,691
+A beginner-level **EDA / visualization** project exploring global terrorism from 1970 to 2017 to 181,691
 attacks from the Global Terrorism Database (GTD) with country, region, attack type, target, weapon, and
 perpetrator group.
 
@@ -9,7 +9,7 @@ Where and when do attacks concentrate, how do tactics break down, and who are th
 Exploratory analysis; insight + visualizations, no model.
 
 ## Dataset
-- **Source**: Global Terrorism Database (START, University of Maryland) — via the openly hosted
+- **Source**: Global Terrorism Database (START, University of Maryland), via the openly hosted
   `synavate/csv_terrorism_pre_encoding_0x0.csv` mirror.
 - **181,691 attacks × 15 columns**: eventid, year/month/day, country, region, city, lat/lon,
   attack type, target type, weapon type, group name (`gname`), success, suicide.
@@ -28,15 +28,15 @@ Global Terrorism Analysis/
 ```
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
-- **181,691 attacks, 1970–2017**, with a dramatic **post-2011 surge peaking in 2014 (16,903 attacks)** —
+All figures produced by executing the notebooks, not assumed.
+- **181,691 attacks, 1970 to 2017**, with a dramatic **post-2011 surge peaking in 2014 (16,903 attacks)**, 
   the ISIL/Taliban era.
-- **Concentrated in the Middle East/North Africa and South Asia** — Iraq (24,636), Pakistan (14,368),
+- **Concentrated in the Middle East/North Africa and South Asia**. Iraq (24,636), Pakistan (14,368),
   Afghanistan (12,731), India, and Colombia lead.
 - **Bombings/explosions are the dominant tactic (~49%)**, then armed assault and assassination.
 - **Taliban, ISIL, and Shining Path** are the most active *named* groups (though a large share of
   attacks are attributed to "Unknown").
-- **89% of attacks "succeeded"** by the GTD's definition (the attack occurred as intended) — a sobering base rate.
+- **89% of attacks "succeeded"** by the GTD's definition (the attack occurred as intended), a sobering base rate.
 
 ## Tech Stack
 - pandas, numpy, matplotlib, seaborn

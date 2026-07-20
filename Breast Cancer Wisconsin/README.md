@@ -55,10 +55,10 @@ Best GridSearchCV parameters: `n_estimators=100, max_depth=None, min_samples_spl
 ## Key Findings
 
 - **`concave_points_worst` is the strongest single predictor** (correlation ~0.79 with diagnosis), followed by `perimeter_worst`, `radius_worst`, and `concave_points_mean`.
-- **Tumor size dominates the signal** — radius, perimeter, and area features are heavily intercorrelated, all higher in malignant cases.
+- **Tumor size dominates the signal**, radius, perimeter, and area features are heavily intercorrelated, all higher in malignant cases.
 - **The `*_worst` group beats the `*_mean` group** in correlation with diagnosis: the most-extreme cell nucleus in a tumor is more diagnostic than the average.
-- **No missing values** — UCI WDBC ships clean, so cleaning is just dropping `id` and encoding the target.
-- **Models hit ~97% accuracy with perfect precision** — every malignant prediction by the tuned Random Forest is correct; recall (catching all malignant cases) is the harder metric to push.
+- **No missing values**. UCI WDBC ships clean, so cleaning is just dropping `id` and encoding the target.
+- **Models hit ~97% accuracy with perfect precision**, every malignant prediction by the tuned Random Forest is correct; recall (catching all malignant cases) is the harder metric to push.
 
 ## Tech Stack
 

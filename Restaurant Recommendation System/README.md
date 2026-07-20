@@ -7,8 +7,8 @@ popularity baseline.
 
 ## Problem Statement
 
-Given a sparse matrix of consumer × restaurant ratings on a **0–2 scale** (0 = disliked,
-2 = liked), recommend restaurants each consumer is likely to enjoy. No external label —
+Given a sparse matrix of consumer × restaurant ratings on a **0 to 2 scale** (0 = disliked,
+2 = liked), recommend restaurants each consumer is likely to enjoy. No external label, 
 we hold out known ratings and measure recovery via **RMSE** and **Precision@10 / Recall@10**.
 
 > Note on dataset choice: the checklist's Zomato dataset contains restaurant *metadata*
@@ -19,7 +19,7 @@ we hold out known ratings and measure recovery via **RMSE** and **Precision@10 /
 ## Dataset
 
 - **Source**: [UCI Restaurant & Consumer Data](https://archive.ics.uci.edu/dataset/232/restaurant+consumer+data)
-- **Ratings**: 1,161 · **Consumers**: 138 · **Restaurants**: 130 · scale **0–2**
+- **Ratings**: 1,161 · **Consumers**: 138 · **Restaurants**: 130 · scale **0 to 2**
 - The user-item matrix is **~94% empty**.
 
 | File | Contents |
@@ -48,13 +48,13 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Models
 
-- **Popularity baseline** — predict each restaurant's mean rating.
-- **Item-based CF** — cosine similarity between restaurants on mean-centred ratings.
-- **Matrix factorization (SVD)** — TruncatedSVD with 15 latent factors.
+- **Popularity baseline**, predict each restaurant's mean rating.
+- **Item-based CF**, cosine similarity between restaurants on mean-centred ratings.
+- **Matrix factorization (SVD)**. TruncatedSVD with 15 latent factors.
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Matrix: **138 consumers × 130 restaurants** (94.9% sparse), 252 held-out test ratings,
 60 users evaluated for ranking (relevant = a held-out rating of 2).
 
@@ -66,13 +66,13 @@ Matrix: **138 consumers × 130 restaurants** (94.9% sparse), 252 held-out test r
 
 ## Key Findings
 
-- **SVD wins on every metric** — best RMSE (**0.599** vs 0.701 CF, 0.792 popularity) and
+- **SVD wins on every metric**, best RMSE (**0.599** vs 0.701 CF, 0.792 popularity) and
   best ranking (Recall@10 **0.236**). With so few ratings per consumer, the low-rank model's
   smoothing generalises better than sparse neighbourhood overlaps.
-- **Personalisation clearly beats popularity** — Item-based CF more than doubles popularity's
+- **Personalisation clearly beats popularity**. Item-based CF more than doubles popularity's
   Recall@10 (0.176 vs 0.078), and SVD triples it.
 - **Contrast with the MovieLens project**, where Item-CF won RMSE but SVD won ranking. Here
-  matrix factorization wins *both* — a reminder that the best model is dataset-dependent, and
+  matrix factorization wins *both*, a reminder that the best model is dataset-dependent, and
   you should always measure rather than assume.
 - **Recall@10 is the metric that matters at this scale**: of a consumer's truly-liked
   restaurants, SVD surfaces ~24% in a 10-item list, from a 94%-empty matrix.

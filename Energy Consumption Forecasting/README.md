@@ -8,25 +8,25 @@ Given the time of day, day of week, month, year, and the consumption values obse
 
 ## Dataset
 
-- **Source**: [Hourly Energy Consumption — Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption)
-- **Raw samples**: 145,366 hourly readings (2002 – 2018)
+- **Source**: [Hourly Energy Consumption. Kaggle](https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption)
+- **Raw samples**: 145,366 hourly readings (2002 to 2018)
 - **Samples after feature engineering**: ~145,198 rows (first 168 rows dropped due to lag/rolling warmup)
 
 | Feature | Description |
 |---|---|
-| `hour` | Hour of day (0–23) |
+| `hour` | Hour of day (0 to 23) |
 | `dayofweek` | Day of week (0=Mon, 6=Sun) |
-| `month` | Month of year (1–12) |
-| `quarter` | Calendar quarter (1–4) |
+| `month` | Month of year (1 to 12) |
+| `quarter` | Calendar quarter (1 to 4) |
 | `year` | Calendar year |
-| `dayofyear` | Day of year (1–365) |
+| `dayofyear` | Day of year (1 to 365) |
 | `weekofyear` | ISO week number |
 | `is_weekend` | 1 if Saturday/Sunday, else 0 |
 | `lag_24` | Consumption same hour, 1 day ago (MW) |
 | `lag_168` | Consumption same hour, 1 week ago (MW) |
 | `roll_24` | 24-hour rolling mean (shifted, no leakage) |
 | `roll_168` | 168-hour rolling mean (shifted, no leakage) |
-| **`PJME_MW`** | **Electricity consumption (MW) — target** |
+| **`PJME_MW`** | **Electricity consumption (MW), target** |
 
 ## Project Structure
 
@@ -47,7 +47,7 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Results
 
-7 regressors + 1 tuned Gradient Boosting variant, evaluated on a **chronological** 80/20 split (train = 2002–2016, test = 2016–2018). No shuffling to respect time-series order.
+7 regressors + 1 tuned Gradient Boosting variant, evaluated on a **chronological** 80/20 split (train = 2002 to 2016, test = 2016 to 2018). No shuffling to respect time-series order.
 
 | Model | MAE (MW) | RMSE (MW) | R² | MAPE |
 |---|---|---|---|---|
@@ -67,10 +67,10 @@ Note: Gradient Boosting was trained on the most recent 80,000 training rows for 
 ## Key Findings
 
 - **Lag features dominate all other predictors**: `lag_24` and `lag_168` both have Pearson correlations above 0.95 with `PJME_MW`, dwarfing the calendar features. The best single predictor of what consumption will be this hour is what it was exactly yesterday or last week at the same time.
-- **Gradient Boosting is the best model** (R² = 0.9245, RMSE = 1,784 MW) — sequential boosting captures the non-linear interactions between hour-of-day, seasonal cycle, and recent demand levels that linear models cannot represent.
+- **Gradient Boosting is the best model** (R² = 0.9245, RMSE = 1,784 MW), sequential boosting captures the non-linear interactions between hour-of-day, seasonal cycle, and recent demand levels that linear models cannot represent.
 - **Linear models plateau at R² ≈ 0.87** because the relationship between calendar features and load is non-linear (the daily load curve is U-shaped; monthly seasonality is quadratic). They still perform reasonably well thanks to the highly correlated lag features.
-- **Strong seasonal patterns**: consumption peaks in summer (July/August) and winter (December/January); the daily peak occurs around 17:00–18:00; weekdays average ~3,000 MW more than weekends.
-- **Long-run demand has been declining** — annual mean consumption dropped from ~37,500 MW around 2004 to ~34,000 MW by 2017, reflecting energy efficiency improvements in the region.
+- **Strong seasonal patterns**: consumption peaks in summer (July/August) and winter (December/January); the daily peak occurs around 17:00 to 18:00; weekdays average ~3,000 MW more than weekends.
+- **Long-run demand has been declining**, annual mean consumption dropped from ~37,500 MW around 2004 to ~34,000 MW by 2017, reflecting energy efficiency improvements in the region.
 
 ## Tech Stack
 

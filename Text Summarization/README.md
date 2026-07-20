@@ -6,10 +6,10 @@ three classic methods benchmarked against human reference summaries using ROUGE.
 ## Problem Statement
 
 Given a news article, produce a short summary by **selecting** its most important sentences
-(extractive — no text generation). We compare three unsupervised methods and measure each with
+(extractive, no text generation). We compare three unsupervised methods and measure each with
 ROUGE against the human-written reference summaries.
 
-*This is an NLP-fundamentals project and does not use the classification template — it has its own
+*This is an NLP-fundamentals project and does not use the classification template, it has its own
 summarizers and a build/evaluate notebook flow.*
 
 ## Dataset
@@ -42,13 +42,13 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Methods
 
-- **Lead-3** — the first 3 sentences (strong news baseline).
-- **TF-IDF** — rank sentences by the summed TF-IDF weight of their words; take the top 3.
-- **TextRank** — PageRank over a TF-IDF cosine sentence-similarity graph; take the 3 most central.
+- **Lead-3**, the first 3 sentences (strong news baseline).
+- **TF-IDF**, rank sentences by the summed TF-IDF weight of their words; take the top 3.
+- **TextRank**. PageRank over a TF-IDF cosine sentence-similarity graph; take the 3 most central.
 
 ## Results
 
-All figures produced by executing `03_evaluation.ipynb` — not assumed. ROUGE F-measure averaged
+All figures produced by executing `03_evaluation.ipynb`, not assumed. ROUGE F-measure averaged
 over 300 articles.
 
 | Method | ROUGE-1 | ROUGE-2 | ROUGE-L |
@@ -59,15 +59,15 @@ over 300 articles.
 
 ## Key Findings
 
-- **Lead-3 wins** — the trivial "take the first 3 sentences" baseline beats both TextRank and
+- **Lead-3 wins**, the trivial "take the first 3 sentences" baseline beats both TextRank and
   TF-IDF. This is the well-known **lead bias** of news writing: journalists front-load the key
   facts, so position is the single strongest importance signal.
-- **TextRank beats TF-IDF** — graph centrality (a sentence matters if it's similar to many others)
+- **TextRank beats TF-IDF**, graph centrality (a sentence matters if it's similar to many others)
   is a better importance measure than raw TF-IDF sentence weight, but neither overtakes lead-3.
 - **Extractive ROUGE is capped** because the reference summaries are *abstractive* (reworded by
-  humans) — an extractive system can only reuse sentences verbatim. Still, it's fast, unsupervised,
+  humans), an extractive system can only reuse sentences verbatim. Still, it's fast, unsupervised,
   and never hallucinates.
-- **Takeaway**: always benchmark a summarizer against lead-3 on news before claiming it "works" —
+- **Takeaway**: always benchmark a summarizer against lead-3 on news before claiming it "works", 
   the trivial baseline is famously hard to beat.
 
 ## Tech Stack

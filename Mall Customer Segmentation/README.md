@@ -6,11 +6,11 @@ A beginner-level **unsupervised clustering** project that segments mall shoppers
 
 Given a customer's age, gender, annual income, and "spending score" (a mall-assigned 1-100 metric of in-store engagement), find natural customer segments to inform targeted marketing.
 
-There is **no target column** — this is genuine unsupervised learning. Cluster quality is judged using the elbow plot, silhouette score, and interpretability of the resulting personas.
+There is **no target column**, this is genuine unsupervised learning. Cluster quality is judged using the elbow plot, silhouette score, and interpretability of the resulting personas.
 
 ## Dataset
 
-- **Source**: [Mall Customer Segmentation Data — Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
+- **Source**: [Mall Customer Segmentation Data. Kaggle](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
 - **Samples**: 200 customers
 - **Features**: 4 used predictors (after dropping `CustomerID`)
 
@@ -19,7 +19,7 @@ There is **no target column** — this is genuine unsupervised learning. Cluster
 | Gender | Male / Female |
 | Age | Customer age in years |
 | Income | Annual income in thousands of USD |
-| SpendingScore | Mall-assigned 1–100 score (higher = more spending / more frequent) |
+| SpendingScore | Mall-assigned 1 to 100 score (higher = more spending / more frequent) |
 
 ## Project Structure
 
@@ -39,7 +39,7 @@ Mall Customer Segmentation/
 
 ## Results
 
-K-Means is fit for k ∈ {2, …, 10}. Silhouette score increases roughly monotonically over this range — the algorithm picks **k = 10** as the silhouette-optimal partition for the 4-feature input (Age, Income, SpendingScore, Gender).
+K-Means is fit for k ∈ {2, …, 10}. Silhouette score increases roughly monotonically over this range, the algorithm picks **k = 10** as the silhouette-optimal partition for the 4-feature input (Age, Income, SpendingScore, Gender).
 
 | k | Inertia | Silhouette | Davies-Bouldin | Calinski-Harabasz |
 |---|---|---|---|---|
@@ -61,22 +61,22 @@ The textbook view of this dataset (Income × SpendingScore only) suggests **k = 
 |---|---|---|---|---|---|
 | 0 | 58.9 | 48.7 | 39.9 | 26 | Older average shopper |
 | 1 | 25.3 | 41.3 | 60.9 | 24 | Young, mid-income, engaged |
-| 2 | 41.2 | 26.1 | 20.1 | 14 | Frugal — low income, low spend |
-| 3 | 32.2 | 86.1 | 81.7 | 21 | **Target — high income, high spend (younger)** |
+| 2 | 41.2 | 26.1 | 20.1 | 14 | Frugal, low income, low spend |
+| 3 | 32.2 | 86.1 | 81.7 | 21 | **Target, high income, high spend (younger)** |
 | 4 | 54.2 | 54.2 | 49.0 | 26 | Older mid-income shopper |
-| 5 | 38.5 | 85.9 | 14.2 | 19 | Cautious — high income, low spend |
+| 5 | 38.5 | 85.9 | 14.2 | 19 | Cautious, high income, low spend |
 | 6 | 28.0 | 57.4 | 47.1 | 25 | Young mid-tier |
-| 7 | 33.3 | 87.1 | 82.7 | 18 | **Target — high income, high spend (other)** |
-| 8 | 25.5 | 25.7 | 80.5 | 13 | Impulsive — low income, high spend |
-| 9 | 43.8 | 93.3 | 20.6 | 14 | Cautious — high income, low spend (older) |
+| 7 | 33.3 | 87.1 | 82.7 | 18 | **Target, high income, high spend (other)** |
+| 8 | 25.5 | 25.7 | 80.5 | 13 | Impulsive, low income, high spend |
+| 9 | 43.8 | 93.3 | 20.6 | 14 | Cautious, high income, low spend (older) |
 
 ## Key Findings
 
-- **Income × SpendingScore is the dominant axis** — every cluster falls clearly into one of the four corners or the middle zone.
+- **Income × SpendingScore is the dominant axis**, every cluster falls clearly into one of the four corners or the middle zone.
 - **Two distinct "target" segments** emerge: clusters 3 and 7 are both high-income, high-spend, but cluster 3 skews younger. Marketing campaigns can be tailored differently to each.
-- **The "cautious" segment (high income, low spend)** is the most interesting commercial opportunity — these shoppers have the means but are not engaging. Clusters 5 and 9 capture this pattern across two age bands.
+- **The "cautious" segment (high income, low spend)** is the most interesting commercial opportunity, these shoppers have the means but are not engaging. Clusters 5 and 9 capture this pattern across two age bands.
 - **Hierarchical clustering produces similar segments**, confirming the K-Means partition is genuine and not an artifact of the algorithm.
-- **The silhouette plot doesn't have a clean "knee"** — adding Age and Gender to the feature set blurs the textbook 5-cluster picture, so the choice of k is partly a judgement call between interpretability and statistical fit.
+- **The silhouette plot doesn't have a clean "knee"**, adding Age and Gender to the feature set blurs the textbook 5-cluster picture, so the choice of k is partly a judgement call between interpretability and statistical fit.
 
 ## Tech Stack
 

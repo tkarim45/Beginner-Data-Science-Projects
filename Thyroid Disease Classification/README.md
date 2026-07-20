@@ -8,13 +8,13 @@ Given 21 clinical features (age, sex, treatment flags, lab measurements like TSH
 
 ## Dataset
 
-- **Source**: [UCI Thyroid Disease — ann-thyroid](https://archive.ics.uci.edu/dataset/102/thyroid+disease)
+- **Source**: [UCI Thyroid Disease, ann-thyroid](https://archive.ics.uci.edu/dataset/102/thyroid+disease)
 - **Samples**: 7,200 patients (combined ann-train + ann-test)
 - **Features**: 21 numeric/binary inputs + 1 multi-class target
 
 | Feature | Type | Description |
 |---------|------|-------------|
-| age | numeric (normalized) | Patient age, scaled to ~0–1 |
+| age | numeric (normalized) | Patient age, scaled to ~0 to 1 |
 | sex | binary | 0 = female, 1 = male |
 | on_thyroxine, query_on_thyroxine, on_antithyroid_medication, sick, pregnant, thyroid_surgery, I131_treatment, query_hypothyroid, query_hyperthyroid, lithium, goitre, tumor, hypopituitary, psych | binary flags | Clinical / treatment status |
 | TSH, T3, TT4, T4U, FTI | numeric (normalized) | Lab measurements (thyroid hormones) |
@@ -58,12 +58,12 @@ Best GridSearchCV parameters: `n_estimators=200, max_depth=10, min_samples_split
 
 ## Key Findings
 
-- **Heavy class imbalance** (~92.6% normal vs ~7.4% diseased) makes accuracy a poor compass — F1 is the right metric.
+- **Heavy class imbalance** (~92.6% normal vs ~7.4% diseased) makes accuracy a poor compass. F1 is the right metric.
 - **TSH is the dominant predictor**: hypothyroid patients have very elevated TSH; hyperthyroid patients have very suppressed TSH. The lab measurements alone separate most cases.
-- **`on_thyroxine` flag carries strong signal** because patients on thyroxine therapy are typically hypothyroid by definition — be cautious about treating this as a "feature" rather than a label proxy.
+- **`on_thyroxine` flag carries strong signal** because patients on thyroxine therapy are typically hypothyroid by definition, be cautious about treating this as a "feature" rather than a label proxy.
 - **Gradient Boosting wins narrowly** (F1 = 0.9767), with the tuned Random Forest very close behind (F1 = 0.9636) and noticeably better recall.
-- **Naive Bayes collapses** (F1 = 0.16) because the strong correlation between TSH and the binary flags violates its independence assumption — and its accuracy of 28% is *worse* than the trivial classifier.
-- **No missing values** — UCI's ann-thyroid is already clean and pre-normalized.
+- **Naive Bayes collapses** (F1 = 0.16) because the strong correlation between TSH and the binary flags violates its independence assumption, and its accuracy of 28% is *worse* than the trivial classifier.
+- **No missing values**. UCI's ann-thyroid is already clean and pre-normalized.
 
 ## Tech Stack
 

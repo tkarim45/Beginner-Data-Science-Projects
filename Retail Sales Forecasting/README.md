@@ -1,7 +1,7 @@
 # Retail Sales Forecasting
 
 A beginner-level **time-series forecasting** project that predicts **daily sales revenue** for a UK
-online retailer, benchmarked against naive baselines — and an honest lesson in short, volatile series.
+online retailer, benchmarked against naive baselines, and an honest lesson in short, volatile series.
 
 ## Problem Statement
 
@@ -10,7 +10,7 @@ Given a daily revenue series, forecast the next day's sales. Does an ML model be
 
 ## Dataset
 
-- **Source**: [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail) — transactions
+- **Source**: [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail), transactions
   aggregated to **daily total revenue** (Quantity × UnitPrice), **2010-12-01 → 2011-12-09** (**305 days**).
 
 > Dataset note: the checklist's Kaggle Rossmann competition data is download-gated; we reuse the
@@ -34,7 +34,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Chronological 80/20 split (59 test days).
+All figures produced by executing `03_model_building.ipynb`, not assumed. Chronological 80/20 split (59 test days).
 
 | Model | MAE | RMSE | MAPE % | R² |
 |---|---|---|---|---|
@@ -46,15 +46,15 @@ All figures produced by executing `03_model_building.ipynb` — not assumed. Chr
 
 ## Key Findings
 
-- **An honest hard case** — every model has **R² ≈ 0 or below**: with only ~290 usable days, a
+- **An honest hard case**, every model has **R² ≈ 0 or below**: with only ~290 usable days, a
   single store-wide revenue series, and a sharp pre-Christmas ramp, day-level revenue is barely
   forecastable from its own past.
-- **ML still beats the baselines by a lot** — Linear RMSE 27,068 vs seasonal-naive 33,234 and naive
+- **ML still beats the baselines by a lot**. Linear RMSE 27,068 vs seasonal-naive 33,234 and naive
   51,568. The models *reduce* error substantially even when absolute R² is poor.
-- **Negative R² ≠ useless** — it means "worse than predicting the test mean", but the test mean is an
+- **Negative R² ≠ useless**, it means "worse than predicting the test mean", but the test mean is an
   oracle you don't have in production; vs the honest naive baseline the model is clearly better.
 - **The lesson**: short, spiky business series need more history, store-level granularity, or
-  exogenous drivers (promotions, holidays) — and you must always benchmark against naive baselines
+  exogenous drivers (promotions, holidays), and you must always benchmark against naive baselines
   rather than trusting R² alone.
 
 ## Tech Stack

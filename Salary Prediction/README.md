@@ -14,10 +14,10 @@ Given a single numeric feature (`YearsExperience`), predict an employee's annual
 
 | Feature | Type | Description |
 |---------|------|-------------|
-| YearsExperience | float | Years of professional work experience (1.1 – 10.5) |
-| **Salary** | **float** | **Annual salary in USD ($37k – $122k)** |
+| YearsExperience | float | Years of professional work experience (1.1 to 10.5) |
+| **Salary** | **float** | **Annual salary in USD ($37k, $122k)** |
 
-The dataset is already clean — no missing values, no duplicates.
+The dataset is already clean, no missing values, no duplicates.
 
 ## Project Structure
 
@@ -57,10 +57,10 @@ Best GridSearchCV parameters: `alpha=0.001` (CV R² = 0.8934).
 
 - **YearsExperience and Salary are nearly perfectly correlated** (Pearson r ≈ 0.978).
 - **Each year of experience adds ≈ $9,500/year** to salary in this sample, with an entry-level intercept around $25k.
-- **KNN (K=3) wins on the tiny held-out test set** because nearest-neighbor matching gives flexible local fits when there are only ~30 points. Its CV variance is high — Linear / Ridge are more honest "expected" performers.
+- **KNN (K=3) wins on the tiny held-out test set** because nearest-neighbor matching gives flexible local fits when there are only ~30 points. Its CV variance is high. Linear / Ridge are more honest "expected" performers.
 - **Gradient Boosting actually under-performs** here: with 30 rows, it doesn't have enough data to fit the gradient steps well.
 - **The dataset is so small that test-set metrics carry significant variance**. Take the rankings with a grain of salt and trust the 5-fold CV in section 12.
-- **No missing values, no duplicates** — already clean.
+- **No missing values, no duplicates**, already clean.
 
 ## Tech Stack
 

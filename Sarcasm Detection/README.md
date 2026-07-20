@@ -8,12 +8,12 @@ Given a news headline, predict whether it is sarcastic (binary classification). 
 
 ## Dataset
 
-- **Source**: [News Headlines Dataset for Sarcasm Detection — Rishabh Misra](https://github.com/rishabhmisra/News-Headlines-Dataset-For-Sarcasm-Detection)
+- **Source**: [News Headlines Dataset for Sarcasm Detection. Rishabh Misra](https://github.com/rishabhmisra/News-Headlines-Dataset-For-Sarcasm-Detection)
 - **Samples**: 28,619 headlines
 - **Format**: JSON-lines with fields `is_sarcastic`, `headline`, `article_link`
-- **Class balance**: 52.4% non-sarcastic, 47.6% sarcastic — well balanced
+- **Class balance**: 52.4% non-sarcastic, 47.6% sarcastic, well balanced
 
-Unlike noisy social-media text, these headlines are professionally written and clean — no spelling errors, no slang, no HTML. That makes the dataset a good test of whether a model can detect *sarcasm* itself rather than surface noise.
+Unlike noisy social-media text, these headlines are professionally written and clean, no spelling errors, no slang, no HTML. That makes the dataset a good test of whether a model can detect *sarcasm* itself rather than surface noise.
 
 ## Project Structure
 
@@ -49,10 +49,10 @@ Best GridSearchCV parameters: `{clf__C: 1.0, tfidf__ngram_range: (1, 2)}` (CV F1
 
 ## Key Findings
 
-- **Sarcasm is genuinely hard** — the best model reaches ~80% accuracy, far below the 98–99% seen on language detection or topic classification. Sarcasm depends on tone, world knowledge, and incongruity that bag-of-words TF-IDF cannot fully capture.
-- **Linear models lead** (Ridge, Linear SVM, Logistic Regression) — the signal that *is* learnable from word frequencies is largely linear.
+- **Sarcasm is genuinely hard**, the best model reaches ~80% accuracy, far below the 98 to 99% seen on language detection or topic classification. Sarcasm depends on tone, world knowledge, and incongruity that bag-of-words TF-IDF cannot fully capture.
+- **Linear models lead** (Ridge, Linear SVM, Logistic Regression), the signal that *is* learnable from word frequencies is largely linear.
 - **The Onion's signature style leaks through**: hyper-specific absurd noun phrases ("area man", "nation's", "report") are strong sarcasm cues, which is why bag-of-words still gets to 80%.
-- **Random Forest underperforms** the linear models — high-dimensional sparse TF-IDF favours linear separators over axis-aligned tree splits.
+- **Random Forest underperforms** the linear models, high-dimensional sparse TF-IDF favours linear separators over axis-aligned tree splits.
 - **This is a natural ceiling for classic ML**: transformer models (BERT) typically push sarcasm-detection accuracy into the high 80s / low 90s because they model context and word order, which TF-IDF discards.
 
 ## Tech Stack

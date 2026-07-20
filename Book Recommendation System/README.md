@@ -6,12 +6,12 @@ comparing item-based CF and matrix factorization against a popularity baseline.
 
 ## Problem Statement
 
-Given a sparse matrix of user × book ratings (1–5), recommend books each user is likely to
-enjoy. No external label — we hold out known ratings and measure recovery via **RMSE** and
+Given a sparse matrix of user × book ratings (1 to 5), recommend books each user is likely to
+enjoy. No external label, we hold out known ratings and measure recovery via **RMSE** and
 **Precision@10 / Recall@10**.
 
 > Dataset note: the checklist's Book-Crossing source is no longer reliably hosted, so this
-> project uses **goodbooks-10k** — a clean, modern, well-hosted book-ratings dataset with the
+> project uses **goodbooks-10k**, a clean, modern, well-hosted book-ratings dataset with the
 > same `user → book → rating` structure.
 
 ## Dataset
@@ -24,7 +24,7 @@ enjoy. No external label — we hold out known ratings and measure recovery via 
 
 | File | Contents |
 |---|---|
-| `data/ratings.csv` | user_id, book_id, rating (1–5) |
+| `data/ratings.csv` | user_id, book_id, rating (1 to 5) |
 | `data/books.csv` | book_id, title, authors |
 
 For tractable CF, modelling restricts to the **2,000 most-rated books** and most-active users.
@@ -50,13 +50,13 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Models
 
-- **Popularity baseline** — predict each book's global mean rating.
-- **Item-based CF** — cosine similarity between books on mean-centred ratings.
-- **Matrix factorization (SVD)** — TruncatedSVD with 30 latent factors.
+- **Popularity baseline**, predict each book's global mean rating.
+- **Item-based CF**, cosine similarity between books on mean-centred ratings.
+- **Matrix factorization (SVD)**. TruncatedSVD with 30 latent factors.
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Matrix: **2,000 users × 2,000 books** (96.2% sparse), 37,724 held-out test ratings, 2,000
 users evaluated for ranking.
 
@@ -70,13 +70,13 @@ users evaluated for ranking.
 
 - **The MovieLens split recurs on a second domain**: Item-based CF gives the best **RMSE
   (0.839)**, while **SVD dominates ranking** (Precision@10 **0.108**, ~5× CF and ~30× popularity).
-- **Matrix factorization is the better recommender** — latent factors generalise across the
+- **Matrix factorization is the better recommender**, latent factors generalise across the
   96%-sparse matrix where two users rarely co-rate enough books for neighbourhood similarity
   to be reliable.
-- **Popularity barely beats random** on ranking (P@10 0.0035) — recommending bestsellers to
+- **Popularity barely beats random** on ranking (P@10 0.0035), recommending bestsellers to
   everyone is almost useless for personalisation, though it sets the floor.
 - **Two independent datasets, same conclusion**: CF wins rating-accuracy (RMSE), SVD wins
-  recommendation-list quality (Precision@k/Recall@k). The lesson generalises — **match the
+  recommendation-list quality (Precision@k/Recall@k). The lesson generalises, **match the
   model to the metric your product actually exposes**.
 
 ## Tech Stack

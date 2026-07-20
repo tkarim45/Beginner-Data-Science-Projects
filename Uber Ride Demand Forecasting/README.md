@@ -11,7 +11,7 @@ Given the daily pickup-count series, forecast the next day's demand. Does an ML 
 ## Dataset
 
 - **Source**: [FiveThirtyEight Uber TLC FOIL data](https://github.com/fivethirtyeight/uber-tlc-foil-response)
-  — **4.53M** NYC Uber pickups (Apr–Sep 2014) aggregated to **daily counts** (**183 days**).
+, **4.53M** NYC Uber pickups (Apr, Sep 2014) aggregated to **daily counts** (**183 days**).
 
 ## Project Structure
 
@@ -31,7 +31,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Chronological 80/20 split (34 test days).
+All figures produced by executing `03_model_building.ipynb`, not assumed. Chronological 80/20 split (34 test days).
 
 | Model | MAE | RMSE | MAPE % | R² |
 |---|---|---|---|---|
@@ -44,14 +44,14 @@ All figures produced by executing `03_model_building.ipynb` — not assumed. Chr
 
 ## Key Findings
 
-- **Daily demand is moderately forecastable** — Ridge reaches **R² 0.50**, MAPE ~10%, driven by a
+- **Daily demand is moderately forecastable**. Ridge reaches **R² 0.50**, MAPE ~10%, driven by a
   strong weekly cycle (busy weekends) and a clear upward trend over the six months.
-- **Linear models win; tree ensembles overfit** — with only 169 usable rows, Random Forest and
+- **Linear models win; tree ensembles overfit**, with only 169 usable rows, Random Forest and
   Gradient Boosting go **negative R²**, while regularised linear models generalise. A textbook
   small-n reminder to prefer simple models.
-- **ML beats the baselines** — RMSE 4,090 vs seasonal-naive 5,473 and naive 8,524: the trend +
+- **ML beats the baselines**. RMSE 4,090 vs seasonal-naive 5,473 and naive 8,524: the trend +
   day-of-week features add real value over "same as last week".
-- **The growth trend is key** — Uber was expanding fast in 2014; the rolling-mean and lag features
+- **The growth trend is key**. Uber was expanding fast in 2014; the rolling-mean and lag features
   let linear models track that ramp, which seasonal-naive (no trend term) misses.
 
 ## Tech Stack

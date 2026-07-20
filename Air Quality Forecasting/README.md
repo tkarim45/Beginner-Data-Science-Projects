@@ -1,6 +1,6 @@
 # Air Quality Forecasting
 
-A beginner-level regression project that forecasts the hourly **PM2.5** concentration (µg/m³) at the US Embassy in **Beijing** using calendar, lag, rolling-mean, and meteorological features engineered from five years of hourly air-quality and weather data (UCI Beijing PM2.5 dataset, 2010–2014).
+A beginner-level regression project that forecasts the hourly **PM2.5** concentration (µg/m³) at the US Embassy in **Beijing** using calendar, lag, rolling-mean, and meteorological features engineered from five years of hourly air-quality and weather data (UCI Beijing PM2.5 dataset, 2010 to 2014).
 
 ## Problem Statement
 
@@ -8,19 +8,19 @@ Given the time of day, day of week, month, the recent weather (dew point, temper
 
 ## Dataset
 
-- **Source**: [Beijing PM2.5 Data — UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data)
-- **Raw samples**: 43,824 hourly readings (Jan 2010 – Dec 2014)
+- **Source**: [Beijing PM2.5 Data. UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data)
+- **Raw samples**: 43,824 hourly readings (Jan 2010. Dec 2014)
 - **Missing target**: 2,067 rows (4.7%) have no `pm2.5` reading and are dropped
 - **Samples after feature engineering**: 22,914 rows (rows with a missing target or lag/rolling warmup NaNs removed)
 
 | Feature | Description |
 |---|---|
-| `hour` | Hour of day (0–23) |
+| `hour` | Hour of day (0 to 23) |
 | `dayofweek` | Day of week (0=Mon, 6=Sun) |
-| `month` | Month of year (1–12) |
-| `quarter` | Calendar quarter (1–4) |
+| `month` | Month of year (1 to 12) |
+| `quarter` | Calendar quarter (1 to 4) |
 | `year` | Calendar year |
-| `dayofyear` | Day of year (1–365) |
+| `dayofyear` | Day of year (1 to 365) |
 | `is_weekend` | 1 if Saturday/Sunday, else 0 |
 | `DEWP` | Dew point (°C) |
 | `TEMP` | Temperature (°C) |
@@ -33,7 +33,7 @@ Given the time of day, day of week, month, the recent weather (dew point, temper
 | `lag_24` | PM2.5 same hour, 1 day ago (µg/m³) |
 | `roll_24` | 24-hour rolling mean (shifted, no leakage) |
 | `roll_168` | 168-hour (1-week) rolling mean (shifted, no leakage) |
-| **`pm2.5`** | **PM2.5 concentration (µg/m³) — target** |
+| **`pm2.5`** | **PM2.5 concentration (µg/m³), target** |
 
 ## Project Structure
 
@@ -54,7 +54,7 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Results
 
-7 regressors + 1 tuned Lasso variant, evaluated on a **chronological** 80/20 split (train = 2010–early-2014, test = Feb 2014 – Dec 2014). No shuffling, to respect time-series order.
+7 regressors + 1 tuned Lasso variant, evaluated on a **chronological** 80/20 split (train = 2010, early-2014, test = Feb 2014. Dec 2014). No shuffling, to respect time-series order.
 
 | Model | MAE (µg/m³) | RMSE (µg/m³) | R² | MAPE |
 |---|---|---|---|---|
@@ -71,10 +71,10 @@ Best GridSearchCV parameters: `{alpha: 0.1}` (time-series CV R² = 0.9366).
 
 ## Key Findings
 
-- **The previous hour is almost everything**: `lag_1` (PM2.5 one hour ago) has a Pearson correlation of **0.97** with the target — pollution is highly persistent, so the single best predictor of this hour's reading is last hour's reading. The 24-hour rolling mean (r = 0.72) and same-hour-yesterday lag (r = 0.41) add further history.
+- **The previous hour is almost everything**: `lag_1` (PM2.5 one hour ago) has a Pearson correlation of **0.97** with the target, pollution is highly persistent, so the single best predictor of this hour's reading is last hour's reading. The 24-hour rolling mean (r = 0.72) and same-hour-yesterday lag (r = 0.41) add further history.
 - **Linear models lead the board** (Lasso/Ridge/Linear all R² ≈ 0.938): because `lag_1` is so strongly and *linearly* related to the target, a regularised linear model already explains ~94% of the variance, edging out the tree ensembles on this feature set.
 - **Random Forest is a close third** (R² = 0.932) and the strongest non-linear model; default Gradient Boosting and the depth-capped Decision Tree trail because they over-smooth the sharp hour-to-hour spikes that the lag feature tracks directly.
-- **Weather provides the meteorological context**: dew point is positively associated with pollution (r = 0.21 — humid, stagnant air traps particulates) while cumulated wind speed `Iws` is negatively associated (r = −0.26 — wind disperses smog). Wind direction matters too: the cleanest air arrives on **NW** winds.
+- **Weather provides the meteorological context**: dew point is positively associated with pollution (r = 0.21, humid, stagnant air traps particulates) while cumulated wind speed `Iws` is negatively associated (r = −0.26, wind disperses smog). Wind direction matters too: the cleanest air arrives on **NW** winds.
 - **Strong seasonality**: PM2.5 peaks in the winter heating season (worst month: **February**) and is lowest in summer; the daily mean reaches **96 µg/m³** with severe smog episodes spiking to nearly **1,000 µg/m³**.
 
 ## Tech Stack

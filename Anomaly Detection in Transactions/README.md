@@ -1,8 +1,8 @@
 # Anomaly Detection in Transactions
 
 A beginner-level **unsupervised anomaly detection** project that flags fraudulent
-credit-card transactions *without using any labels during training*. Three detectors —
-Isolation Forest, Local Outlier Factor, and One-Class SVM — score each transaction by how
+credit-card transactions *without using any labels during training*. Three detectors, 
+Isolation Forest, Local Outlier Factor, and One-Class SVM, score each transaction by how
 anomalous it looks, and we then check those scores against the true fraud labels.
 
 ## Problem Statement
@@ -15,26 +15,26 @@ to measure how well each model's anomaly ranking recovers real fraud.
 
 Because the classes are so imbalanced, the headline metric is **PR-AUC (Average
 Precision)** rather than accuracy, alongside **ROC-AUC** and **precision@k** (k = number of
-true frauds — the most operationally meaningful "how good is the top of the queue" number).
+true frauds, the most operationally meaningful "how good is the top of the queue" number).
 
 ## Dataset
 
-- **Source**: [ULB Credit Card Fraud Detection — Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+- **Source**: [ULB Credit Card Fraud Detection. Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 - **This project uses a stratified subsample**: **all 492 frauds** kept + **20,000 genuine**
   transactions sampled → **20,492 rows, 2.40% fraud**. (The full dataset is 284,807 rows;
   the subsample keeps every fraud and runs fast on a laptop.)
-- **Features**: 30 — `Time`, `Amount`, and `V1`–`V28` (anonymised PCA components). No raw
+- **Features**: 30, `Time`, `Amount`, and `V1`, `V28` (anonymised PCA components). No raw
   fields are available for privacy reasons.
 
 | Item | Definition |
 |---|---|
-| `V1`–`V28` | PCA-transformed features (already decorrelated, privacy-preserving) |
+| `V1`, `V28` | PCA-transformed features (already decorrelated, privacy-preserving) |
 | `Time` | Seconds elapsed since the first transaction |
 | `Amount` | Transaction amount |
-| `Class` | 1 = fraud, 0 = genuine — **used for evaluation only**, never for fitting |
+| `Class` | 1 = fraud, 0 = genuine, **used for evaluation only**, never for fitting |
 
 EDA findings: fraud has a **lower median amount (9.25 vs 22.00)** than genuine spend, and a
-handful of PCA features separate the classes strongly — by correlation with fraud the top
+handful of PCA features separate the classes strongly, by correlation with fraud the top
 are **V14 (r = 0.69), V12 (0.63), V17 (0.62), V10 (0.56), V16 (0.53)**.
 
 All features are standardised (mean 0, std 1) because the distance- and margin-based
@@ -60,7 +60,7 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Contamination for every detector is set to the fraud rate (0.024). `precision@k` /
 `recall@k` use the top-k highest-scored transactions, k = 492 (the true fraud count); at
 k = #frauds the two are equal by construction.
@@ -76,7 +76,7 @@ k = #frauds the two are equal by construction.
 ### Top-k triage precision (Isolation Forest)
 
 How many real frauds appear if an analyst reviews only the top-N most anomalous
-transactions — the operational view of an alert queue:
+transactions, the operational view of an alert queue:
 
 | Top N reviewed | Frauds caught | Precision | Recall |
 |---|---|---|---|
@@ -87,19 +87,19 @@ transactions — the operational view of an alert queue:
 
 ## Key Findings
 
-- **Isolation Forest is the clear winner** — ROC-AUC **0.945**, PR-AUC **0.644**, and
+- **Isolation Forest is the clear winner**. ROC-AUC **0.945**, PR-AUC **0.644**, and
   **59% precision@k**. Of the 492 transactions it scores most anomalous, ~290 are real
   fraud, from a model that never saw a single label.
-- **One-Class SVM ranks fraud well but imprecisely** — ROC-AUC 0.918 yet PR-AUC only 0.245,
+- **One-Class SVM ranks fraud well but imprecisely**. ROC-AUC 0.918 yet PR-AUC only 0.245,
   meaning many false positives crowd the top of its score list.
-- **Local Outlier Factor essentially fails here** — ROC-AUC 0.502 ≈ random. Local-density
+- **Local Outlier Factor essentially fails here**. ROC-AUC 0.502 ≈ random. Local-density
   outlier detection breaks down in this 30-dimensional PCA space, where "local
   neighbourhood" loses meaning.
-- **PR-AUC, not ROC-AUC, tells the real story** — under 2.4% prevalence both Isolation
+- **PR-AUC, not ROC-AUC, tells the real story**, under 2.4% prevalence both Isolation
   Forest and One-Class SVM look strong on ROC-AUC (0.94 vs 0.92), but PR-AUC exposes a
   2.6× gap in actual precision.
-- **Unsupervised detection is an excellent triage layer, not a final classifier** — it
-  pushes most fraud into a short, reviewable shortlist (100% precision in the top 50 —
+- **Unsupervised detection is an excellent triage layer, not a final classifier**, it
+  pushes most fraud into a short, reviewable shortlist (100% precision in the top 50, 
   all 50 are fraud) with
   **zero labels**, which is exactly what you want when labels are scarce or fraud patterns
   are new.

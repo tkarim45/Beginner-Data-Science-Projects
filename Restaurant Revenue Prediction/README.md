@@ -1,31 +1,31 @@
 # Restaurant Revenue Prediction
 
 A beginner-level **regression** project that predicts a restaurant's annual `revenue` from
-its open date, location, type, and 37 anonymised numeric features — and, just as
+its open date, location, type, and 37 anonymised numeric features, and, just as
 importantly, shows **how to honestly evaluate a model on a tiny dataset** where the signal
 is weak.
 
 ## Problem Statement
 
 Given metadata for a restaurant (when it opened, its city / city-group, its type, and 37
-obfuscated operational features `P1`–`P37`), predict its annual revenue (a continuous
+obfuscated operational features `P1`, `P37`), predict its annual revenue (a continuous
 target). This is the Kaggle "TFI" restaurant-revenue task. The catch: the training set has
 only **137 rows** for ~40 candidate features, so the real challenge is avoiding
 **overfitting** and measuring performance honestly.
 
 ## Dataset
 
-- **Source**: [TFI Restaurant Revenue Prediction — Kaggle](https://www.kaggle.com/c/restaurant-revenue-prediction)
+- **Source**: [TFI Restaurant Revenue Prediction. Kaggle](https://www.kaggle.com/c/restaurant-revenue-prediction)
 - **Rows**: 137 restaurants · **Columns**: 43 · **Missing values**: 0
-- **Target**: `revenue` (annual, USD) — right-skewed, mean ≈ \$4.45M, max ≈ \$19.7M
+- **Target**: `revenue` (annual, USD), right-skewed, mean ≈ \$4.45M, max ≈ \$19.7M
 
 | Feature | Type | Notes |
 |---|---|---|
 | Open Date | date | Engineered into `restaurant_age_years` (from a 2015-01-01 snapshot) |
-| City | categorical | 34 levels — **dropped** (too high-cardinality for 137 rows) |
-| City Group | categorical | Big Cities / Other — one-hot encoded |
-| Type | categorical | FC / IL / DT — one-hot encoded (DT has only 1 row) |
-| P1–P37 | numeric | Anonymised/obfuscated; many are zero-filled |
+| City | categorical | 34 levels, **dropped** (too high-cardinality for 137 rows) |
+| City Group | categorical | Big Cities / Other, one-hot encoded |
+| Type | categorical | FC / IL / DT, one-hot encoded (DT has only 1 row) |
+| P1 to P37 | numeric | Anonymised/obfuscated; many are zero-filled |
 
 ## Project Structure
 
@@ -46,7 +46,7 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed. With
+All figures below are produced by executing `03_model_building.ipynb`, not assumed. With
 n = 137, **5-fold cross-validated R² is the trustworthy metric**; a single 20% test split
 is shown alongside but is noisy. Models are sorted by CV R².
 
@@ -77,10 +77,10 @@ revenue:
 ## Key Findings
 
 - **Revenue is only weakly predictable from these features at n = 137.** The best
-  cross-validated R² is ≈ **−0.02** (tuned Random Forest) — essentially the mean baseline.
+  cross-validated R² is ≈ **−0.02** (tuned Random Forest), essentially the mean baseline.
   The tuned model does beat "predict the mean" on the held-out split (RMSE \$3.42M vs
   \$3.52M, a real **+2.7%**), but the margin is small.
-- **Linear models overfit catastrophically** — Linear Regression and Lasso reach CV R² of
+- **Linear models overfit catastrophically**. Linear Regression and Lasso reach CV R² of
   −1.9 and −1.8, far worse than the mean. With ~40 features for 110 training rows, this is
   textbook high-variance overfitting; regularised / shallow-ensemble models are the only
   sensible choice.
@@ -88,11 +88,11 @@ revenue:
   single predictor (corr ≈ **0.33** with revenue); **Big-City** restaurants out-earn
   others (≈ \$4.98M vs \$3.75M mean). The P-features are individually weak (top |corr| =
   **P2 at 0.19**) and diffuse.
-- **A single test split is misleading here** — Gradient Boosting looks best on the test
+- **A single test split is misleading here**. Gradient Boosting looks best on the test
   split (R² 0.098) yet has one of the worst CV scores (−0.68). The lesson: always
   cross-validate and compare to a naive baseline before claiming a model "works".
 - **To do meaningfully better** you'd need more rows, de-anonymised features, or external
-  data (footfall, local competition, marketing spend) — not a fancier model.
+  data (footfall, local competition, marketing spend), not a fancier model.
 
 ## Tech Stack
 

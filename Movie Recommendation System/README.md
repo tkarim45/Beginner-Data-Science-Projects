@@ -7,16 +7,16 @@ baseline.
 
 ## Problem Statement
 
-Given a sparse matrix of user × movie ratings (0.5–5.0), recommend movies each user is
-likely to enjoy. There is **no external label** — this is self-supervised: we hold out
+Given a sparse matrix of user × movie ratings (0.5 to 5.0), recommend movies each user is
+likely to enjoy. There is **no external label**, this is self-supervised: we hold out
 known ratings and measure how well each model recovers them, both as a predicted rating
 (**RMSE**) and as a ranked recommendation list (**Precision@10 / Recall@10**).
 
 ## Dataset
 
-- **Source**: [MovieLens (small) — GroupLens](https://grouplens.org/datasets/movielens/) (`ml-latest-small`)
+- **Source**: [MovieLens (small). GroupLens](https://grouplens.org/datasets/movielens/) (`ml-latest-small`)
 - **Ratings**: 100,836 · **Users**: 610 · **Movies**: 9,724
-- The full user-item matrix is **~98.3% empty** — sparsity is the core challenge.
+- The full user-item matrix is **~98.3% empty**, sparsity is the core challenge.
 
 | File | Contents |
 |---|---|
@@ -48,15 +48,15 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Models
 
-- **Popularity baseline** — predict each movie's global mean rating (no personalisation).
-- **Item-based CF** — cosine similarity between movies on mean-centred ratings; predict a
+- **Popularity baseline**, predict each movie's global mean rating (no personalisation).
+- **Item-based CF**, cosine similarity between movies on mean-centred ratings; predict a
   rating as the similarity-weighted average of the user's other ratings.
-- **Matrix factorization (SVD)** — TruncatedSVD with 20 latent factors on the mean-centred,
+- **Matrix factorization (SVD)**. TruncatedSVD with 20 latent factors on the mean-centred,
   zero-filled matrix.
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Modelling matrix: **610 users × 2,000 movies** (94.9% sparse), 15,594 held-out test
 ratings, 591 users evaluated for ranking.
 
@@ -68,17 +68,17 @@ ratings, 591 users evaluated for ranking.
 
 ## Key Findings
 
-- **No single model wins both metrics.** Item-based CF gives the best **RMSE (0.830)** — it
-  estimates the *value* of a rating most accurately — while **SVD dominates ranking**
+- **No single model wins both metrics.** Item-based CF gives the best **RMSE (0.830)**, it
+  estimates the *value* of a rating most accurately, while **SVD dominates ranking**
   (Precision@10 ≈ **0.129**, ~5× Item-CF and ~9× popularity).
 - **Matrix factorization is the better recommender.** For building an actual top-10 list,
   latent factors generalise across the sparse matrix far better than neighbourhood
   similarity, which is hampered by how few movies any two users co-rate.
-- **Popularity is a weak baseline on both axes** — recommending blockbusters to everyone is
+- **Popularity is a weak baseline on both axes**, recommending blockbusters to everyone is
   neither accurate nor personalised, but it sets the floor the real models must beat.
 - **Choose the metric that matches the product.** Optimise RMSE if you display predicted
   star ratings; optimise Precision@k/Recall@k if you show a ranked list of suggestions.
-- **Sparsity drives everything** — the ~98% empty matrix is why CF's co-rating overlap is
+- **Sparsity drives everything**, the ~98% empty matrix is why CF's co-rating overlap is
   thin and why the popularity cut to the top 2,000 movies is necessary.
 
 ## Tech Stack

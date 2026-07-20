@@ -8,25 +8,25 @@ Given 11 input features (age, gender, hypertension, heart disease, marital/work/
 
 ## Dataset
 
-- **Source**: [Stroke Prediction Dataset (Kaggle)](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset) — original on Kaggle, mirrored on GitHub.
+- **Source**: [Stroke Prediction Dataset (Kaggle)](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset), original on Kaggle, mirrored on GitHub.
 - **Samples**: 5,110 patients
 - **Features**: 11 inputs + 1 binary target
 
 | Feature | Type | Description |
 |---------|------|-------------|
-| gender | categorical | Male / Female / Other (Other has only 1 row — dropped) |
-| age | numeric | Patient age (0.08–82) |
+| gender | categorical | Male / Female / Other (Other has only 1 row, dropped) |
+| age | numeric | Patient age (0.08 to 82) |
 | hypertension | binary | 0 = no, 1 = yes |
 | heart_disease | binary | 0 = no, 1 = yes |
 | ever_married | categorical | Yes / No |
 | work_type | categorical | Private / Self-employed / Govt_job / children / Never_worked |
 | residence_type | categorical | Urban / Rural |
-| avg_glucose_level | numeric | Average blood glucose level (55–272) |
-| bmi | numeric | Body mass index (10–98) — has 201 missing values |
+| avg_glucose_level | numeric | Average blood glucose level (55 to 272) |
+| bmi | numeric | Body mass index (10 to 98), has 201 missing values |
 | smoking_status | categorical | formerly smoked / never smoked / smokes / Unknown |
 | **stroke** | **binary** | **0 = no stroke, 1 = stroke** |
 
-Class imbalance is severe — only **4.9%** of patients had a stroke.
+Class imbalance is severe, only **4.9%** of patients had a stroke.
 
 ## Project Structure
 
@@ -64,13 +64,13 @@ Best GridSearchCV parameters: `C=0.01, penalty='l2', solver='lbfgs'` (CV F1 = 0.
 
 ## Key Findings
 
-- **Severe class imbalance** (4.9% positive) makes accuracy almost useless — a trivial "always no-stroke" classifier scores ~95% accuracy with 0 stroke catches. **F1 and recall are the right metrics here.**
+- **Severe class imbalance** (4.9% positive) makes accuracy almost useless, a trivial "always no-stroke" classifier scores ~95% accuracy with 0 stroke catches. **F1 and recall are the right metrics here.**
 - **Tree ensembles overfit the majority class**: Random Forest and KNN drop their decision threshold high enough that they catch zero strokes on the test set despite high "accuracy."
-- **Balanced-weight Logistic Regression catches 80% of strokes** at the cost of low precision (12%) — for a screening use case, that trade is usually right.
+- **Balanced-weight Logistic Regression catches 80% of strokes** at the cost of low precision (12%), for a screening use case, that trade is usually right.
 - **Age dominates**: stroke risk climbs from ~0% in the under-30s to >10% in the 70+ decade.
 - **Hypertension and heart disease roughly double the baseline risk**; high glucose is also a strong predictor.
 - **`gender=Other` has only 1 row** and is dropped during preprocessing to avoid singleton dummies.
-- **`bmi` has 201 missing values** (~3.9%) — median imputation is used; the distribution is preserved well.
+- **`bmi` has 201 missing values** (~3.9%), median imputation is used; the distribution is preserved well.
 
 ## Tech Stack
 

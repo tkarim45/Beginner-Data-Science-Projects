@@ -6,17 +6,17 @@ A beginner-level NLP project that classifies news articles into one of four topi
 
 Given a news article's title and short description, predict its topic (multi-class classification):
 
-- `World` — international / political news
-- `Sports` — sports coverage
-- `Business` — business and finance
-- `Sci-Tech` — science and technology
+- `World`, international / political news
+- `Sports`, sports coverage
+- `Business`, business and finance
+- `Sci-Tech`, science and technology
 
 ## Dataset
 
-- **Source**: [AG News — Antonio Gulli's news corpus](https://github.com/mhjabreel/CharCnn_Keras) (standard AG News benchmark)
+- **Source**: [AG News. Antonio Gulli's news corpus](https://github.com/mhjabreel/CharCnn_Keras) (standard AG News benchmark)
 - **Total Samples**: 120,000 articles (subsampled to **40,000** for tractable training)
 - **Features**: article title + description, combined into one `content` field
-- **Class balance**: perfectly balanced — 30,000 articles per class in the full set
+- **Class balance**: perfectly balanced, 30,000 articles per class in the full set
 
 ## Project Structure
 
@@ -52,12 +52,12 @@ Best GridSearchCV parameters: `{clf__C: 1.0, tfidf__ngram_range: (1, 2)}` (CV F1
 
 ## Key Findings
 
-- **Topic classification is a comparatively easy NLP task** — every model clears 86% accuracy, and the linear models reach ~91%. News topics have strongly distinctive vocabularies (sports → "game / coach / season", business → "stocks / profit / market").
-- **Logistic Regression is the clear winner**, with Ridge and Linear SVM close behind — TF-IDF features over four well-separated topics are highly linearly separable.
-- **Naive Bayes is competitive** (~90%) and trains almost instantly — a strong, cheap baseline for topic tagging.
-- **Random Forest and Passive Aggressive lag** — RF struggles with the sparse high-dimensional space; Passive Aggressive is sensitive to the order of training examples.
-- **Tuning barely moved the needle** — the default Logistic Regression (`C=1.0`, bigram TF-IDF) already sits at the GridSearchCV optimum, which is typical for clean, well-balanced topic data.
-- **The hardest confusions are World ↔ Business** — geopolitical and economic news overlap heavily in vocabulary.
+- **Topic classification is a comparatively easy NLP task**, every model clears 86% accuracy, and the linear models reach ~91%. News topics have strongly distinctive vocabularies (sports → "game / coach / season", business → "stocks / profit / market").
+- **Logistic Regression is the clear winner**, with Ridge and Linear SVM close behind. TF-IDF features over four well-separated topics are highly linearly separable.
+- **Naive Bayes is competitive** (~90%) and trains almost instantly, a strong, cheap baseline for topic tagging.
+- **Random Forest and Passive Aggressive lag**. RF struggles with the sparse high-dimensional space; Passive Aggressive is sensitive to the order of training examples.
+- **Tuning barely moved the needle**, the default Logistic Regression (`C=1.0`, bigram TF-IDF) already sits at the GridSearchCV optimum, which is typical for clean, well-balanced topic data.
+- **The hardest confusions are World ↔ Business**, geopolitical and economic news overlap heavily in vocabulary.
 
 ## Tech Stack
 

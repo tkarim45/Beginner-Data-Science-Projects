@@ -1,8 +1,8 @@
 # Music Recommendation System
 
 A beginner-level **implicit-feedback collaborative-filtering** recommender on the Last.fm
-dataset. The signal is how many times each user played each artist — there are no explicit
-ratings — so it recommends new artists from listening patterns and is evaluated purely by
+dataset. The signal is how many times each user played each artist, there are no explicit
+ratings, so it recommends new artists from listening patterns and is evaluated purely by
 ranking quality.
 
 ## Problem Statement
@@ -18,7 +18,7 @@ surfaces in the top-10 (**Precision@10 / Recall@10**). RMSE does not apply to im
 
 ## Dataset
 
-- **Source**: [Last.fm hetrec2011 — GroupLens](https://grouplens.org/datasets/hetrec-2011/)
+- **Source**: [Last.fm hetrec2011. GroupLens](https://grouplens.org/datasets/hetrec-2011/)
 - **Interactions**: 92,834 · **Users**: 1,892 · **Artists**: 17,632
 - The play matrix is **>99% empty**; play counts span several orders of magnitude.
 
@@ -51,14 +51,14 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Models
 
-- **Popularity baseline** — rank artists by total plays (same list for everyone).
-- **Item-based CF** — cosine similarity between artists on the play matrix; score = sum of
+- **Popularity baseline**, rank artists by total plays (same list for everyone).
+- **Item-based CF**, cosine similarity between artists on the play matrix; score = sum of
   similarities to the user's artists.
-- **Matrix factorization (SVD)** — TruncatedSVD with 30 latent factors on the play matrix.
+- **Matrix factorization (SVD)**. TruncatedSVD with 30 latent factors on the play matrix.
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Matrix: **1,859 users × 2,000 artists** (98.6% sparse), 13,367 held-out interactions, 1,859
 users evaluated. No RMSE (implicit feedback has no rating to predict).
 
@@ -70,15 +70,15 @@ users evaluated. No RMSE (implicit feedback has no rating to predict).
 
 ## Key Findings
 
-- **Item-based CF wins on implicit feedback** — Precision@10 **0.181**, Recall@10 **0.245**,
+- **Item-based CF wins on implicit feedback**. Precision@10 **0.181**, Recall@10 **0.245**,
   ahead of SVD (0.154 / 0.199) and well ahead of popularity (0.069 / 0.084).
 - **This flips the explicit-feedback result.** In the MovieLens and Book projects SVD won
   ranking; here, with co-listening counts, artist-to-artist similarity is an exceptionally
-  strong signal — fans of artist A reliably co-listen to artist B.
+  strong signal, fans of artist A reliably co-listen to artist B.
 - **Popularity is a stronger baseline here** (Recall@10 0.084) than in the rating projects,
-  because a few mega-popular artists really are heard by most users — yet personalised CF still
+  because a few mega-popular artists really are heard by most users, yet personalised CF still
   nearly triples it.
-- **No RMSE for implicit data** — there is no held-out rating to predict, only held-out
+- **No RMSE for implicit data**, there is no held-out rating to predict, only held-out
   interactions to rank; Precision@k / Recall@k are the right (and only) metrics.
 - **Takeaway**: for implicit co-occurrence signals (plays, clicks), item-item CF is a strong,
   often superior alternative to matrix factorization.

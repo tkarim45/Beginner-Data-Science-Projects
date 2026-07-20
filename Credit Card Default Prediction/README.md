@@ -8,7 +8,7 @@ Given 23 demographic and credit-history features for 30,000 Taiwanese credit-car
 
 ## Dataset
 
-- **Source**: [Default of Credit Card Clients — UCI / Kaggle](https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset)
+- **Source**: [Default of Credit Card Clients. UCI / Kaggle](https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset)
 - **Samples**: 30,000 clients
 - **Features**: 23 numeric / categorical predictors
 
@@ -60,10 +60,10 @@ Best GridSearchCV parameters: `{learning_rate: 0.1, max_depth: 3, n_estimators: 
 
 ## Key Findings
 
-- **Recent payment status is the dominant signal** — `PAY_0` (most recent month's repayment status) has the strongest correlation with default; clients who delay even one month are far more likely to default.
+- **Recent payment status is the dominant signal**, `PAY_0` (most recent month's repayment status) has the strongest correlation with default; clients who delay even one month are far more likely to default.
 - **Class imbalance matters**: ~22% of clients default, so accuracy alone is misleading. Naive Bayes had the best recall (0.63) at the cost of precision; Gradient Boosting offers the best balance.
 - **Engineered features helped**: aggregate `NUM_DELAYED_MONTHS`, `MAX_PAY_STATUS`, and `BILL_TO_LIMIT_RATIO` ranked among the top predictors in the tree-based models.
-- **SVM with a linear kernel did not converge** in 2,000 iterations on this dataset — kernel SVMs are also impractical at 30k rows. Tree-based ensembles dominate.
+- **SVM with a linear kernel did not converge** in 2,000 iterations on this dataset, kernel SVMs are also impractical at 30k rows. Tree-based ensembles dominate.
 - **Demographics matter less than behaviour**: SEX, EDUCATION, MARRIAGE add only marginal signal once payment history is included.
 
 ## Tech Stack

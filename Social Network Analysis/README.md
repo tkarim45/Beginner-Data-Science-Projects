@@ -1,6 +1,6 @@
 # Social Network Analysis (Graph-Based)
 
-A beginner-level **applied graph** project that analyses a real friendship network with networkx —
+A beginner-level **applied graph** project that analyses a real friendship network with networkx, 
 degree structure, clustering, centrality (bridges vs hubs), and community detection.
 
 ## Problem Statement
@@ -25,16 +25,16 @@ Social Network Analysis/
 centrality, and greedy-modularity community detection + a spring-layout visualization.
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
-- **4,039 people, 88,234 friendships**; density ~0.011, **average clustering ~0.61** — friends-of-friends
+All figures produced by executing the notebooks, not assumed.
+- **4,039 people, 88,234 friendships**; density ~0.011, **average clustering ~0.61**, friends-of-friends
   are usually friends, the hallmark of real social graphs.
-- **Heavy-tailed degree distribution** — average degree ~44 but the top hub has **1,045 friends**.
-- **Bridges ≠ hubs**: node **107** has the highest **betweenness (0.485)** — it lies on the most shortest
+- **Heavy-tailed degree distribution**, average degree ~44 but the top hub has **1,045 friends**.
+- **Bridges ≠ hubs**: node **107** has the highest **betweenness (0.485)**, it lies on the most shortest
   paths and connects otherwise-separate groups, so removing it would fragment the network even though it
   isn't the highest-degree node.
-- **13 communities** emerge from modularity optimisation (largest ~983 members) — the ego-networks
+- **13 communities** emerge from modularity optimisation (largest ~983 members), the ego-networks
   cluster into distinct friend groups.
-- **Small-world structure** — high local clustering + short global paths: everyone is a few hops apart yet
+- **Small-world structure**, high local clustering + short global paths: everyone is a few hops apart yet
   locally cliquey. Bridge nodes are the information/influence chokepoints.
 
 ## Tech Stack

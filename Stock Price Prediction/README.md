@@ -4,13 +4,13 @@ A beginner-level regression project that predicts Apple Inc.'s next-day closing 
 
 ## Problem Statement
 
-Given today's price history and momentum indicators for AAPL, predict the closing price of the *following* trading day. The project benchmarks seven regression models — from simple linear regression to gradient boosting — under a strictly chronological train/test split that respects the time ordering of financial data.
+Given today's price history and momentum indicators for AAPL, predict the closing price of the *following* trading day. The project benchmarks seven regression models, from simple linear regression to gradient boosting, under a strictly chronological train/test split that respects the time ordering of financial data.
 
 ## Dataset
 
-- **Source**: [S&P 500 Stock Data — Kaggle (camnugent)](https://www.kaggle.com/datasets/camnugent/sandp500)
-- **Full dataset**: 619,040 daily OHLCV rows across ~505 S&P 500 tickers (2013–2018)
-- **Single-stock focus**: Apple Inc. (AAPL) — 1,238 trading days after feature engineering
+- **Source**: [S&P 500 Stock Data. Kaggle (camnugent)](https://www.kaggle.com/datasets/camnugent/sandp500)
+- **Full dataset**: 619,040 daily OHLCV rows across ~505 S&P 500 tickers (2013 to 2018)
+- **Single-stock focus**: Apple Inc. (AAPL), 1,238 trading days after feature engineering
 - **Train / Test split**: first 80 % of rows in chronological order (train), last 20 % (test)
 
 ### Engineered Features
@@ -26,7 +26,7 @@ Given today's price history and momentum indicators for AAPL, predict the closin
 | `open_close_range` | Open minus close (intra-day direction) |
 | `next_close` | **Target**: next trading day's closing price |
 
-All rolling and lag features are computed from *past* values only — no look-ahead bias.
+All rolling and lag features are computed from *past* values only, no look-ahead bias.
 
 ## Project Structure
 
@@ -47,7 +47,7 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Results
 
-7 regressors + 1 tuned Ridge variant, ranked by R² on the chronological test set (last 20 % of 2017–2018 data).
+7 regressors + 1 tuned Ridge variant, ranked by R² on the chronological test set (last 20 % of 2017 to 2018 data).
 
 | Model | MAE (USD) | RMSE (USD) | R² | MAPE |
 |---|---|---|---|---|
@@ -66,7 +66,7 @@ Best GridSearchCV parameters: `{alpha: 0.1}` for Ridge (CV R² = 0.977).
 
 - **Linear models dominate**: Linear Regression, Ridge, and Lasso all achieve R² ≈ 0.975 and MAE ≈ $1.33 because next-day closing price is almost perfectly predicted by `lag_1` (yesterday's close). Autocorrelation is the overwhelmingly dominant signal.
 - **Tree-based models fail on a trending series**: Decision Tree, Random Forest, Gradient Boosting, and KNN all produce negative R² on the test set. AAPL's price rose from ~$133 at the end of training to ~$179 by end of test. Tree models cannot extrapolate beyond the maximum value seen in training and therefore systematically under-predict every test sample.
-- **The autocorrelation caveat**: a model scoring R² = 0.975 on next-day price is not evidence of a powerful trading model. It is essentially saying "tomorrow will be close to today" — a trivially true but non-tradeable insight. The genuinely hard problem is predicting the *direction* or *magnitude of the daily return*, which is near-random.
+- **The autocorrelation caveat**: a model scoring R² = 0.975 on next-day price is not evidence of a powerful trading model. It is essentially saying "tomorrow will be close to today", a trivially true but non-tradeable insight. The genuinely hard problem is predicting the *direction* or *magnitude of the daily return*, which is near-random.
 - **Predicting next-day return is the real challenge**: daily returns are approximately mean-zero and nearly unpredictable. A model that correctly forecasts whether tomorrow's return is positive or negative more than 55 % of the time would be far more valuable than any price-level predictor.
 - **`lag_1` and `ma_5` dominate feature importance**: in all tree-based models, the lagged close and short-term moving average account for the vast majority of importance, further confirming the autocorrelation story.
 

@@ -1,7 +1,7 @@
 # Olympics History Analysis
 
-A beginner-level **EDA / visualization** project exploring 120 years of the Olympic Games —
-271,116 athlete-event records (1896–2016) with sport, medal, nationality, and body metrics.
+A beginner-level **EDA / visualization** project exploring 120 years of the Olympic Games, 
+271,116 athlete-event records (1896 to 2016) with sport, medal, nationality, and body metrics.
 
 ## Problem Statement
 Which nations dominate the medal table, how has female participation changed, and how have athletes'
@@ -22,11 +22,11 @@ Olympics History Analysis/
 ```
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
-- **271,116 records, 135,571 unique athletes, spanning 1896–2016.**
+All figures produced by executing the notebooks, not assumed.
+- **271,116 records, 135,571 unique athletes, spanning 1896 to 2016.**
 - **Medal powerhouses**: the **USA** leads by a wide margin (5,637 medal-events), then the **USSR (2,503)**,
   Germany, Great Britain, France.
-- **Female participation exploded**: **7.4%** of Summer Olympians in 1936 → **45.5%** in 2016 — one of
+- **Female participation exploded**: **7.4%** of Summer Olympians in 1936 → **45.5%** in 2016, one of
   the clearest gender-equality trends in sport.
 - **Athletes trend taller and heavier** across the century (professionalisation + event specialisation).
 - Athletics, Gymnastics, and Swimming dominate by event volume.

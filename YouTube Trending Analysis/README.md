@@ -1,6 +1,6 @@
 # YouTube Trending Analysis
 
-A beginner-level **EDA / visualization** project exploring engagement on trending YouTube videos —
+A beginner-level **EDA / visualization** project exploring engagement on trending YouTube videos, 
 200,000 daily stat snapshots of ~11,000 trending videos (views, likes, dislikes, comments over time).
 
 ## Problem Statement
@@ -8,7 +8,7 @@ How do views, likes, and comments relate on trending videos, and what does audie
 like? Exploratory analysis; insight + visualizations, no model.
 
 ## Dataset
-- **Source**: [Trending YouTube time-series (HF `jettisonthenet/...`)](https://huggingface.co/datasets/jettisonthenet/timeseries_trending_youtube_videos_2019-04-15_to_2020-04-15) — subsampled to 200,000 snapshots.
+- **Source**: [Trending YouTube time-series (HF `jettisonthenet/...`)](https://huggingface.co/datasets/jettisonthenet/timeseries_trending_youtube_videos_2019-04-15_to_2020-04-15), subsampled to 200,000 snapshots.
 - **Columns**: videostatsid, ytvideoid, views, comments, likes, dislikes, timestamp.
 
 > Dataset note: the checklist's datasnaek YouTube CSV is no longer hosted; this openly available
@@ -25,12 +25,12 @@ YouTube Trending Analysis/
 ```
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
+All figures produced by executing the notebooks, not assumed.
 - **200,000 snapshots across ~11,160 trending videos** (mean ~2.3M views, ~114k likes per snapshot).
-- **Engagement scales together** — views correlate **0.84** with likes and **0.68** with comments.
-- **Trending audiences are overwhelmingly positive** — median like ratio **0.976** (dislikes rare on
+- **Engagement scales together**, views correlate **0.84** with likes and **0.68** with comments.
+- **Trending audiences are overwhelmingly positive**, median like ratio **0.976** (dislikes rare on
   trending content).
-- All engagement metrics are heavily right-skewed (a few mega-viral videos dominate) — hence log scales.
+- All engagement metrics are heavily right-skewed (a few mega-viral videos dominate), hence log scales.
 
 ## Tech Stack
 - pandas, numpy, matplotlib, seaborn

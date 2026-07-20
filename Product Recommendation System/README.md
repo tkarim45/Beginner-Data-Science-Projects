@@ -2,7 +2,7 @@
 
 A beginner-level **implicit-feedback collaborative-filtering** recommender for an e-commerce
 store, built on the UCI *Online Retail* dataset. The signal is how many units of each product
-a customer purchased — no star ratings — so it recommends new products from purchase patterns
+a customer purchased, no star ratings, so it recommends new products from purchase patterns
 and is evaluated by ranking quality.
 
 ## Problem Statement
@@ -50,14 +50,14 @@ Run notebooks in order: `01_eda.ipynb` → `02_data_cleaning.ipynb` → `03_mode
 
 ## Models
 
-- **Popularity baseline** — rank products by total units sold (same list for everyone).
-- **Item-based CF** — cosine similarity between products on the purchase matrix; score = sum of
+- **Popularity baseline**, rank products by total units sold (same list for everyone).
+- **Item-based CF**, cosine similarity between products on the purchase matrix; score = sum of
   similarities to the customer's products.
-- **Matrix factorization (SVD)** — TruncatedSVD with 30 latent factors on the purchase matrix.
+- **Matrix factorization (SVD)**. TruncatedSVD with 30 latent factors on the purchase matrix.
 
 ## Results
 
-All figures below are produced by executing `03_model_building.ipynb` — not assumed.
+All figures below are produced by executing `03_model_building.ipynb`, not assumed.
 Matrix: **2,000 customers × 800 products** (93.0% sparse), 28,158 held-out interactions, 2,000
 customers evaluated. No RMSE (implicit feedback has no rating to predict).
 
@@ -69,17 +69,17 @@ customers evaluated. No RMSE (implicit feedback has no rating to predict).
 
 ## Key Findings
 
-- **SVD wins on this implicit dataset** — Precision@10 **0.194**, Recall@10 **0.148**, ahead of
+- **SVD wins on this implicit dataset**. Precision@10 **0.194**, Recall@10 **0.148**, ahead of
   Item-CF (0.158 / 0.125) and far ahead of popularity (0.070 / 0.048).
-- **Contrast with the Music project** (also implicit) where Item-CF won — there is no universal
+- **Contrast with the Music project** (also implicit) where Item-CF won, there is no universal
   winner. With denser per-customer baskets and only 800 products, low-rank factorization
   captures cross-category co-purchase structure better than raw item-item similarity.
-- **Personalisation roughly triples the popularity baseline** on Precision@10 — recommending
+- **Personalisation roughly triples the popularity baseline** on Precision@10, recommending
   best-sellers to everyone is a weak strategy even in retail.
-- **No RMSE for implicit purchase data** — only held-out interactions to rank, scored by
+- **No RMSE for implicit purchase data**, only held-out interactions to rank, scored by
   Precision@k / Recall@k.
 - **Takeaway across all five recommenders** (3 explicit, 2 implicit): always benchmark item-CF
-  *and* matrix factorization against a popularity baseline — which one wins depends on feedback
+  *and* matrix factorization against a popularity baseline, which one wins depends on feedback
   type, density, and catalog size, so measure rather than assume.
 
 ## Tech Stack

@@ -8,22 +8,22 @@ Given 9 measured properties of a water sample, predict whether the water is **po
 
 ## Dataset
 
-- **Source**: [Water Potability — Aditya Kadiwal (Kaggle)](https://www.kaggle.com/datasets/adityakadiwal/water-potability)
+- **Source**: [Water Potability. Aditya Kadiwal (Kaggle)](https://www.kaggle.com/datasets/adityakadiwal/water-potability)
 - **Samples**: 3,276 water samples
 - **Features**: 9 numerical measurements
 - **Class balance**: 39.0% potable, 61.0% not potable
 
 | Feature | Description | Typical safe range |
 |---|---|---|
-| ph | Acidity / alkalinity | 6.5–8.5 |
+| ph | Acidity / alkalinity | 6.5 to 8.5 |
 | Hardness | Calcium / magnesium content (mg/L) | < 200 |
-| Solids | Total dissolved solids (ppm) | — |
+| Solids | Total dissolved solids (ppm) |, |
 | Chloramines | Disinfectant level (ppm) | < 4 |
 | Sulfate | Sulfate concentration (mg/L) | < 250 |
-| Conductivity | Electrical conductivity (μS/cm) | — |
-| Organic_carbon | Organic carbon (ppm) | — |
+| Conductivity | Electrical conductivity (μS/cm) |, |
+| Organic_carbon | Organic carbon (ppm) |, |
 | Trihalomethanes | Disinfection byproduct (μg/L) | < 80 |
-| Turbidity | Cloudiness (NTU) | — |
+| Turbidity | Cloudiness (NTU) |, |
 | **Potability** | **0 = unsafe, 1 = safe to drink** | |
 
 ## Project Structure
@@ -43,7 +43,7 @@ Water Potability Classification/
 
 ## Results
 
-7 classifiers + 1 tuned Random Forest variant. The dataset is genuinely hard — features overlap heavily across classes, and most models hover around 0.3–0.4 F1 on the positive class.
+7 classifiers + 1 tuned Random Forest variant. The dataset is genuinely hard, features overlap heavily across classes, and most models hover around 0.3 to 0.4 F1 on the positive class.
 
 | Model | Accuracy | Precision | Recall | F1 Score |
 |---|---|---|---|---|
@@ -60,11 +60,11 @@ Best GridSearchCV parameters: `{max_depth: None, min_samples_split: 5, n_estimat
 
 ## Key Findings
 
-- **The dataset is intrinsically hard** — the chemical features overlap almost completely between potable and non-potable samples, so even strong models top out around 0.40 F1 on the positive class.
-- **Linear models fail** badly (Logistic Regression / Naive Bayes F1 < 0.1) — the decision boundary is highly non-linear, requiring tree ensembles or kernel methods.
+- **The dataset is intrinsically hard**, the chemical features overlap almost completely between potable and non-potable samples, so even strong models top out around 0.40 F1 on the positive class.
+- **Linear models fail** badly (Logistic Regression / Naive Bayes F1 < 0.1), the decision boundary is highly non-linear, requiring tree ensembles or kernel methods.
 - **Missing values matter**: `Sulfate` (~24% missing), `ph` (~15%), and `Trihalomethanes` (~5%) all need imputation. Median imputation works adequately.
-- **No single feature is strongly predictive** — `Sulfate`, `Chloramines`, and `ph` carry the most signal but correlate with the target by less than 0.05.
-- **High precision, low recall**: the best models are conservative — when they flag a sample as potable, they're often right (precision > 0.65), but they miss the majority of safe samples (recall ~0.30). For drinking-water decisions, this trade-off may actually be desirable.
+- **No single feature is strongly predictive**, `Sulfate`, `Chloramines`, and `ph` carry the most signal but correlate with the target by less than 0.05.
+- **High precision, low recall**: the best models are conservative, when they flag a sample as potable, they're often right (precision > 0.65), but they miss the majority of safe samples (recall ~0.30). For drinking-water decisions, this trade-off may actually be desirable.
 - **The "safe" decision boundary is multi-dimensional**: the engineered features `pH_Category`, `Hardness_Category`, and `pH_Hardness_Product` slightly improve the tree models.
 
 ## Tech Stack

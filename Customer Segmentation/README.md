@@ -4,14 +4,14 @@ A beginner-level **unsupervised clustering** project that segments online retail
 
 ## Problem Statement
 
-Given 541,909 raw transaction rows from a UK-based online gift retailer, identify distinct customer segments to inform targeted marketing. There is **no target column** — this is genuine unsupervised learning. We aggregate transactions into one row per customer using the RFM framework, then cluster the resulting customer profiles.
+Given 541,909 raw transaction rows from a UK-based online gift retailer, identify distinct customer segments to inform targeted marketing. There is **no target column**, this is genuine unsupervised learning. We aggregate transactions into one row per customer using the RFM framework, then cluster the resulting customer profiles.
 
 Cluster quality is assessed using the elbow plot (inertia) and silhouette score; segments are labelled with marketing personas based on the RFM profile of each cluster.
 
 ## Dataset
 
-- **Source**: [UCI Online Retail — Kaggle](https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci)
-- **Raw transactions**: 541,909 rows (Dec 2010 – Dec 2011)
+- **Source**: [UCI Online Retail. Kaggle](https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci)
+- **Raw transactions**: 541,909 rows (Dec 2010. Dec 2011)
 - **Customers after RFM aggregation**: 4,338
 - **Features used for clustering**: 3 (Recency, Frequency, Monetary)
 
@@ -71,11 +71,11 @@ The two segments map cleanly onto a core business distinction: Cluster 1 (Champi
 
 ## Key Findings
 
-- **k = 2 is the statistically optimal partition** — the silhouette score drops from 0.433 at k = 2 to 0.337 at k = 3, a significant gap that indicates two genuine, separable groups in this dataset.
-- **The Champions segment (38 % of customers) drives the bulk of revenue** — with an average spend of £4,548 vs £498 for the lapsed group, Champions account for the vast majority of total monetary value.
-- **Recency is the sharpest discriminator** — Champions last purchased 26 days ago on average vs 134 days for the hibernating group, a 5× difference that underlines recency as the leading churn signal.
-- **Log-transformation was essential** — raw RFM distributions are heavily right-skewed; without log1p rescaling, a small number of extreme-value customers would collapse all clusters toward the outlier region.
-- **The PCA 2D scatter shows clean cluster separation** — PC1 and PC2 together explain over 70 % of variance, confirming the two groups are genuinely distinct in the original feature space.
+- **k = 2 is the statistically optimal partition**, the silhouette score drops from 0.433 at k = 2 to 0.337 at k = 3, a significant gap that indicates two genuine, separable groups in this dataset.
+- **The Champions segment (38 % of customers) drives the bulk of revenue**, with an average spend of £4,548 vs £498 for the lapsed group, Champions account for the vast majority of total monetary value.
+- **Recency is the sharpest discriminator**. Champions last purchased 26 days ago on average vs 134 days for the hibernating group, a 5× difference that underlines recency as the leading churn signal.
+- **Log-transformation was essential**, raw RFM distributions are heavily right-skewed; without log1p rescaling, a small number of extreme-value customers would collapse all clusters toward the outlier region.
+- **The PCA 2D scatter shows clean cluster separation**. PC1 and PC2 together explain over 70 % of variance, confirming the two groups are genuinely distinct in the original feature space.
 
 ## Tech Stack
 

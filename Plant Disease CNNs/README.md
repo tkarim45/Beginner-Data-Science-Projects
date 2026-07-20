@@ -11,7 +11,7 @@ pinned: false
 
 # 🌿 Plant Disease Classification Using CNNs
 
-*Fine-tuned **EfficientNet-B0** model that detects **38 plant leaf diseases** from a single image — deployed live on Hugging Face Spaces.*
+*Fine-tuned **EfficientNet-B0** model that detects **38 plant leaf diseases** from a single image, deployed live on Hugging Face Spaces.*
 
 ---
 

@@ -1,12 +1,12 @@
 # Bike Sharing Demand Prediction
 
-A beginner-level regression project that predicts the number of bike rentals per hour, using the **UCI Bike Sharing** dataset (Washington DC, 2011–2012).
+A beginner-level regression project that predicts the number of bike rentals per hour, using the **UCI Bike Sharing** dataset (Washington DC, 2011 to 2012).
 
 ## Problem Statement
 
 Given the date / hour, weather, season, and a few other contextual signals, predict the total bike rentals (`cnt`) for that hour.
 
-To make the task realistic, the leakage columns `casual` and `registered` (whose sum is exactly `cnt`) are dropped on load — the model has to learn to predict total demand from environmental features alone.
+To make the task realistic, the leakage columns `casual` and `registered` (whose sum is exactly `cnt`) are dropped on load, the model has to learn to predict total demand from environmental features alone.
 
 ## Dataset
 
@@ -18,10 +18,10 @@ To make the task realistic, the leakage columns `casual` and `registered` (whose
 |---|---|
 | season | 1 = winter, 2 = spring, 3 = summer, 4 = fall |
 | yr | 0 = 2011, 1 = 2012 |
-| mnth | Month (1–12) |
-| hr | Hour (0–23) |
+| mnth | Month (1 to 12) |
+| hr | Hour (0 to 23) |
 | holiday | 1 = holiday, 0 = working day |
-| weekday | Day of week (0–6) |
+| weekday | Day of week (0 to 6) |
 | workingday | 1 = workday (not weekend / holiday) |
 | weathersit | 1 = clear, 2 = mist, 3 = light rain/snow, 4 = heavy rain/snow |
 | temp | Normalized temperature |
@@ -66,11 +66,11 @@ Best GridSearchCV parameters: `{max_depth: 25, min_samples_leaf: 1, n_estimators
 
 ## Key Findings
 
-- **Hour-of-day is the dominant signal**: working-day demand peaks sharply at 8am and 5–6pm (commute spikes); weekends and holidays show a single broad mid-day peak. The cyclic `hr_sin / hr_cos` encoding captures this naturally.
+- **Hour-of-day is the dominant signal**: working-day demand peaks sharply at 8am and 5 to 6pm (commute spikes); weekends and holidays show a single broad mid-day peak. The cyclic `hr_sin / hr_cos` encoding captures this naturally.
 - **Temperature and humidity drive the rest**: warmer, drier hours have substantially more rentals; bad-weather (`weathersit ≥ 3`) hours collapse to a fraction of normal demand.
-- **Engineered `IsRushHour` flag** is one of the top tree-importance features — it captures the bimodal commute pattern that pure hour numbers cannot.
+- **Engineered `IsRushHour` flag** is one of the top tree-importance features, it captures the bimodal commute pattern that pure hour numbers cannot.
 - **Tree ensembles win decisively** (R² ≈ 0.94) because the signal is highly non-linear (hour × workingday interactions, weather thresholds). Linear models cap out around R² = 0.65.
-- **Random Forest beats Gradient Boosting here** — possibly because the highly stratified hourly demand pattern is captured better by deep, low-bias trees than by shallow boosted trees with default depth=3.
+- **Random Forest beats Gradient Boosting here**, possibly because the highly stratified hourly demand pattern is captured better by deep, low-bias trees than by shallow boosted trees with default depth=3.
 
 ## Tech Stack
 

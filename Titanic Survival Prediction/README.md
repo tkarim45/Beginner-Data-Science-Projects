@@ -4,7 +4,7 @@ Predicts whether a passenger survived the Titanic disaster using machine learnin
 
 ## Dataset
 
-- **Source**: [Kaggle — Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic)
+- **Source**: [Kaggle. Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic)
 - **Samples**: 891 passengers
 - **Features**: `Pclass`, `Name`, `Sex`, `Age`, `SibSp`, `Parch`, `Ticket`, `Fare`, `Cabin`, `Embarked`
 - **Target**: `Survived` (0 = Did not survive, 1 = Survived)
@@ -52,10 +52,10 @@ Best GridSearchCV parameters: `max_depth=10, min_samples_leaf=1, min_samples_spl
 
 ## Key Findings
 
-- **Logistic Regression was the best performer** — highest accuracy (83.8%) and F1 score (0.7883)
-- **Sex** is the strongest predictor — females survived at ~74%, males at ~19%
-- **Passenger class** matters — 1st class: 63% survival vs 3rd class: 24%
-- **Fare correlates with survival** — survivors paid an average of $48.40 vs $22.12 for non-survivors
+- **Logistic Regression was the best performer**, highest accuracy (83.8%) and F1 score (0.7883)
+- **Sex** is the strongest predictor, females survived at ~74%, males at ~19%
+- **Passenger class** matters, 1st class: 63% survival vs 3rd class: 24%
+- **Fare correlates with survival**, survivors paid an average of $48.40 vs $22.12 for non-survivors
 - **Overall survival rate**: 38.4% (342 survived out of 891)
 - **Children** (age < 12) had higher survival rates
 - **Small families** (2-4 members) survived at higher rates than solo travelers or large families

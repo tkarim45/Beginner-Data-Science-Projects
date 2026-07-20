@@ -1,13 +1,13 @@
 # World Happiness Report Analysis
 
 A beginner-level **EDA / visualization** project exploring what makes countries happy, using the
-2019 World Happiness Report — 156 countries scored on subjective wellbeing, decomposed into six
+2019 World Happiness Report, 156 countries scored on subjective wellbeing, decomposed into six
 contributing factors.
 
 ## Problem Statement
 The "happiness Score" is a survey-based ladder rating; the report attributes it to six factors
 (GDP, social support, health, freedom, generosity, corruption). Which factors actually track
-happiness, and who ranks top/bottom? This is exploratory analysis — the deliverable is insight +
+happiness, and who ranks top/bottom? This is exploratory analysis, the deliverable is insight +
 visualizations, not a model.
 
 ## Dataset
@@ -25,12 +25,12 @@ World Happiness Report Analysis/
 ```
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
+All figures produced by executing the notebooks, not assumed.
 - **Happiest: Finland, Denmark, Norway. Least happy: South Sudan, Central African Republic, Afghanistan.**
-- **Economy, health and social support dominate** — Score correlates **0.79** with GDP per capita,
+- **Economy, health and social support dominate**. Score correlates **0.79** with GDP per capita,
   **0.78** with healthy life expectancy, **0.78** with social support.
 - **Freedom matters moderately (0.57); corruption weakly (0.39).**
-- **Generosity barely correlates (0.08)** — a generous population is *not* what makes a country score
+- **Generosity barely correlates (0.08)**, a generous population is *not* what makes a country score
   high; material security, health, and having someone to count on are.
 - Read: national happiness is largely explained by wealth + health + social safety, not sentiment.
 

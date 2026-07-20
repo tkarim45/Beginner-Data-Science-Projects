@@ -60,12 +60,12 @@ Best GridSearchCV parameters: `max_depth=7, min_samples_leaf=2, min_samples_spli
 
 ## Key Findings
 
-- **Glucose is the strongest predictor** of diabetes (0.467 correlation) — patients with glucose > 126 have a 59.3% diabetes rate vs 8.1% for normal levels
+- **Glucose is the strongest predictor** of diabetes (0.467 correlation), patients with glucose > 126 have a 59.3% diabetes rate vs 8.1% for normal levels
 - **BMI** (0.293) and **Age** (0.238) are the next most important features
 - **34.9% of patients** in the dataset are diabetic (class imbalance)
 - **Insulin** (48.7%) and **SkinThickness** (29.6%) had the most invalid zero values requiring imputation
 - **KNN achieved the highest F1 score** (0.6792), while Random Forest had the best accuracy (0.7727)
-- **Decision Tree had the best recall** (0.7407) — fewest missed diabetic patients
+- **Decision Tree had the best recall** (0.7407), fewest missed diabetic patients
 
 ## Tech Stack
 

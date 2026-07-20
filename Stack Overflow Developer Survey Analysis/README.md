@@ -1,6 +1,6 @@
 # Stack Overflow Developer Survey Analysis
 
-A beginner-level **EDA / visualization** project exploring who developers are and what they use —
+A beginner-level **EDA / visualization** project exploring who developers are and what they use, 
 89,184 responses to the 2023 Stack Overflow Developer Survey (country, experience, languages, remote
 work, education, pay).
 
@@ -24,12 +24,12 @@ Stack Overflow Developer Survey Analysis/
 ```
 
 ## Key Findings
-All figures produced by executing the notebooks — not assumed.
+All figures produced by executing the notebooks, not assumed.
 - **89,184 responses**; the community skews **US-heavy** (18,647) then Germany, India, UK, Canada.
-- **JavaScript is still #1** (used by 55,711), with **HTML/CSS, Python, SQL, TypeScript** close behind —
+- **JavaScript is still #1** (used by 55,711), with **HTML/CSS, Python, SQL, TypeScript** close behind, 
   the web stack dominates.
-- **Hybrid + fully-remote outnumber in-person ~5:1** — remote/hybrid is now the developer norm post-2020.
-- **Bachelor's is the modal education**, followed by Master's — though a meaningful minority are self-taught / no-degree.
+- **Hybrid + fully-remote outnumber in-person ~5:1**, remote/hybrid is now the developer norm post-2020.
+- **Bachelor's is the modal education**, followed by Master's, though a meaningful minority are self-taught / no-degree.
 - **Median converted annual compensation is ~\$75,000 USD** (heavily right-skewed, dominated by the large US sample).
 - **Caveat**: Stack Overflow's audience self-selects (English-speaking, engaged devs), so this describes
   *SO's community*, not all developers worldwide.

@@ -8,10 +8,10 @@ Given a news article (headline + body text), predict whether it is fake or real 
 
 ## Dataset
 
-- **Source**: [fake_or_real_news — lutzhamel/fake-news](https://github.com/lutzhamel/fake-news)
+- **Source**: [fake_or_real_news, lutzhamel/fake-news](https://github.com/lutzhamel/fake-news)
 - **Samples**: 6,335 news articles
 - **Features**: `title`, `text`, `label` (FAKE / REAL)
-- **Class balance**: 50.1% REAL, 49.9% FAKE — essentially balanced
+- **Class balance**: 50.1% REAL, 49.9% FAKE, essentially balanced
 
 The title and body are concatenated into a single `content` field before modeling, so headline cues and article-body cues both contribute.
 
@@ -49,10 +49,10 @@ Best GridSearchCV parameters: `{clf__C: 10.0, tfidf__ngram_range: (1, 2)}` (CV F
 
 ## Key Findings
 
-- **Linear models do very well** (~93% accuracy) — fake and real news articles differ measurably in vocabulary, tone, and source-specific phrasing that TF-IDF captures.
-- **Tuning Logistic Regression to `C=10`** gave the top score — fake-news detection benefits from a less-regularised model that can lean on many weak lexical signals.
-- **Passive Aggressive performs strongly here** (unlike on most other text tasks) — it is designed for exactly this kind of large-margin linear text classification.
-- **Naive Bayes lags by ~4 points** — the strong feature-independence assumption hurts when fake/real cues come in correlated phrase clusters.
+- **Linear models do very well** (~93% accuracy), fake and real news articles differ measurably in vocabulary, tone, and source-specific phrasing that TF-IDF captures.
+- **Tuning Logistic Regression to `C=10`** gave the top score, fake-news detection benefits from a less-regularised model that can lean on many weak lexical signals.
+- **Passive Aggressive performs strongly here** (unlike on most other text tasks), it is designed for exactly this kind of large-margin linear text classification.
+- **Naive Bayes lags by ~4 points**, the strong feature-independence assumption hurts when fake/real cues come in correlated phrase clusters.
 - **A caveat on generalisation**: a model trained on one fake-news corpus often learns *source* and *topic* artifacts (a particular era's political vocabulary) rather than a transferable notion of "fakeness". Accuracy on this test split is high, but real-world deployment would need data from many sources and time periods.
 
 ## Tech Stack

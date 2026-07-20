@@ -8,7 +8,7 @@ Given 79 explanatory features describing a residential property (size, neighborh
 
 ## Dataset
 
-- **Source**: [House Prices: Advanced Regression Techniques — Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+- **Source**: [House Prices: Advanced Regression Techniques. Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 - **Samples**: 1,460 homes (train.csv)
 - **Features**: 80 mixed numeric / categorical predictors + 1 target
 
@@ -49,17 +49,17 @@ House Price Prediction/
 | Decision Tree | 24,766 | 38,696 | 0.8048 | 0.145 |
 | KNN (k=5) | 24,804 | 42,990 | 0.7591 | 0.154 |
 | Lasso | 22,336 | 65,480 | 0.4410 | 0.133 |
-| Linear Regression | — | — | unstable | — |
+| Linear Regression |, |, | unstable |, |
 
 Best GridSearchCV parameters: `{learning_rate: 0.05, max_depth: 5, n_estimators: 300}` (CV R² = 0.880).
 
 ## Key Findings
 
-- **`OverallQual` is the dominant predictor** (correlation ≈ 0.79 with `SalePrice`) — homeowner-rated overall finish quality is by far the strongest single signal.
-- **Size beats everything else** — `GrLivArea`, `TotalBsmtSF`, `1stFlrSF`, and the engineered `TotalSF` all rank in the top 10 importances of every tree-based model.
+- **`OverallQual` is the dominant predictor** (correlation ≈ 0.79 with `SalePrice`), homeowner-rated overall finish quality is by far the strongest single signal.
+- **Size beats everything else**, `GrLivArea`, `TotalBsmtSF`, `1stFlrSF`, and the engineered `TotalSF` all rank in the top 10 importances of every tree-based model.
 - **Engineered features added real lift**: `HouseAge` and `RemodelAge` (computed from `YrSold − YearBuilt` / `YearRemodAdd`) capture depreciation more directly than the raw year columns; `TotalBathrooms` aggregates four separate bathroom columns.
 - **Plain Linear Regression is unstable** here because of multicollinearity created by the one-hot-encoded categoricals (255+ dummy features after encoding). Ridge handles it gracefully (R² = 0.83); Lasso degrades; vanilla OLS produces wildly extreme predictions on the test set.
-- **Gradient Boosting beats Random Forest** — ensemble boosting handles the heavy-tailed sale-price distribution better than averaging trees.
+- **Gradient Boosting beats Random Forest**, ensemble boosting handles the heavy-tailed sale-price distribution better than averaging trees.
 
 ## Tech Stack
 

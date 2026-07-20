@@ -6,16 +6,16 @@ A beginner-level NLP project that classifies tweets into **hate speech**, **offe
 
 Given the text of a tweet, predict one of three classes (multi-class classification):
 
-- `hate_speech` — language that attacks or demeans a group
-- `offensive` — offensive / profane language that is not hate speech
-- `neither` — neutral text
+- `hate_speech`, language that attacks or demeans a group
+- `offensive`, offensive / profane language that is not hate speech
+- `neither`, neutral text
 
 ## Dataset
 
-- **Source**: [Hate Speech and Offensive Language — Davidson et al.](https://github.com/t-davidson/hate-speech-and-offensive-language)
+- **Source**: [Hate Speech and Offensive Language. Davidson et al.](https://github.com/t-davidson/hate-speech-and-offensive-language)
 - **Samples**: 24,783 tweets
 - **Labels**: assigned by majority vote of CrowdFlower annotators
-- **Class balance**: heavily imbalanced — 77% offensive, 17% neither, 6% hate speech
+- **Class balance**: heavily imbalanced, 77% offensive, 17% neither, 6% hate speech
 
 The class imbalance is the central challenge: hate speech is the rarest and most important class to catch, but the model sees few examples of it.
 
@@ -53,11 +53,11 @@ Best GridSearchCV parameters: `{clf__C: 10.0, tfidf__ngram_range: (1, 2)}` (CV F
 
 ## Key Findings
 
-- **Weighted F1 ≈ 0.89 looks strong but is inflated by the majority class** — the `offensive` class (77% of data) is easy, so any model that nails it scores well on weighted metrics. Performance on the rare `hate_speech` class is far weaker (visible in the confusion matrix).
-- **Hate speech is routinely confused with offensive language** — the two share most vocabulary (slurs, profanity); what separates them is *target* and *intent*, which bag-of-words cannot represent.
-- **Random Forest edges out the linear models here**, unusually for text — the three-class structure with a dominant middle class suits the tree's hierarchical splits.
-- **Tweet-specific cleaning matters**: removing retweet markers (`RT`), `@mentions`, and URLs before TF-IDF improves every model — those tokens are noise that dilutes the real signal.
-- **For production hate-speech moderation**, this dataset's heavy imbalance means you'd want class-weighting, oversampling of the hate class, or a cost-sensitive threshold — overall accuracy is the wrong objective.
+- **Weighted F1 ≈ 0.89 looks strong but is inflated by the majority class**, the `offensive` class (77% of data) is easy, so any model that nails it scores well on weighted metrics. Performance on the rare `hate_speech` class is far weaker (visible in the confusion matrix).
+- **Hate speech is routinely confused with offensive language**, the two share most vocabulary (slurs, profanity); what separates them is *target* and *intent*, which bag-of-words cannot represent.
+- **Random Forest edges out the linear models here**, unusually for text, the three-class structure with a dominant middle class suits the tree's hierarchical splits.
+- **Tweet-specific cleaning matters**: removing retweet markers (`RT`), `@mentions`, and URLs before TF-IDF improves every model, those tokens are noise that dilutes the real signal.
+- **For production hate-speech moderation**, this dataset's heavy imbalance means you'd want class-weighting, oversampling of the hate class, or a cost-sensitive threshold, overall accuracy is the wrong objective.
 
 ## Tech Stack
 

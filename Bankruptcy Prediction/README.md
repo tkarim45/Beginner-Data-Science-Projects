@@ -1,6 +1,6 @@
 # Bankruptcy Prediction
 
-A beginner-level binary classification project that predicts whether a company will go bankrupt, using the **Taiwanese Company Bankruptcy** dataset (1999–2009).
+A beginner-level binary classification project that predicts whether a company will go bankrupt, using the **Taiwanese Company Bankruptcy** dataset (1999 to 2009).
 
 ## Problem Statement
 
@@ -8,10 +8,10 @@ Given 95 financial ratios from a company's accounting statements, predict whethe
 
 ## Dataset
 
-- **Source**: Taiwan Economic Journal — fetched via OpenML `Taiwanese_Bankruptcy_Prediction`
+- **Source**: Taiwan Economic Journal, fetched via OpenML `Taiwanese_Bankruptcy_Prediction`
 - **Samples**: 6,819 firms
 - **Features**: 95 numeric financial ratios (profitability, leverage, liquidity, growth)
-- **Class balance**: 96.8% healthy, 3.2% bankrupt — heavily imbalanced
+- **Class balance**: 96.8% healthy, 3.2% bankrupt, heavily imbalanced
 
 | Feature group | Examples |
 |---|---|
@@ -39,7 +39,7 @@ Bankruptcy Prediction/
 
 ## Results
 
-7 classifiers + 1 tuned Random Forest variant. F1 score is the primary metric — accuracy is misleading here because predicting "Healthy" for everyone gives 96.8% accuracy.
+7 classifiers + 1 tuned Random Forest variant. F1 score is the primary metric, accuracy is misleading here because predicting "Healthy" for everyone gives 96.8% accuracy.
 
 | Model | Accuracy | Precision | Recall | F1 Score |
 |---|---|---|---|---|
@@ -57,11 +57,11 @@ Best GridSearchCV parameters: `{class_weight: balanced, max_depth: 10, min_sampl
 ## Key Findings
 
 - **Class imbalance is the central challenge** (~30:1 healthy-to-bankrupt). Accuracy ≥ 96% on every model is meaningless; recall on the bankrupt class is what matters.
-- **`class_weight='balanced'` is the single most impactful change** — it pushed Random Forest's recall from 0.20 to 0.70 at the cost of dropping precision from 0.75 to 0.46. Net F1 nearly doubled (0.32 → 0.55).
+- **`class_weight='balanced'` is the single most impactful change**, it pushed Random Forest's recall from 0.20 to 0.70 at the cost of dropping precision from 0.75 to 0.46. Net F1 nearly doubled (0.32 → 0.55).
 - **Most predictive features**: profitability ratios (ROA, Net Income / Total Assets), leverage indicators (Debt ratio %, Liability / Equity), and liquidity (Net Worth Turnover Rate). The aggregated `AvgProfitability` and `AvgLeverage` ranked among the top 20 importances.
-- **Outlier capping at 0.5%/99.5% quantiles** improves all models — a few firms have extreme financial-ratio values that destabilise tree splits and SVMs.
-- **Naive Bayes traded precision for the highest raw recall** (0.82) — useful if the cost of a missed bankruptcy is far higher than a false alarm (e.g. a credit officer triaging firms for closer review).
-- **Linear models (Logistic Regression, linear SVM) struggle** here — financial-ratio interactions are non-linear, and tree ensembles dominate.
+- **Outlier capping at 0.5%/99.5% quantiles** improves all models, a few firms have extreme financial-ratio values that destabilise tree splits and SVMs.
+- **Naive Bayes traded precision for the highest raw recall** (0.82), useful if the cost of a missed bankruptcy is far higher than a false alarm (e.g. a credit officer triaging firms for closer review).
+- **Linear models (Logistic Regression, linear SVM) struggle** here, financial-ratio interactions are non-linear, and tree ensembles dominate.
 
 ## Tech Stack
 

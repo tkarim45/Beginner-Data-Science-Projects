@@ -11,7 +11,7 @@ Given 35 HR features for 1,470 employees (demographics, role, compensation, sati
 - **Source**: [IBM HR Analytics Attrition (Kaggle)](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 - **Samples**: 1,470 employees
 - **Features**: 35 mixed numeric / categorical predictors
-- **Class balance**: 16.1% attrition (`Yes`), 83.9% stay (`No`) — imbalanced
+- **Class balance**: 16.1% attrition (`Yes`), 83.9% stay (`No`), imbalanced
 
 | Feature group | Examples |
 |---|---|
@@ -58,12 +58,12 @@ Tuning grid: `n_estimators ∈ {100,200,300}`, `max_depth ∈ {None,8,15}`, `min
 
 ## Key Findings
 
-- **OverTime is the single biggest red flag** — employees who do overtime have a far higher attrition rate.
+- **OverTime is the single biggest red flag**, employees who do overtime have a far higher attrition rate.
 - **Job role and BusinessTravel matter a lot**: Sales Representatives and frequent travellers leave most often; Research Directors and "Travel_Rarely" employees stay.
 - **Compensation matters but is not enough**: low MonthlyIncome and small StockOptionLevel correlate with leaving, but high earners with poor satisfaction still leave.
 - **Engineered satisfaction composite** (`SatisfactionScore` summing four 1-4 ratings) is one of the most predictive engineered features.
-- **Logistic Regression won here** — with only 1,470 rows and a heavily imbalanced target, the linear model with scaled features generalised better than the deeper trees, which over-fit the positive class. Naive Bayes traded precision for the highest recall (0.72), which may be the right trade-off if the cost of missing a leaver is high (HR could prioritise retention conversations).
-- **Class imbalance dominates the metric story**: simple accuracy can hit 84% by predicting "Stay" for everyone — F1 and recall are the metrics that matter.
+- **Logistic Regression won here**, with only 1,470 rows and a heavily imbalanced target, the linear model with scaled features generalised better than the deeper trees, which over-fit the positive class. Naive Bayes traded precision for the highest recall (0.72), which may be the right trade-off if the cost of missing a leaver is high (HR could prioritise retention conversations).
+- **Class imbalance dominates the metric story**: simple accuracy can hit 84% by predicting "Stay" for everyone. F1 and recall are the metrics that matter.
 
 ## Tech Stack
 

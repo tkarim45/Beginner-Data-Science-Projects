@@ -1,15 +1,15 @@
 # Autocorrect Tool
 
 A beginner-level **NLP-fundamentals** project: a spelling corrector built from scratch using
-Peter Norvig's classic edit-distance + word-frequency algorithm — no training, no neural network.
+Peter Norvig's classic edit-distance + word-frequency algorithm, no training, no neural network.
 
 ## Problem Statement
 
 Given a possibly-misspelled word, return the most probable intended word. The method: generate
-all real words within 1–2 edits (delete / transpose / replace / insert) and pick the one with the
-highest frequency in a reference corpus — `argmax P(candidate)`.
+all real words within 1 to 2 edits (delete / transpose / replace / insert) and pick the one with the
+highest frequency in a reference corpus, `argmax P(candidate)`.
 
-*This is an NLP-fundamentals project and does not use the classification template — it has its own
+*This is an NLP-fundamentals project and does not use the classification template, it has its own
 `SpellCorrector` class and a build/evaluate notebook flow.*
 
 ## Dataset
@@ -40,7 +40,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_evaluation.ipynb` — not assumed.
+All figures produced by executing `03_evaluation.ipynb`, not assumed.
 
 - **Correction accuracy: 0.881** (42 of 43 misspellings whose target is in the corpus are
   corrected to the intended word).
@@ -49,13 +49,13 @@ All figures produced by executing `03_evaluation.ipynb` — not assumed.
 
 ## Key Findings
 
-- **Edit distance + frequency alone gets ~88%** of common misspellings right — a remarkably strong,
+- **Edit distance + frequency alone gets ~88%** of common misspellings right, a remarkably strong,
   fully transparent baseline with zero training.
 - **Frequency is the decisive signal**: among candidates the same edit-distance away, the most
   common real word is almost always the intended one.
 - **Failure modes**: misspellings more than 2 edits from the target, or cases where a very common
   short word outranks the intended word.
-- **The corrector is context-free** — it cannot use surrounding words to choose between real-word
+- **The corrector is context-free**, it cannot use surrounding words to choose between real-word
   confusions (their/there); that requires a language model (see the *Statistical Language Modeling*
   project).
 

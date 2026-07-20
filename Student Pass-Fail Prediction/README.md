@@ -6,7 +6,7 @@ A beginner-level binary classification project that predicts whether a high-scho
 
 Given 32 demographic, family, and behavioural features for 1,044 students from two Portuguese schools, predict whether the student earns a passing final grade (G3 ≥ 10 on a 0-20 scale).
 
-To make the task realistic and avoid leakage, the model is trained **without** the intermediate grades `G1`, `G2`, and `G3` — it must rely on contextual signals (study time, absences, family background, social habits, etc.) alone.
+To make the task realistic and avoid leakage, the model is trained **without** the intermediate grades `G1`, `G2`, and `G3`, it must rely on contextual signals (study time, absences, family background, social habits, etc.) alone.
 
 ## Dataset
 
@@ -59,12 +59,12 @@ Best GridSearchCV parameters: `{max_depth: 10, min_samples_leaf: 2, min_samples_
 
 ## Key Findings
 
-- **Past failures dominate**: students with prior course failures fail at much higher rates — the strongest single predictor by a wide margin.
+- **Past failures dominate**: students with prior course failures fail at much higher rates, the strongest single predictor by a wide margin.
 - **Course matters**: Portuguese pass rate (~85%) is higher than math (~67%), so the `course` feature carries real signal.
 - **Behavioural features add real lift**: `studytime`, `absences`, weekly alcohol consumption (`Walc`), and `goout` all show clear gradient effects on pass rate.
 - **Engineered features that helped**: `AlcoholScore = Dalc + Walc`, `ParentEducation = Medu + Fedu`, and `StudyAbsenceRatio = studytime / (absences + 1)`.
 - **Most models converge to ~78% accuracy / 0.87 F1** because the dataset is small (1,044 rows) and the positive class is easy to predict (always-pass baseline = 78% accuracy / 0.876 F1). To beat the baseline meaningfully you'd need to focus on **recalling failing students**, not overall accuracy.
-- Recall is high (>0.94) for most models — they correctly flag almost every passing student — but the precision/recall trade-off for the *failing* class is far harder; this is where richer features or oversampling would help.
+- Recall is high (>0.94) for most models, they correctly flag almost every passing student, but the precision/recall trade-off for the *failing* class is far harder; this is where richer features or oversampling would help.
 
 ## Tech Stack
 

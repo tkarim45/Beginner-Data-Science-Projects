@@ -5,14 +5,14 @@ A beginner-level **NLP text-classification** project that flags **toxic** online
 
 ## Problem Statement
 
-Given an online comment, predict whether it is toxic — **binary** classification. Built on the
+Given an online comment, predict whether it is toxic, **binary** classification. Built on the
 Jigsaw "Toxic Comment Classification" Wikipedia-comment data (the original is multi-label;
 here we collapse it to a single toxic/clean target).
 
 ## Dataset
 
-- **Source**: [`tasksource/jigsaw` (Hugging Face)](https://huggingface.co/datasets/tasksource/jigsaw) — the Jigsaw / Conversation-AI Wikipedia comments
-- **Subsample**: **40,000 comments** — 12,000 toxic + 28,000 clean (≈30% toxic, deliberately
+- **Source**: [`tasksource/jigsaw` (Hugging Face)](https://huggingface.co/datasets/tasksource/jigsaw), the Jigsaw / Conversation-AI Wikipedia comments
+- **Subsample**: **40,000 comments**, 12,000 toxic + 28,000 clean (≈30% toxic, deliberately
   enriched from the ~10% natural rate so the minority class is learnable).
 
 > Dataset note: the original Kaggle Jigsaw competition data is download-gated; `tasksource/jigsaw`
@@ -41,7 +41,7 @@ Linear SVM, Ridge, Passive-Aggressive.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. 80/20 stratified split;
+All figures produced by executing `03_model_building.ipynb`, not assumed. 80/20 stratified split;
 weighted metrics.
 
 | Model | Accuracy | F1 (weighted) |
@@ -57,14 +57,14 @@ Tuned Logistic Regression (C=10): **accuracy 0.913, F1 0.912**.
 
 ## Key Findings
 
-- **Linear SVM leads at ~91.5% accuracy / 0.914 F1** — explicit slurs and aggressive phrasing are
+- **Linear SVM leads at ~91.5% accuracy / 0.914 F1**, explicit slurs and aggressive phrasing are
   strong lexical signals that TF-IDF captures well.
-- **The minority (toxic) class is the hard part** — accuracy looks high partly because clean
+- **The minority (toxic) class is the hard part**, accuracy looks high partly because clean
   comments dominate; the weighted F1 (0.914) is the honest figure, and the confusion matrix in
   notebook 03 shows where toxic comments are missed.
-- **Class enrichment matters** — training at ~30% toxic (vs the ~10% natural rate) gives the
+- **Class enrichment matters**, training at ~30% toxic (vs the ~10% natural rate) gives the
   models enough toxic examples to learn the minority class instead of trivially predicting "clean".
-- **Bag-of-words misses disguised toxicity** — obfuscated slurs, sarcasm, and context-dependent
+- **Bag-of-words misses disguised toxicity**, obfuscated slurs, sarcasm, and context-dependent
   insults evade TF-IDF; closing that gap needs subword/transformer models.
 
 ## Tech Stack

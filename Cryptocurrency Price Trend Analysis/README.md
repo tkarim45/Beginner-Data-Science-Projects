@@ -1,7 +1,7 @@
 # Cryptocurrency Price Trend Analysis
 
 A beginner-level **time-series** project that analyses the **daily Bitcoin price (USD)** and tests
-how forecastable it is — with an honest look at why high R² here is *persistence*, not skill.
+how forecastable it is, with an honest look at why high R² here is *persistence*, not skill.
 
 ## Problem Statement
 
@@ -11,7 +11,7 @@ random-walk "tomorrow ≈ today"? Chronological split; MAE / RMSE / MAPE / R².
 
 ## Dataset
 
-- **Source**: [CoinGecko API](https://www.coingecko.com/en/api) — daily BTC/USD close, most recent
+- **Source**: [CoinGecko API](https://www.coingecko.com/en/api), daily BTC/USD close, most recent
   **365 days** (2025-07 → 2026-06).
 
 > Dataset note: the checklist's Kaggle crypto-history set is replaced by the live CoinGecko API
@@ -35,7 +35,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Chronological 80/20 split (71 test days).
+All figures produced by executing `03_model_building.ipynb`, not assumed. Chronological 80/20 split (71 test days).
 
 | Model | MAE (USD) | RMSE | MAPE % | R² |
 |---|---|---|---|---|
@@ -47,14 +47,14 @@ All figures produced by executing `03_model_building.ipynb` — not assumed. Chr
 
 ## Key Findings
 
-- **The high R² (0.968) is misleading — it is mostly the `lag_1` feature.** BTC price is close to a
+- **The high R² (0.968) is misleading, it is mostly the `lag_1` feature.** BTC price is close to a
   **random walk**: "tomorrow ≈ today" already gives ~1.5% MAPE, and the regressors essentially learn
   that persistence. R² rewards tracking the *level*, which lag-1 does trivially.
-- **The honest signal is the *return*, not the *price*** — predicting the day-over-day % change (and
+- **The honest signal is the *return*, not the *price***, predicting the day-over-day % change (and
   thus direction) is what actually matters for trading, and that is **not** captured here; the models
   add little over pure persistence on returns.
 - **Baselines tell the story**: the flat naive baseline fails (R² −0.08) because the price trends, while
-  seasonal-naive (R² 0.67) and the lag models track the level — none of which is genuine price *prediction*.
+  seasonal-naive (R² 0.67) and the lag models track the level, none of which is genuine price *prediction*.
 - **Takeaway**: never trust a high R² on a price-*level* time series. Always test against a random-walk /
   naive baseline and evaluate returns, or you will fool yourself into thinking prices are forecastable.
 

@@ -8,19 +8,19 @@ Given a person's age, sex, BMI, number of children, smoker status, and US region
 
 ## Dataset
 
-- **Source**: [Medical Cost Personal Datasets (Kaggle)](https://www.kaggle.com/datasets/mirichoi0218/insurance) — originally from Brett Lantz's *Machine Learning with R*
+- **Source**: [Medical Cost Personal Datasets (Kaggle)](https://www.kaggle.com/datasets/mirichoi0218/insurance), originally from Brett Lantz's *Machine Learning with R*
 - **Samples**: 1,338 records
 - **Features**: 6 inputs + 1 numeric target
 
 | Feature | Type | Description |
 |---------|------|-------------|
-| age | numeric | Age of the primary beneficiary (18–64) |
+| age | numeric | Age of the primary beneficiary (18 to 64) |
 | sex | categorical | female / male |
-| bmi | numeric | Body mass index (16–53) |
-| children | numeric | Number of children covered (0–5) |
+| bmi | numeric | Body mass index (16 to 53) |
+| children | numeric | Number of children covered (0 to 5) |
 | smoker | categorical | yes / no |
 | region | categorical | northeast / northwest / southeast / southwest |
-| **charges** | **numeric** | **Annual insurance charges in USD (target, $1,121–$63,770)** |
+| **charges** | **numeric** | **Annual insurance charges in USD (target, $1,121, $63,770)** |
 
 No missing values; no duplicates.
 
@@ -60,12 +60,12 @@ Best GridSearchCV parameters: `n_estimators=100, learning_rate=0.05, max_depth=3
 
 ## Key Findings
 
-- **Smoker is by far the dominant predictor** — smokers pay roughly **3.8× the mean charges** of non-smokers ($32k vs $8.4k).
+- **Smoker is by far the dominant predictor**, smokers pay roughly **3.8× the mean charges** of non-smokers ($32k vs $8.4k).
 - **The `smoker × obese` interaction is the largest single signal**: obese smokers average ~$41k/year, vs ~$21k for non-obese smokers and ~$8k for non-smokers (any BMI). The `smoker_obese` engineered flag captures this.
-- **Age contributes a near-linear premium** — about $260 per extra year of age once you control for smoker status.
+- **Age contributes a near-linear premium**, about $260 per extra year of age once you control for smoker status.
 - **All four linear-family models tie within 0.001 R²** of Gradient Boosting because the core relationship is linear once `smoker_obese` is engineered. Tree ensembles only help marginally.
 - **Charges are heavily right-skewed** (skewness ≈ 1.5); a log-transform would push linear models slightly higher, especially on MAPE.
-- **Region effects are weak** (under $1k mean differences) — geography barely matters once you control for everything else.
+- **Region effects are weak** (under $1k mean differences), geography barely matters once you control for everything else.
 
 ## Tech Stack
 

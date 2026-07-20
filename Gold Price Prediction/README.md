@@ -8,8 +8,8 @@ Given the daily closing prices of the S&P 500 (SPX), an oil ETF (USO), a silver 
 
 ## Dataset
 
-- **Source**: [Gold Price Data — Kaggle / Mohammed Youssef](https://github.com/MYoussef885/Gold_Price_Prediction)
-- **Samples**: 2,290 trading days (2008–2018)
+- **Source**: [Gold Price Data. Kaggle / Mohammed Youssef](https://github.com/MYoussef885/Gold_Price_Prediction)
+- **Samples**: 2,290 trading days (2008 to 2018)
 - **Features**: 5 numeric cross-asset prices
 
 | Feature | Description |
@@ -40,7 +40,7 @@ Gold Price Prediction/
 
 ## Results
 
-7 regressors + 1 tuned Random Forest variant. Silver (SLV) and Gold are tightly correlated, so this is an "easy" regression — every model breaks R² > 0.9.
+7 regressors + 1 tuned Random Forest variant. Silver (SLV) and Gold are tightly correlated, so this is an "easy" regression, every model breaks R² > 0.9.
 
 | Model | MAE | RMSE | R² | MAPE |
 |---|---|---|---|---|
@@ -57,11 +57,11 @@ Best GridSearchCV parameters: `{max_depth: 20, min_samples_leaf: 1, n_estimators
 
 ## Key Findings
 
-- **Silver (SLV) is by far the strongest predictor** of gold (correlation > 0.85). Silver and gold trade as substitutes — both are precious-metal "safe haven" assets — so when SLV rises, GLD usually rises with it.
-- **Cross-asset, non-time-series view**: this project treats each row as an independent (X, y) pair rather than as a true time series. The high R² (≈ 0.995 for tree models) is partly a consequence of that — same-day SLV is essentially leaking gold information. A more rigorous version would predict `GLD[t]` from prices at `t−1` (lagged).
-- **MAPE ≈ 0.85% for the tuned RF** — practical accuracy is excellent for a model of this simplicity.
+- **Silver (SLV) is by far the strongest predictor** of gold (correlation > 0.85). Silver and gold trade as substitutes, both are precious-metal "safe haven" assets, so when SLV rises, GLD usually rises with it.
+- **Cross-asset, non-time-series view**: this project treats each row as an independent (X, y) pair rather than as a true time series. The high R² (≈ 0.995 for tree models) is partly a consequence of that, same-day SLV is essentially leaking gold information. A more rigorous version would predict `GLD[t]` from prices at `t−1` (lagged).
+- **MAPE ≈ 0.85% for the tuned RF**, practical accuracy is excellent for a model of this simplicity.
 - **Linear models reach R² ≈ 0.92** even without engineered features: the linear relationship between gold and silver is genuinely strong. Tree ensembles squeeze out the remaining non-linear interactions.
-- **Engineered rolling means / diffs help marginally** — the dataset is short enough (2,290 rows) that the trees can learn lag-like patterns from raw prices alone.
+- **Engineered rolling means / diffs help marginally**, the dataset is short enough (2,290 rows) that the trees can learn lag-like patterns from raw prices alone.
 
 ## Tech Stack
 

@@ -10,8 +10,8 @@ Given a daily web-traffic series, forecast the next day's views. Does an ML mode
 
 ## Dataset
 
-- **Source**: [Wikimedia Pageviews API](https://wikimedia.org/api/rest_v1/) — daily views of the
-  English Wikipedia article **"Python (programming language)"**, **2020–2023** (**1,461 days**).
+- **Source**: [Wikimedia Pageviews API](https://wikimedia.org/api/rest_v1/), daily views of the
+  English Wikipedia article **"Python (programming language)"**, **2020 to 2023** (**1,461 days**).
 
 > Dataset note: the checklist's Kaggle web-traffic competition data is download-gated; the openly
 > available Wikimedia Pageviews API gives a real, clean daily web-traffic series with no account.
@@ -34,7 +34,7 @@ Run notebooks in order: `01` → `02` → `03`.
 
 ## Results
 
-All figures produced by executing `03_model_building.ipynb` — not assumed. Chronological 80/20 split (290 test days).
+All figures produced by executing `03_model_building.ipynb`, not assumed. Chronological 80/20 split (290 test days).
 
 | Model | MAE | RMSE | MAPE % | R² |
 |---|---|---|---|---|
@@ -47,11 +47,11 @@ All figures produced by executing `03_model_building.ipynb` — not assumed. Chr
 
 ## Key Findings
 
-- **Web traffic is only moderately forecastable** — best R² **0.28** (Random Forest), MAPE ~13%.
+- **Web traffic is only moderately forecastable**, best R² **0.28** (Random Forest), MAPE ~13%.
   Page views are noisy and driven by external events (news, releases) the model can't see.
-- **But ML clearly beats the baselines** — RMSE 3,386 vs seasonal-naive 5,197 and a disastrous
+- **But ML clearly beats the baselines**. RMSE 3,386 vs seasonal-naive 5,197 and a disastrous
   naive 18,815 (R² −21): lag + day-of-week features capture the strong weekday/weekend cycle.
-- **Random Forest edges out linear models** here — traffic spikes are non-linear, so the ensemble
+- **Random Forest edges out linear models** here, traffic spikes are non-linear, so the ensemble
   handles the bursty tail better.
 - **Honest ceiling**: a univariate model captures routine weekly rhythm but not traffic shocks;
   beating ~0.3 R² would need exogenous signals (events, referrals, search trends).

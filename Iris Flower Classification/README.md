@@ -8,7 +8,7 @@ This project uses the **Flowers Recognition** dataset from Kaggle:
 [kaggle.com/datasets/alxmamaev/flowers-recognition](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition)
 
 It contains ~4,300 images across five classes (daisy, dandelion, rose, sunflower, tulip).
-The images are **not committed to this repository** (to keep it lightweight) — download them
+The images are **not committed to this repository** (to keep it lightweight), download them
 and place them under a local `flowers/` directory with one labeled subdirectory per class:
 
 ```

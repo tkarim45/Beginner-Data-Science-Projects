@@ -8,8 +8,8 @@ Given 22 acoustic features extracted from a sustained-phonation `aaah` recording
 
 ## Dataset
 
-- **Source**: [UCI Parkinson's Disease Data Set](https://archive.ics.uci.edu/dataset/174/parkinsons) — Little et al., 2008
-- **Samples**: 195 voice recordings from 31 people (23 with PD, 8 healthy controls; 6–7 recordings per subject)
+- **Source**: [UCI Parkinson's Disease Data Set](https://archive.ics.uci.edu/dataset/174/parkinsons). Little et al., 2008
+- **Samples**: 195 voice recordings from 31 people (23 with PD, 8 healthy controls; 6 to 7 recordings per subject)
 - **Features**: 22 numeric acoustic measures + 1 binary target
 
 | Feature group | Examples |
@@ -59,11 +59,11 @@ Best GridSearchCV parameters: `n_estimators=500, max_depth=None, min_samples_spl
 ## Key Findings
 
 - **`spread1`, `PPE`, `spread2`** are the strongest single predictors of PD (all |r| > 0.4 with status).
-- **PD voices show systematically higher jitter and shimmer** (cycle-to-cycle frequency / amplitude variability) — voice instability is a hallmark symptom.
-- **HNR (harmonics-to-noise) is lower in PD** — PD voices are noisier.
-- **KNN with K=1 wins on this small dataset** because nearest-neighbor matching exploits the heavy intra-subject similarity. Random Forest is the more honest pick — its CV F1 (0.92) is closer to a held-out estimate than KNN's possibly-optimistic test score.
+- **PD voices show systematically higher jitter and shimmer** (cycle-to-cycle frequency / amplitude variability), voice instability is a hallmark symptom.
+- **HNR (harmonics-to-noise) is lower in PD**. PD voices are noisier.
+- **KNN with K=1 wins on this small dataset** because nearest-neighbor matching exploits the heavy intra-subject similarity. Random Forest is the more honest pick, its CV F1 (0.92) is closer to a held-out estimate than KNN's possibly-optimistic test score.
 - **Class imbalance flips the usual direction**: PD is the majority (75%). `class_weight='balanced'` is used to keep the minority "healthy" class predictable.
-- **Subject-level leakage caveat**: with 6–7 recordings per subject, a random split can place recordings of the same person in both train and test. A `GroupKFold` on subject ID would give a more realistic estimate.
+- **Subject-level leakage caveat**: with 6 to 7 recordings per subject, a random split can place recordings of the same person in both train and test. A `GroupKFold` on subject ID would give a more realistic estimate.
 
 ## Tech Stack
 

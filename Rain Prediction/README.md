@@ -8,8 +8,8 @@ Given today's weather measurements (temperature, humidity, wind, pressure, etc.)
 
 ## Dataset
 
-- **Source**: [Rain in Australia — Kaggle / Bureau of Meteorology](https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package)
-- **Samples**: ~145,460 daily station-day records (49 stations, 2007–2017)
+- **Source**: [Rain in Australia. Kaggle / Bureau of Meteorology](https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package)
+- **Samples**: ~145,460 daily station-day records (49 stations, 2007 to 2017)
 - **Features**: 23 mixed numeric / categorical predictors
 
 | Feature | Description |
@@ -21,7 +21,7 @@ Given today's weather measurements (temperature, humidity, wind, pressure, etc.)
 | WindDir9am / WindDir3pm / WindSpeed9am / WindSpeed3pm | Wind at 9am and 3pm |
 | Humidity9am / Humidity3pm | Relative humidity (%) |
 | Pressure9am / Pressure3pm | Atmospheric pressure (hPa) |
-| Cloud9am / Cloud3pm | Cloud cover in oktas (0–8) |
+| Cloud9am / Cloud3pm | Cloud cover in oktas (0 to 8) |
 | Temp9am / Temp3pm | Temperature at 9am / 3pm |
 | RainToday | 'Yes' / 'No' indicator from observed rain that day |
 | **RainTomorrow** | **0 = No Rain, 1 = Rain** (target) |
@@ -62,13 +62,13 @@ Best GridSearchCV parameters: `{max_depth: None, min_samples_split: 5, n_estimat
 
 ## Key Findings
 
-- **Humidity at 3pm is the single strongest predictor** (correlation ≈ 0.45 with `RainTomorrow`) — afternoon humidity is a much better signal than morning humidity.
+- **Humidity at 3pm is the single strongest predictor** (correlation ≈ 0.45 with `RainTomorrow`), afternoon humidity is a much better signal than morning humidity.
 - **Pressure also carries strong signal** (lower 3pm pressure → higher rain probability), as does the engineered `PressureChange` (3pm − 9am).
-- **`RainToday` is a useful leading indicator**: if it rained today, P(rain tomorrow) jumps from ~17% to ~46%, but it is far from deterministic — yesterday's rain alone is not enough.
+- **`RainToday` is a useful leading indicator**: if it rained today, P(rain tomorrow) jumps from ~17% to ~46%, but it is far from deterministic, yesterday's rain alone is not enough.
 - **Class imbalance is mild** (~78% no-rain, ~22% rain). Plain accuracy already starts at 78%; F1 on the rain class is what matters.
-- **Random Forest dominates** — both stock and tuned RF top the leaderboard. Tree ensembles handle the mix of numeric and one-hot categorical features (Location, WindDir*) better than linear models or KNN.
-- **Naive Bayes again trades precision for recall** (recall 0.72) — useful if the cost of missing a rainy day is high (e.g. agricultural irrigation decisions).
-- **SVM with a linear kernel performs poorly** here — 142k rows × ~25 features is borderline-untrainable for kernel SVMs in reasonable time, and the linear approximation underfits the non-linear weather patterns.
+- **Random Forest dominates**, both stock and tuned RF top the leaderboard. Tree ensembles handle the mix of numeric and one-hot categorical features (Location, WindDir*) better than linear models or KNN.
+- **Naive Bayes again trades precision for recall** (recall 0.72), useful if the cost of missing a rainy day is high (e.g. agricultural irrigation decisions).
+- **SVM with a linear kernel performs poorly** here, 142k rows × ~25 features is borderline-untrainable for kernel SVMs in reasonable time, and the linear approximation underfits the non-linear weather patterns.
 
 ## Tech Stack
 
