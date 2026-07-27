@@ -21,6 +21,7 @@
 ## Table of Contents
 
 - [Why This Repo?](#why-this-repo)
+- [Categories](#categories)
 - [Learning Path](#learning-path)
 - [All Projects](#all-projects)
 - [Getting Started](#getting-started)
@@ -37,6 +38,22 @@ You will learn:
 - **Machine Learning** -- classification, regression, and anomaly detection
 - **Deep Learning** -- CNNs, transfer learning, and NLP models
 - **Computer Vision** -- detection, recognition, and pose estimation
+
+## Categories
+
+Projects are grouped into category folders, each with its own README listing every project in it:
+
+- [Classification](Classification/README.md) (19)
+- [Regression](Regression/README.md) (16)
+- [Time Series](Time%20Series/README.md) (6)
+- [NLP](NLP/README.md) (20)
+- [Clustering](Clustering/README.md) (4)
+- [Recommendation Systems](Recommendation%20Systems/README.md) (5)
+- [Anomaly Detection](Anomaly%20Detection/README.md) (2)
+- [EDA Visualization](EDA%20Visualization/README.md) (10)
+- [Miscellaneous Applied](Miscellaneous%20Applied/README.md) (10)
+- [Computer Vision](Computer%20Vision/README.md) (13)
+- [Robotics](Robotics/README.md) (1)
 
 ## Learning Path
 
