@@ -5,7 +5,7 @@ Thanks for your interest in contributing! This repo is meant to help beginners l
 ## How to Contribute
 
 1. **Fork** this repository
-2. **Create a new folder** with your project name (use Title Case with spaces, e.g., `My New Project`)
+2. **Create a new folder** inside the matching category directory (`Classification/`, `Regression/`, `Time Series/`, `NLP/`, `Clustering/`, `Recommendation Systems/`, `Anomaly Detection/`, `EDA Visualization/`, `Miscellaneous Applied/`, `Computer Vision/`, `Robotics/`), named for your project in Title Case with spaces, e.g., `Classification/My New Project`
 3. **Include the following** in your project folder:
    - A Jupyter notebook (`.ipynb`) with your code
    - A `README.md` describing the project (see template below)
