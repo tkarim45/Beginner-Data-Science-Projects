@@ -153,6 +153,11 @@ Tackle more complex real-world problems.
 | 59 | [PDF Table Extractor + Analyzer](PDF%20Table%20Extractor) | Applied | Intermediate |
 | 60 | [Personal Finance Tracker](Personal%20Finance%20Tracker) | Applied | Intermediate |
 | 61 | [Image Captioning](Image%20Captioning) | Applied / Deep Learning | Intermediate |
+| 62 | [Handwritten Digit Recognition](Handwritten%20Digit%20Recognition) | Computer Vision | Beginner |
+| 63 | [Fruit Classification](Fruit%20Classification) | Computer Vision | Beginner |
+| 64 | [Animal Species Classification](Animal%20Species%20Classification) | Computer Vision | Intermediate |
+| 65 | [Document Scanner](Document%20Scanner) | Computer Vision | Intermediate |
+| 66 | [Color Detection](Color%20Detection) | Computer Vision | Beginner |
 
 ## Getting Started
 
