@@ -52,7 +52,7 @@ Projects are grouped into category folders, each with its own README listing eve
 - [Anomaly Detection](Anomaly%20Detection/README.md) (2)
 - [EDA Visualization](EDA%20Visualization/README.md) (10)
 - [Miscellaneous Applied](Miscellaneous%20Applied/README.md) (10)
-- [Computer Vision](Computer%20Vision/README.md) (13)
+- [Computer Vision](Computer%20Vision/README.md) (18)
 - [Robotics](Robotics/README.md) (1)
 
 ## Learning Path
@@ -175,6 +175,11 @@ Tackle more complex real-world problems.
 | 64 | [Animal Species Classification](Computer%20Vision/Animal%20Species%20Classification) | Computer Vision | Intermediate |
 | 65 | [Document Scanner](Computer%20Vision/Document%20Scanner) | Computer Vision | Intermediate |
 | 66 | [Color Detection](Computer%20Vision/Color%20Detection) | Computer Vision | Beginner |
+| 67 | [Traffic Sign Recognition](Computer%20Vision/Traffic%20Sign%20Recognition) | Computer Vision | Intermediate |
+| 68 | [Dog vs Cat Classification](Computer%20Vision/Dog%20vs%20Cat%20Classification) | Computer Vision | Beginner |
+| 69 | [Emotion Detection](Computer%20Vision/Emotion%20Detection) | Computer Vision | Intermediate |
+| 70 | [Pneumonia Detection](Computer%20Vision/Pneumonia%20Detection) | Computer Vision | Intermediate |
+| 71 | [Skin Cancer Classification](Computer%20Vision/Skin%20Cancer%20Classification) | Computer Vision | Intermediate |
 
 ## Getting Started
 

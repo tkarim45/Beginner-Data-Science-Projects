@@ -46,11 +46,7 @@ env/
 **/validation/
 
 # CV project data — regenerate with each project's make_data.py (not committed).
-Handwritten Digit Recognition/data/
-Fruit Classification/data/
-Animal Species Classification/data/
-Document Scanner/data/
-Color Detection/data/
+Computer Vision/*/data/
 
 # Claude
 CLAUDE.md

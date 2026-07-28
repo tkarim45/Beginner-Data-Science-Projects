@@ -19,5 +19,10 @@ Image tasks: a from-scratch CNN, frozen-ResNet18 transfer learning, and classic-
 | [Pose Estimation](Pose%20Estimation) | YOLOv8, MediaPipe, activity classification. |
 | [Plant Disease CNNs](Plant%20Disease%20CNNs) | EfficientNet plant-disease classifier with an app. |
 | [Gender Classification](Gender%20Classification) | EfficientNetV2 transfer learning on face images, ~91% accuracy. |
+| [Traffic Sign Recognition](Traffic%20Sign%20Recognition) | GTSRB 43-class signs, frozen ResNet18 + LogReg, 99.4% test accuracy. |
+| [Dog vs Cat Classification](Dog%20vs%20Cat%20Classification) | Binary pet photos, frozen ResNet18 + LogReg, 88.3%. |
+| [Emotion Detection](Emotion%20Detection) | FER2013 7 emotions, same recipe, honest hard case at 33.1% (14% chance). |
+| [Pneumonia Detection](Pneumonia%20Detection) | Chest X-ray NORMAL vs PNEUMONIA, ResNet18 + LogReg, 95.3% (demo, not medical). |
+| [Skin Cancer Classification](Skin%20Cancer%20Classification) | HAM10000 7 lesion types, imbalanced, 55.9%; melanoma among the weakest (demo). |
 
-_13 projects in this category._
+_18 projects in this category._
