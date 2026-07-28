@@ -66,7 +66,7 @@ Get comfortable with pandas, sklearn, and basic ML workflows.
 | # | Project | What You'll Learn | Category |
 |---|---------|-------------------|----------|
 | 1 | [Titanic Survival Prediction](Classification/Titanic%20Survival%20Prediction) | EDA, data cleaning, feature engineering, 7 classifiers, GridSearchCV | Classification |
-| 2 | [Iris Flower Classification](Classification/Iris%20Flower%20Classification) | Image classification with CNNs, data loading | Classification |
+| 2 | [Iris Flower Classification](Classification/Iris%20Flower%20Classification) | Multi-class classification on the classic iris measurements, data loading | Classification |
 | 3 | [Customer Churn](Classification/Customer%20Churn) | Logistic regression from scratch, prediction on new data | Classification |
 | 4 | [Heart Failure Prediction](Classification/Heart%20Failure%20Prediction) | Feature analysis, multiple classifiers, model evaluation | Classification |
 | 5 | [Rental Prices of AirBnb](Regression/Rental%20Prices%20of%20AirBnb) | Linear regression, outlier analysis, label encoding | Regression |
@@ -88,7 +88,7 @@ Work with images, neural networks, and pre-trained models.
 
 | # | Project | What You'll Learn | Category |
 |---|---------|-------------------|----------|
-| 10 | [Gender Classification](Computer%20Vision/Gender%20Classification) | EfficientNetV2, transfer learning, Keras | Classification |
+| 10 | [Gender Classification](Computer%20Vision/Gender%20Classification) | EfficientNetV2, transfer learning, Keras | Computer Vision |
 | 11 | [Face Detection](Computer%20Vision/Face%20Detection) | Haar cascades, MTCNN, OpenCV | Computer Vision |
 | 12 | [Face Recognition](Computer%20Vision/Face%20Recognition) | LBPH algorithm, real-time webcam recognition | Computer Vision |
 | 13 | [Eye Disease Detection](Computer%20Vision/Eye%20Disease%20Detection) | ResNet34, data augmentation pipeline, medical imaging | Computer Vision |
@@ -118,7 +118,7 @@ Tackle more complex real-world problems.
 | 7 | [Cyber-Bullying Prediction](NLP/Cyber-Bullying%20Prediction) | NLP | Beginner |
 | 8 | [Sentiment Analysis](NLP/Sentiment%20Analysis) | NLP | Intermediate |
 | 9 | [AirBnb Reviews Sentimental Analysis](NLP/AirBnb%20reviews%20Sentimental%20Analysis) | NLP | Intermediate |
-| 10 | [Gender Classification](Computer%20Vision/Gender%20Classification) | Classification | Intermediate |
+| 10 | [Gender Classification](Computer%20Vision/Gender%20Classification) | Computer Vision | Intermediate |
 | 11 | [Face Detection](Computer%20Vision/Face%20Detection) | Computer Vision | Intermediate |
 | 12 | [Face Recognition](Computer%20Vision/Face%20Recognition) | Computer Vision | Intermediate |
 | 13 | [Eye Disease Detection](Computer%20Vision/Eye%20Disease%20Detection) | Computer Vision | Intermediate |
@@ -180,6 +180,46 @@ Tackle more complex real-world problems.
 | 69 | [Emotion Detection](Computer%20Vision/Emotion%20Detection) | Computer Vision | Intermediate |
 | 70 | [Pneumonia Detection](Computer%20Vision/Pneumonia%20Detection) | Computer Vision | Intermediate |
 | 71 | [Skin Cancer Classification](Computer%20Vision/Skin%20Cancer%20Classification) | Computer Vision | Intermediate |
+| 72 | [Bankruptcy Prediction](Classification/Bankruptcy%20Prediction) | Classification | Intermediate |
+| 73 | [Breast Cancer Wisconsin](Classification/Breast%20Cancer%20Wisconsin) | Classification | Beginner |
+| 74 | [Credit Card Default Prediction](Classification/Credit%20Card%20Default%20Prediction) | Classification | Beginner |
+| 75 | [Credit Card Fraud Detection](Classification/Credit%20Card%20Fraud%20Detection) | Classification | Intermediate |
+| 76 | [Diabetes Prediction](Classification/Diabetes%20Prediction) | Classification | Beginner |
+| 77 | [Employee Attrition Prediction](Classification/Employee%20Attrition%20Prediction) | Classification | Beginner |
+| 78 | [Loan Approval Prediction](Classification/Loan%20Approval%20Prediction) | Classification | Intermediate |
+| 79 | [Mushroom Edibility Classification](Classification/Mushroom%20Edibility%20Classification) | Classification | Beginner |
+| 80 | [Parkinsons Disease Detection](Classification/Parkinsons%20Disease%20Detection) | Classification | Intermediate |
+| 81 | [Rain Prediction](Classification/Rain%20Prediction) | Classification | Beginner |
+| 82 | [Stroke Prediction](Classification/Stroke%20Prediction) | Classification | Intermediate |
+| 83 | [Student Pass-Fail Prediction](Classification/Student%20Pass-Fail%20Prediction) | Classification | Beginner |
+| 84 | [Thyroid Disease Classification](Classification/Thyroid%20Disease%20Classification) | Classification | Beginner |
+| 85 | [Water Potability Classification](Classification/Water%20Potability%20Classification) | Classification | Beginner |
+| 86 | [Wine Quality Classification](Classification/Wine%20Quality%20Classification) | Classification | Beginner |
+| 87 | [House Price Prediction](Regression/House%20Price%20Prediction) | Regression | Beginner |
+| 88 | [Car Price Prediction](Regression/Car%20Price%20Prediction) | Regression | Beginner |
+| 89 | [Avocado Price Prediction](Regression/Avocado%20Price%20Prediction) | Regression | Beginner |
+| 90 | [Diamond Price Prediction](Regression/Diamond%20Price%20Prediction) | Regression | Beginner |
+| 91 | [Fuel Efficiency Prediction](Regression/Fuel%20Efficiency%20Prediction) | Regression | Beginner |
+| 92 | [Salary Prediction](Regression/Salary%20Prediction) | Regression | Beginner |
+| 93 | [Insurance Cost Prediction](Regression/Insurance%20Cost%20Prediction) | Regression | Beginner |
+| 94 | [Bike Sharing Demand Prediction](Regression/Bike%20Sharing%20Demand%20Prediction) | Regression | Beginner |
+| 95 | [Gold Price Prediction](Regression/Gold%20Price%20Prediction) | Regression | Beginner |
+| 96 | [Flight Price Prediction](Regression/Flight%20Price%20Prediction) | Regression | Intermediate |
+| 97 | [Crop Yield Prediction](Regression/Crop%20Yield%20Prediction) | Regression | Intermediate |
+| 98 | [Stock Price Prediction](Regression/Stock%20Price%20Prediction) | Regression | Intermediate |
+| 99 | [Energy Consumption Forecasting](Regression/Energy%20Consumption%20Forecasting) | Regression | Intermediate |
+| 100 | [Air Quality Forecasting](Regression/Air%20Quality%20Forecasting) | Regression | Intermediate |
+| 101 | [Fake News Detection](NLP/Fake%20News%20Detection) | NLP | Beginner |
+| 102 | [Movie Review Sentiment Analysis](NLP/Movie%20Review%20Sentiment%20Analysis) | NLP | Beginner |
+| 103 | [Twitter Hate Speech Detection](NLP/Twitter%20Hate%20Speech%20Detection) | NLP | Beginner |
+| 104 | [Language Detection](NLP/Language%20Detection) | NLP | Beginner |
+| 105 | [Sarcasm Detection](NLP/Sarcasm%20Detection) | NLP | Beginner |
+| 106 | [News Article Topic Classification](NLP/News%20Article%20Topic%20Classification) | NLP | Beginner |
+| 107 | [Statistical Language Modeling](NLP/Statistical%20Language%20Modeling) | NLP | Intermediate |
+| 108 | [Mall Customer Segmentation](Clustering/Mall%20Customer%20Segmentation) | Clustering | Beginner |
+| 109 | [Customer Segmentation](Clustering/Customer%20Segmentation) | Clustering | Beginner |
+| 110 | [Document Clustering](Clustering/Document%20Clustering) | Clustering | Beginner |
+| 111 | [Plant Disease CNNs](Computer%20Vision/Plant%20Disease%20CNNs) | Computer Vision | Intermediate |
 
 ## Getting Started
 
