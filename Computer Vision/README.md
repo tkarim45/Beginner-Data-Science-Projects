@@ -24,5 +24,9 @@ Image tasks: a from-scratch CNN, frozen-ResNet18 transfer learning, and classic-
 | [Emotion Detection](Emotion%20Detection) | FER2013 7 emotions, same recipe, honest hard case at 33.1% (14% chance). |
 | [Pneumonia Detection](Pneumonia%20Detection) | Chest X-ray NORMAL vs PNEUMONIA, ResNet18 + LogReg, 95.3% (demo, not medical). |
 | [Skin Cancer Classification](Skin%20Cancer%20Classification) | HAM10000 7 lesion types, imbalanced, 55.9%; melanoma among the weakest (demo). |
+| [Mask Detection](Mask%20Detection) | Face mask vs no-mask, frozen ResNet18 + LogReg, 100% (small clean set). |
+| [Hand Gesture Recognition](Hand%20Gesture%20Recognition) | Rock/paper/scissors, ResNet18 + LogReg, 100% (clean studio shots). |
+| [Vehicle Counting from Video](Vehicle%20Counting%20from%20Video) | Classic CV: MOG2 background subtraction + line crossing, counts 8/8 on a synthetic clip. |
+| [License Plate Detection](License%20Plate%20Detection) | Classic CV: edges + contour aspect/area + brightness, localizes plate at IoU 0.93. |
 
-_18 projects in this category._
+_22 projects in this category._

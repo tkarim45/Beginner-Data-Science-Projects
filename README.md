@@ -52,7 +52,7 @@ Projects are grouped into category folders, each with its own README listing eve
 - [Anomaly Detection](Anomaly%20Detection/README.md) (2)
 - [EDA Visualization](EDA%20Visualization/README.md) (10)
 - [Miscellaneous Applied](Miscellaneous%20Applied/README.md) (10)
-- [Computer Vision](Computer%20Vision/README.md) (18)
+- [Computer Vision](Computer%20Vision/README.md) (22)
 - [Robotics](Robotics/README.md) (1)
 
 ## Learning Path
@@ -220,6 +220,10 @@ Tackle more complex real-world problems.
 | 109 | [Customer Segmentation](Clustering/Customer%20Segmentation) | Clustering | Beginner |
 | 110 | [Document Clustering](Clustering/Document%20Clustering) | Clustering | Beginner |
 | 111 | [Plant Disease CNNs](Computer%20Vision/Plant%20Disease%20CNNs) | Computer Vision | Intermediate |
+| 112 | [Mask Detection](Computer%20Vision/Mask%20Detection) | Computer Vision | Intermediate |
+| 113 | [Hand Gesture Recognition](Computer%20Vision/Hand%20Gesture%20Recognition) | Computer Vision | Intermediate |
+| 114 | [Vehicle Counting from Video](Computer%20Vision/Vehicle%20Counting%20from%20Video) | Computer Vision | Advanced |
+| 115 | [License Plate Detection](Computer%20Vision/License%20Plate%20Detection) | Computer Vision | Advanced |
 
 ## Getting Started
 
